@@ -35,8 +35,8 @@ jobs:
 
       - name: Add remote-url
         run: |
-          git remote add forked-repo https://lgrin-byte:${{ secrets.AUTO_ACTIONS }}@github.com/lgrin-byte/nextRoomFE
-          git config user.name lgrin-byte
+          git remote add forked-repo https://Nextroom-developer:${{ secrets.AUTO_ACTIONS }}@github.com/Nextroom-developer/nextroomfe
+          git config user.name Nextroom-developer
           git config user.email ${{ secrets.EMAIL }}
 
       - name: Push changes to forked-repo
