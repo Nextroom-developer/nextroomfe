@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import SnackBar from "@/components/SnackBar/SnackBar";
 import { useSnackBarInfo } from "@/components/atoms/snackBar.atom";
 import { getCookie } from "@/utils/cookie";
-import useAnalytics from "@/hooks/useAnalytics";
+import useAnalytics from "@/landing/hooks/useAnalytics";
 
 import loaderJson from "../../public/lottie/signup.json";
 

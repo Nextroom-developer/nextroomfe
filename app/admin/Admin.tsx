@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import useCheckSignIn from "@/hooks/useCheckSignIn";
+import useCheckSignIn from "@/landing/hooks/useCheckSignIn";
 import Loader from "@/components/Loader/Loader";
 import { getLoginInfo, setSelectedThemeId } from "@/utils/storageUtil";
 import { useSelectedTheme } from "@/components/atoms/selectedTheme.atom";

@@ -8,7 +8,7 @@ import Loader from "@/components/Loader/Loader";
 import { usePostVerification } from "@/mutations/postVerification";
 import { usePostSendMessage } from "@/mutations/postSendMessage";
 import "@/apis/firebase";
-import useAnalytics from "@/hooks/useAnalytics";
+import useAnalytics from "@/landing/hooks/useAnalytics";
 
 import EmailAuthView from "./EmailAuthView";
 

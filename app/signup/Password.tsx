@@ -9,7 +9,7 @@ import {
 } from "@/consts/components/signUp";
 import "@/apis/firebase";
 import { useSignUpState } from "@/components/atoms/signup.atom";
-import useAnalytics from "@/hooks/useAnalytics";
+import useAnalytics from "@/landing/hooks/useAnalytics";
 
 import PasswordView from "./PasswordView";
 

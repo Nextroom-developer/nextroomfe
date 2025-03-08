@@ -8,7 +8,7 @@ import { useIsLoggedInValue } from "@/components/atoms/account.atom";
 import Loader from "@/components/Loader/Loader";
 import { usePostSignUp } from "@/mutations/postSignUp";
 import "@/apis/firebase";
-import useAnalytics from "@/hooks/useAnalytics";
+import useAnalytics from "@/landing/hooks/useAnalytics";
 
 import StoreInfoView from "./StoreInfoView";
 

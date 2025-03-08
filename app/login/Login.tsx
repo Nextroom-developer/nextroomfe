@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { ADMIN_EMAIL, ADMIN_PASSWORD } from "@/consts/components/login";
 import { useIsLoggedInValue } from "@/components/atoms/account.atom";
 import { usePostLogin } from "@/mutations/postLogin";
-import useCheckSignIn from "@/hooks/useCheckSignIn";
+import useCheckSignIn from "@/landing/hooks/useCheckSignIn";
 import useChannelTalk from "@/hooks/useChannelTalk";
 import { setCookie } from "@/utils/cookie";
 import { useGetThemeList } from "@/queries/getThemeList";

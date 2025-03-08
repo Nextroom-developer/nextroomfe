@@ -9,10 +9,10 @@ import {
   SIGN_UP_SUBTEXT,
 } from "@/consts/components/signUp";
 import "@/apis/firebase";
-import useCheckSignIn from "@/hooks/useCheckSignIn";
+import useCheckSignIn from "@/landing/hooks/useCheckSignIn";
 import Loader from "@/components/Loader/Loader";
 import { usePostSendMessage } from "@/mutations/postSendMessage";
-import useAnalytics from "@/hooks/useAnalytics";
+import useAnalytics from "@/landing/hooks/useAnalytics";
 
 import SignUpView from "./SignUpView";
 
