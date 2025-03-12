@@ -1,24 +1,13 @@
-"use client";
-
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import {
-  SIGN_UP_PASSWORD,
-  SIGN_UP_PASSWORD_CONFIRM,
-} from "@/consts/components/signUp";
-import "@/apis/firebase";
 import { useSignUpState } from "@/components/atoms/signup.atom";
 import useAnalytics from "@/landing/hooks/useAnalytics";
 
-import PasswordView from "./PasswordView";
+import { SIGN_UP_PASSWORD, SIGN_UP_PASSWORD_CONFIRM } from "../consts/signUp";
+import { PasswordValueType, TextFieldPropsType } from "../types/signUp";
 
-interface FormValues {
-  password: string;
-  passwordConfirm: string;
-}
-
-function Password() {
+const usePassword = () => {
   const [signUpState, setSignUpState] = useSignUpState();
   const {
     register,
@@ -26,7 +15,7 @@ function Password() {
     handleSubmit,
     watch,
     formState: { errors, isValid },
-  } = useForm<FormValues>({
+  } = useForm<PasswordValueType>({
     mode: "onChange",
     defaultValues: {
       password: "",
@@ -67,7 +56,7 @@ function Password() {
     }
   };
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit: SubmitHandler<PasswordValueType> = (data) => {
     setSignUpState({ ...signUpState, password: data.password, level: 4 });
     logEvent("btn_click", {
       btn_name: "sign_up_password_btn",
@@ -87,11 +76,10 @@ function Password() {
     noValidate: true,
     autoComplete: "off",
     onSubmit: handleSubmit(onSubmit),
-    flexDirection: "column",
   };
 
-  const passwordProps = {
-    id: "filled-adminCode",
+  const passwordProps: TextFieldPropsType = {
+    id: "filled-password",
     type: "password",
     helperText: errors?.password && errors?.password.message,
     error: Boolean(errors?.password),
@@ -112,8 +100,8 @@ function Password() {
     onKeyDown: handleKeyDown,
   };
 
-  const passwordConfirmProps = {
-    id: "filled-adminCode",
+  const passwordConfirmProps: TextFieldPropsType = {
+    id: "filled-password-confirm",
     type: "password",
     helperText: errors?.passwordConfirm && errors?.passwordConfirm.message, // 비밀번호 확인 에러 메시지
     error: Boolean(errors?.passwordConfirm), // 비밀번호 확인 에러 발생 시 에러 표시
@@ -130,20 +118,12 @@ function Password() {
     value: formValue.passwordConfirm,
   };
 
-  const buttonProps = {
-    type: "submit",
-    variant: "contained",
-    disabled: !isValid,
-  };
-
-  const PasswordViewProps = {
+  return {
     formProps,
     passwordProps,
     passwordConfirmProps,
-    buttonProps,
+    isValid,
   };
+};
 
-  return <PasswordView {...PasswordViewProps} />;
-}
-
-export default Password;
+export default usePassword;

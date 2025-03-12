@@ -1,28 +1,19 @@
-"use client";
-
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { useSignUpState } from "@/components/atoms/signup.atom";
-import Loader from "@/components/Loader/Loader";
-import { usePostVerification } from "@/mutations/postVerification";
-import { usePostSendMessage } from "@/mutations/postSendMessage";
-import "@/apis/firebase";
 import useAnalytics from "@/landing/hooks/useAnalytics";
+import { usePostSendMessage } from "@/mutations/postSendMessage";
+import { usePostVerification } from "@/mutations/postVerification";
 
-import EmailAuthView from "./EmailAuthView";
+import { CodeInputPropsType, EmailAuthValueType } from "../types/signUp";
 
-interface FormValues {
-  code: string;
-}
-
-function EmailAuth() {
+const useEmailAuth = () => {
   const [signUpState, setSignUpState] = useSignUpState();
   const { logEvent } = useAnalytics();
 
   const {
     mutateAsync: postVerification,
-    isLoading = false,
     isError = false,
     error,
   } = usePostVerification();
@@ -61,7 +52,7 @@ function EmailAuth() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>();
+  } = useForm<EmailAuthValueType>();
 
   useEffect(() => {
     logEvent("screen_view", {
@@ -70,7 +61,7 @@ function EmailAuth() {
     });
   }, []);
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit: SubmitHandler<EmailAuthValueType> = (data) => {
     postVerification({ code: data.code, email: signUpState.email });
     logEvent("btn_click", {
       btn_name: "sign_up_email_code_btn",
@@ -83,7 +74,6 @@ function EmailAuth() {
     noValidate: true,
     autoComplete: "off",
     onSubmit: handleSubmit(onSubmit),
-    flexDirection: "column",
   };
 
   const adminCodeProps = {
@@ -105,7 +95,7 @@ function EmailAuth() {
     },
   };
 
-  const inputProps = {
+  const inputProps: CodeInputPropsType = {
     numbers,
     setNumbers,
     disabled,
@@ -159,23 +149,15 @@ function EmailAuth() {
     onClick: reRequest,
   };
 
-  const EmailAuthViewProps = {
+  return {
     inputProps,
     minutes,
     second,
     formProps,
-    adminCodeProps,
     ReRequestButtonProps,
-    isLoading,
     errorMessage,
     signUpState,
   };
+};
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  return <EmailAuthView {...EmailAuthViewProps} />;
-}
-
-export default EmailAuth;
+export default useEmailAuth;

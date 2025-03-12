@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { LOGIN } from "@/consts/components/login";
 import Loader from "@/components/Loader/Loader";
-import { NewTextField } from "@/signup/NewTextField.component";
+import { SignUpTextField } from "@/signup/components/SignUpTextField";
 
 import * as S from "./LoginView.styled";
 
@@ -30,8 +30,8 @@ function LoginView(props: Props) {
       </Link>
 
       <S.StyledBox {...formProps}>
-        <NewTextField {...adminCodeProps} />
-        <NewTextField {...passwordProps} />
+        <SignUpTextField {...adminCodeProps} />
+        <SignUpTextField {...passwordProps} />
         <S.LoginButtonWrapper>
           <S.ServerErrorMessage>{errorMessage}</S.ServerErrorMessage>
           <S.LoginButton {...buttonProps}>{LOGIN}</S.LoginButton>

@@ -3,15 +3,9 @@ import React, { useRef, useEffect } from "react";
 import { useSignUpValue } from "@/components/atoms/signup.atom";
 import { usePostVerification } from "@/mutations/postVerification";
 
-import * as S from "./SignUpView.styled";
+import { CodeInputPropsType } from "../types/signUp";
 
-interface Props {
-  disabled: boolean;
-  numbers: string[];
-  setNumbers: (newNumbers: string[]) => void;
-}
-
-export default function CodeInput(props: Props) {
+export const CodeInput = (props: CodeInputPropsType) => {
   const { disabled, numbers, setNumbers } = props;
   const inputRefs = useRef<(HTMLInputElement | null)[]>(
     Array.from({ length: 6 }, () => null)
@@ -69,13 +63,14 @@ export default function CodeInput(props: Props) {
   };
 
   return (
-    <S.CodeWrap>
+    <div className="signup-code-wrap">
       {numbers.map((number, index) => (
-        <S.CodeInput
+        <input
+          className="signup-code-input"
           key={index}
           type="number"
           value={number}
-          error={isError && numbers.join("").length === 0}
+          data-error={isError && numbers.join("").length === 0}
           onChange={(e) => handleInputChange(index, e.target.value)}
           onKeyDown={(e) => handleInputDelete(index, e)}
           maxLength={1}
@@ -86,6 +81,6 @@ export default function CodeInput(props: Props) {
           inputMode="numeric"
         />
       ))}
-    </S.CodeWrap>
+    </div>
   );
-}
+};

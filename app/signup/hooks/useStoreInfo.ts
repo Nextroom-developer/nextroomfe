@@ -1,26 +1,13 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { useSignUpState } from "@/components/atoms/signup.atom";
-import { useIsLoggedInValue } from "@/components/atoms/account.atom";
-import Loader from "@/components/Loader/Loader";
-import { usePostSignUp } from "@/mutations/postSignUp";
-import "@/apis/firebase";
 import useAnalytics from "@/landing/hooks/useAnalytics";
+import { usePostSignUp } from "@/mutations/postSignUp";
 
-import StoreInfoView from "./StoreInfoView";
+import { StoreInfoValueType, TextFieldPropsType } from "../types/signUp";
 
-interface FormValues {
-  name: string;
-  isNotOpened: boolean;
-  reason: string;
-  type: number;
-}
-
-function StoreInfo() {
-  const isLoggedIn = useIsLoggedInValue();
+const useStoreInfo = () => {
   const [signUpState, setSignUpState] = useSignUpState();
   const [isWebView, setIsWebView] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -64,7 +51,7 @@ function StoreInfo() {
     setFocus,
     reset,
     formState: { errors },
-  } = useForm<FormValues>({
+  } = useForm<StoreInfoValueType>({
     defaultValues: {
       name: "",
       reason: "",
@@ -107,7 +94,7 @@ function StoreInfo() {
     };
   }, [browserPreventEvent]);
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit: SubmitHandler<StoreInfoValueType> = (data) => {
     postSignUp({
       email: signUpState.email,
       password: signUpState.password,
@@ -126,11 +113,10 @@ function StoreInfo() {
     noValidate: true,
     autoComplete: "off",
     onSubmit: handleSubmit(onSubmit),
-    flexDirection: "column",
   };
 
-  const adminCodeProps = {
-    id: "filled-adminCode",
+  const storeNameProps: TextFieldPropsType = {
+    id: "filled-storeName",
     type: "text",
     helperText: errors?.name && errors?.name.message,
     error: Boolean(errors?.name) || isError,
@@ -139,20 +125,21 @@ function StoreInfo() {
     placeholder: "매장명",
     disabled: isChecked,
     inputProps: { ...register("name") },
-    style: { margin: "40px 0 6px" },
     value: formValue.name,
+    className: "textfield-store-name",
   };
 
-  const reasonProps = {
+  const reasonProps: TextFieldPropsType = {
     id: "filled-adminCode",
     type: "text",
+    helperText: errors?.name && errors?.name.message,
     error: Boolean(errors?.name) || isError,
     variant: "filled",
     label: "방문사유",
     placeholder: "방문사유",
     inputProps: { ...register("reason") },
-    style: { marginTop: "26px" },
     value: formValue.reason,
+    className: "textfield-reason",
   };
 
   const checkBoxProps = {
@@ -172,42 +159,20 @@ function StoreInfo() {
     },
   };
 
-  const buttonProps = {
-    type: "submit",
-    variant: "contained",
+  const errorMessage = isError && error?.response?.data?.message;
+
+  return {
+    formProps,
+    storeNameProps,
+    checkBoxProps,
+    reasonProps,
     disabled: !(
       formValue.name?.length > 0 ||
       (isChecked && formValue.reason?.length > 0)
     ),
-    style: { marginTop: "20px" },
-  };
-
-  const ImageProps = {
-    src: "/images/svg/icon_X.svg",
-    alt: "NEXT ROOM",
-    width: 28,
-    height: 28,
-  };
-
-  const errorMessage = isError && error?.response?.data?.message;
-
-  const StoreInfoViewProps = {
-    ImageProps,
-    formProps,
-    adminCodeProps,
-    checkBoxProps,
-    reasonProps,
-    buttonProps,
     isLoading,
     errorMessage,
-    signUpState,
   };
+};
 
-  if (isLoggedIn) {
-    return <Loader />;
-  }
-
-  return <StoreInfoView {...StoreInfoViewProps} />;
-}
-
-export default StoreInfo;
+export default useStoreInfo;

@@ -1,26 +1,18 @@
-"use client";
-
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
+import { usePostSendMessage } from "@/mutations/postSendMessage";
+import useCheckSignIn from "@/landing/hooks/useCheckSignIn";
+import useAnalytics from "@/landing/hooks/useAnalytics";
+
+import { SignUpValueType, TextFieldPropsType } from "../types/signUp";
 import {
   SIGN_UP_EMAIL,
   SIGN_UP_PLACEHOLDER,
   SIGN_UP_SUBTEXT,
-} from "@/consts/components/signUp";
-import "@/apis/firebase";
-import useCheckSignIn from "@/landing/hooks/useCheckSignIn";
-import Loader from "@/components/Loader/Loader";
-import { usePostSendMessage } from "@/mutations/postSendMessage";
-import useAnalytics from "@/landing/hooks/useAnalytics";
+} from "../consts/signUp";
 
-import SignUpView from "./SignUpView";
-
-interface FormValues {
-  email: string;
-}
-
-function SignUp() {
+const useSignUp = () => {
   const {
     mutateAsync: postSendMessage,
     isLoading = false,
@@ -35,7 +27,7 @@ function SignUp() {
     handleSubmit,
     formState: { errors, isValid },
     watch,
-  } = useForm<FormValues>({ defaultValues: { email: "" } });
+  } = useForm<SignUpValueType>({ defaultValues: { email: "" } });
   useCheckSignIn();
   const emailValue = watch("email");
 
@@ -47,7 +39,7 @@ function SignUp() {
       firebase_screen_class: "sign_up_start",
     });
   }, []);
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit: SubmitHandler<SignUpValueType> = (data) => {
     postSendMessage(data);
     logEvent("btn_click", {
       btn_name: "sign_up_start_btn",
@@ -55,11 +47,9 @@ function SignUp() {
     });
   };
   const formProps = {
-    component: "form",
     noValidate: true,
-    autoComplete: "off",
     onSubmit: handleSubmit(onSubmit),
-    flexDirection: "column",
+    autoComplete: "off",
   };
 
   useEffect(() => {
@@ -78,7 +68,7 @@ function SignUp() {
     }
   }, [errors.email, isError]);
 
-  const adminCodeProps = {
+  const textFieldInfoProps: TextFieldPropsType = {
     id: "filled-adminCode",
     type: "text",
     helperText: errorMsg,
@@ -88,7 +78,6 @@ function SignUp() {
     label: SIGN_UP_EMAIL,
     value: emailValue,
     placeholder: SIGN_UP_PLACEHOLDER,
-    ref,
     inputProps: {
       ...register("email", {
         required: "이메일을 입력해 주세요.",
@@ -100,25 +89,12 @@ function SignUp() {
     },
   };
 
-  const buttonProps = {
-    type: "submit",
-    variant: "contained",
-    disabled: !isValid,
-    sx: { marginTop: "20px" },
-  };
-
-  const SignUpViewProps = {
+  return {
     formProps,
-    adminCodeProps,
-    buttonProps,
+    textFieldInfoProps,
+    isValid,
     isLoading,
   };
+};
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  return <SignUpView {...SignUpViewProps} />;
-}
-
-export default SignUp;
+export default useSignUp;

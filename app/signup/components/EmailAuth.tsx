@@ -1,23 +1,22 @@
 import React, { useEffect } from "react";
 
-import SnackBar from "@/components/SnackBar/SnackBar";
 import { useSnackBarInfo } from "@/components/atoms/snackBar.atom";
+import SnackBar from "@/components/SnackBar/SnackBar";
 
-import CodeInput from "./CodeInput";
-import * as S from "./SignUpView.styled";
+import useEmailAuth from "../hooks/useEmailAuth";
 
-type Props = Record<string, any>;
+import { CodeInput } from "./CodeInput";
 
-function EmailAuthView(props: Props) {
+const EmailAuthComponent = () => {
   const {
     inputProps,
     minutes,
     second,
     formProps,
-    signUpState,
     ReRequestButtonProps,
     errorMessage,
-  } = props;
+    signUpState,
+  } = useEmailAuth();
 
   const [snackInfo, setSnackBarInfo] = useSnackBarInfo();
 
@@ -30,20 +29,20 @@ function EmailAuthView(props: Props) {
   }, [setSnackBarInfo, snackInfo]);
 
   return (
-    <S.Cont>
-      <S.Title>
+    <div className="signup-cont">
+      <p className="signup-title">
         {signUpState.email}으로
         <br />
         전송된 인증번호를 입력해 주세요.
-      </S.Title>
-      <S.SubTitle>
+      </p>
+      <p className="signup-sub-title">
         남은 시간 {minutes}:{second}
-      </S.SubTitle>
+      </p>
 
-      <S.StyledBox {...formProps}>
+      <div className="signup-styled-box" {...formProps}>
         {/* <TextField {...adminCodeProps} /> */}
         <CodeInput {...inputProps} />
-        <S.ReRequest>
+        <div className="signup-re-request">
           <p>인증메일을 받지 못하셨나요?</p>
           <br />
           <>
@@ -52,9 +51,9 @@ function EmailAuthView(props: Props) {
               재인증 요청
             </button>
           </>
-        </S.ReRequest>
-        <S.ServerErrorMessage>{errorMessage}</S.ServerErrorMessage>
-      </S.StyledBox>
+        </div>
+        <div className="signup-server-error-message">{errorMessage}</div>
+      </div>
       <SnackBar
         open={snackInfo.isOpen}
         ment={snackInfo.message}
@@ -62,8 +61,8 @@ function EmailAuthView(props: Props) {
         horizontal="center"
         handleClose={() => setSnackBarInfo({ ...snackInfo, isOpen: false })}
       />
-    </S.Cont>
+    </div>
   );
-}
+};
 
-export default EmailAuthView;
+export default EmailAuthComponent;

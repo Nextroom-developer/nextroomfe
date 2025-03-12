@@ -68,7 +68,6 @@ function Login() {
     noValidate: true,
     autoComplete: "off",
     onSubmit: handleSubmit(onSubmit),
-    flexDirection: "column",
   };
 
   const adminCodeProps = {

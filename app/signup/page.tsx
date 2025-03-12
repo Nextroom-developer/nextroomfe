@@ -1,31 +1,31 @@
 "use client";
 
 import React from "react";
+import "./styles/signup.modules.sass";
 
 import { useSignUpValue } from "@/components/atoms/signup.atom";
 
-import SignUp from "./SignUp";
-import EmailAuth from "./EmailAuth";
-import Password from "./Password";
-import StoreInfo from "./StoreInfo";
-import SignUpSuccess from "./SignUpSuccess";
+import SignUpComponent from "./components/SignUp";
+import EmailAuthComponent from "./components/EmailAuth";
+import PasswordComponent from "./components/Password";
+import StoreInfoComponent from "./components/StoreInfo";
+import SignUpSuccessComponent from "./components/SignUpSuccess";
 
 function HomePage() {
   const useSignUpState = useSignUpValue();
-
   switch (useSignUpState.level) {
     case 1:
-      return <SignUp />;
+      return <SignUpComponent />;
     case 2:
-      return <EmailAuth />;
+      return <EmailAuthComponent />;
     case 3:
-      return <Password />;
+      return <PasswordComponent />;
     case 4:
-      return <StoreInfo />;
+      return <StoreInfoComponent />;
     case 5:
-      return <SignUpSuccess />;
+      return <SignUpSuccessComponent />;
     default:
-      return <SignUp />;
+      return <SignUpComponent />;
   }
 }
 
