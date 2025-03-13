@@ -76,25 +76,6 @@ const useEmailAuth = () => {
     onSubmit: handleSubmit(onSubmit),
   };
 
-  const adminCodeProps = {
-    id: "filled-adminCode",
-    type: "text",
-    helperText: errors?.code && errors?.code.message,
-    error: Boolean(errors?.code) || isError,
-    variant: "filled",
-    label: "인증번호",
-    placeholder: "인증번호",
-    disabled: timeLeft,
-    ...register("code", { required: "인증번호를 입력해 주세요." }),
-    sx: {
-      marginBottom: "18px",
-      backgroundColor: "#FFFFFF10",
-      ".MuiFilledInput-root": {
-        height: "82px",
-      },
-    },
-  };
-
   const inputProps: CodeInputPropsType = {
     numbers,
     setNumbers,

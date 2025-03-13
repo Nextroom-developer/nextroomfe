@@ -1,26 +1,17 @@
-"use client";
-
-import React, { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-import { ADMIN_EMAIL, ADMIN_PASSWORD } from "@/consts/components/login";
-import { useIsLoggedInValue } from "@/components/atoms/account.atom";
-import { usePostLogin } from "@/mutations/postLogin";
 import useCheckSignIn from "@/landing/hooks/useCheckSignIn";
 import useChannelTalk from "@/hooks/useChannelTalk";
-import { setCookie } from "@/utils/cookie";
 import { useGetThemeList } from "@/queries/getThemeList";
+import { EMAIL, PASSWORD } from "@/login/consts/logIn";
+import { setCookie } from "@/utils/cookie";
 
-import LoginView from "./LoginView";
+import { usePostLogin } from "../../mutations/postLogin";
+import { LogInValueType } from "../types/LogIn";
 
-interface FormValues {
-  email: string;
-  password: string;
-}
-
-function Login() {
-  const isLoggedIn = useIsLoggedInValue();
+const useLogIn = () => {
   const {
     mutateAsync: postLogin,
     isLoading = false,
@@ -32,7 +23,7 @@ function Login() {
     handleSubmit,
     formState: { errors },
     watch,
-  } = useForm<FormValues>({
+  } = useForm<LogInValueType>({
     defaultValues: {
       email: process.env.NEXT_PUBLIC_ADMIN_EMAIL || "",
       password: process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "",
@@ -46,7 +37,7 @@ function Login() {
   const { data: themeList, isLoading: isThemeLoading } = useGetThemeList();
   const router = useRouter();
 
-  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+  const onSubmit: SubmitHandler<LogInValueType> = async (data) => {
     try {
       await postLogin(data);
     } catch (error) {
@@ -61,7 +52,7 @@ function Login() {
     } else {
       router.push(`/admin`);
     }
-  }, [isThemeLoading]);
+  }, [themeList, isThemeLoading]);
 
   const formProps = {
     component: "form",
@@ -70,14 +61,14 @@ function Login() {
     onSubmit: handleSubmit(onSubmit),
   };
 
-  const adminCodeProps = {
-    id: "filled-adminCode",
+  const emailProps = {
+    id: "filled-email",
     type: "text",
     helperText: errors?.email && errors?.email.message,
     error: Boolean(errors?.email) || isError,
     variant: "filled",
-    label: ADMIN_EMAIL,
-    placeholder: ADMIN_EMAIL,
+    label: EMAIL,
+    placeholder: EMAIL,
     inputProps: {
       ...register("email", {
         required: "이메일을 입력해 주세요.",
@@ -94,8 +85,8 @@ function Login() {
     id: "filled-password",
     type: "password",
     variant: "filled",
-    label: ADMIN_PASSWORD,
-    placeholder: ADMIN_PASSWORD,
+    label: PASSWORD,
+    placeholder: PASSWORD,
     inputProps: {
       ...register("password", { required: "비밀번호를 입력해 주세요." }),
     },
@@ -104,40 +95,21 @@ function Login() {
     value: formValue.password,
   };
 
-  const buttonProps = {
-    type: "submit",
-    variant: "contained",
-  };
-
-  const logoProps = {
-    src: "/images/svg/logo.svg",
-    alt: "NEXT ROOM",
-    width: 184,
-    height: 26,
-  };
-
-  const contectProps = {
-    type: "button",
-    onClick: () => {
-      setCookie("/login");
-      router.push("/signup");
-    },
+  const handleClickSignUpBtn = () => {
+    setCookie("/login");
+    router.push("/signup");
   };
 
   const errorMessage = isError && error?.response?.data?.message;
 
-  const LoginViewProps = {
+  return {
     formProps,
-    adminCodeProps,
+    emailProps,
     passwordProps,
-    buttonProps,
-    logoProps,
     isLoading,
     errorMessage,
-    contectProps,
+    handleClickSignUpBtn,
   };
+};
 
-  return <LoginView {...LoginViewProps} />;
-}
-
-export default Login;
+export default useLogIn;

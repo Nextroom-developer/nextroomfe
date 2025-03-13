@@ -20,7 +20,7 @@ const useSignUp = () => {
     error,
   } = usePostSendMessage();
   const [errorMsg, setErrorMsg] = useState<string | undefined>(SIGN_UP_SUBTEXT);
-  const ref = useRef(null);
+
   const {
     register,
     setFocus,

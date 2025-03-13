@@ -27,7 +27,7 @@ const Component7 = forwardRef<HTMLDivElement>((_, ref) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [ref]);
 
   return (
     <motion.div className="pc-wrapper7" ref={ref}>

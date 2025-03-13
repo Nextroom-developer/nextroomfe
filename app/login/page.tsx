@@ -1,7 +1,8 @@
-import Login from "./Login";
+import LogInComponent from "./components/LogIn";
+import "./styles/login.modules.sass";
 
-function HomePage() {
-  return <Login />;
+function LogInPage() {
+  return <LogInComponent />;
 }
 
-export default HomePage;
+export default LogInPage;
