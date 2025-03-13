@@ -5,7 +5,7 @@ import { useSignUpState } from "@/components/atoms/signup.atom";
 import useAnalytics from "@/landing/hooks/useAnalytics";
 
 import { SIGN_UP_PASSWORD, SIGN_UP_PASSWORD_CONFIRM } from "../consts/signUp";
-import { PasswordValueType, TextFieldPropsType } from "../types/signUp";
+import { PasswordValueType, TextFieldPropsType } from "../types/SignUp";
 
 const usePassword = () => {
   const [signUpState, setSignUpState] = useSignUpState();

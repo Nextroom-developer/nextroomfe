@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from "react";
 import { useSignUpValue } from "@/components/atoms/signup.atom";
 import { usePostVerification } from "@/mutations/postVerification";
 
-import { CodeInputPropsType } from "../types/signUp";
+import { CodeInputPropsType } from "../types/SignUp";
 
 export const CodeInput = (props: CodeInputPropsType) => {
   const { disabled, numbers, setNumbers } = props;

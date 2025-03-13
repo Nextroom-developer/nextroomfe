@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "../styles/textfield.modules.sass";
 import useClickOutside from "@/hooks/useClickOutside";
 
-import { TextFieldPropsType } from "../types/signUp";
+import { TextFieldPropsType } from "../types/SignUp";
 
 export const SignUpTextField = (props: TextFieldPropsType) => {
   const {

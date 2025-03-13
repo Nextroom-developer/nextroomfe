@@ -6,7 +6,7 @@ import useAnalytics from "@/landing/hooks/useAnalytics";
 import { usePostSendMessage } from "@/mutations/postSendMessage";
 import { usePostVerification } from "@/mutations/postVerification";
 
-import { CodeInputPropsType, EmailAuthValueType } from "../types/signUp";
+import { CodeInputPropsType, EmailAuthValueType } from "../types/SignUp";
 
 const useEmailAuth = () => {
   const [signUpState, setSignUpState] = useSignUpState();

@@ -5,7 +5,7 @@ import { useSignUpState } from "@/components/atoms/signup.atom";
 import useAnalytics from "@/landing/hooks/useAnalytics";
 import { usePostSignUp } from "@/mutations/postSignUp";
 
-import { StoreInfoValueType, TextFieldPropsType } from "../types/signUp";
+import { StoreInfoValueType, TextFieldPropsType } from "../types/SignUp";
 
 const useStoreInfo = () => {
   const [signUpState, setSignUpState] = useSignUpState();

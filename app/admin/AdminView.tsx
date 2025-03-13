@@ -37,7 +37,7 @@ function AdminView(props: Props) {
   }, []);
   if (isLoading) return <Loader />;
   return (
-    <div className="main">
+    <div className="admin-main">
       <Sidebar {...props} />
       <ContentArea />
       {isOpen && <Toast />}

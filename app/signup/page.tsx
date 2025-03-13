@@ -11,7 +11,7 @@ import PasswordComponent from "./components/Password";
 import StoreInfoComponent from "./components/StoreInfo";
 import SignUpSuccessComponent from "./components/SignUpSuccess";
 
-function HomePage() {
+function SignUpPage() {
   const useSignUpState = useSignUpValue();
   switch (useSignUpState.level) {
     case 1:
@@ -29,4 +29,4 @@ function HomePage() {
   }
 }
 
-export default HomePage;
+export default SignUpPage;

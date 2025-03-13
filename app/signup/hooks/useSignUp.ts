@@ -5,7 +5,7 @@ import { usePostSendMessage } from "@/mutations/postSendMessage";
 import useCheckSignIn from "@/landing/hooks/useCheckSignIn";
 import useAnalytics from "@/landing/hooks/useAnalytics";
 
-import { SignUpValueType, TextFieldPropsType } from "../types/signUp";
+import { SignUpValueType, TextFieldPropsType } from "../types/SignUp";
 import {
   SIGN_UP_EMAIL,
   SIGN_UP_PLACEHOLDER,
