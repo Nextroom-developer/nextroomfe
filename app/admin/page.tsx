@@ -1,7 +1,7 @@
 import React from "react";
 
 import Admin from "./Admin";
-import "@/style/reset.css";
+import "@/(shared)/style/reset.css";
 
 function AdminPage() {
   return <Admin />;

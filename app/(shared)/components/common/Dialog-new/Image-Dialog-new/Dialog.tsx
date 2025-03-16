@@ -1,7 +1,7 @@
 import React, { FormEvent, forwardRef, useRef } from "react";
 import Image from "next/image";
 
-import "@/components/common/Dialog-new/dialog.sass";
+import "../dialog.sass";
 import { useSelectedTheme } from "@/(shared)/atoms/selectedTheme.atom";
 import useClickOutside from "@/(shared)/hooks/useClickOutside";
 import useModal from "@/(shared)/hooks/useModal";

@@ -1,7 +1,7 @@
 import React, { forwardRef, useRef } from "react";
 import Image from "next/image";
 
-import "@/components/common/Dialog-new/dialog.sass";
+import "../dialog.sass";
 import useClickOutside from "@/(shared)/hooks/useClickOutside";
 import useModal from "@/(shared)/hooks/useModal";
 import { smallXProps, timerPreviewLineProps } from "@/admin/(consts)/sidebar";

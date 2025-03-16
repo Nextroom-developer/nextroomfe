@@ -9,8 +9,7 @@ import ModalPortal from "../ModalPortal";
 
 import DialogBody from "./DialogBody";
 
-
-import "@/components/common/Dialog-new/dialog.sass";
+import "../dialog.sass";
 
 interface DialogProps {
   type?: string | "";

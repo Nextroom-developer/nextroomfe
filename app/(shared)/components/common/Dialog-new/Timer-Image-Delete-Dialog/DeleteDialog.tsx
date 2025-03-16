@@ -1,17 +1,16 @@
 import React, { forwardRef, useRef } from "react";
 import Image from "next/image";
 
+import "../dialog.sass";
 import useClickOutside from "@/(shared)/hooks/useClickOutside";
 import { xProps } from "@/admin/(consts)/sidebar";
 import useModal from "@/(shared)/hooks/useModal";
-import "@/components/common/Dialog-new/dialog.sass";
 import { useDeleteTimerImage } from "@/(shared)/mutations/deleteTimerImage";
 import { useSelectedTheme } from "@/(shared)/atoms/selectedTheme.atom";
 
 import ModalPortal from "../ModalPortal";
 
 import DialogBody from "./DialogBody";
-
 
 const DeleteDialog = forwardRef<HTMLFormElement>(() => {
   const { close } = useModal();

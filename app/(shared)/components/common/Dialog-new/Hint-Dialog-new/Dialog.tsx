@@ -2,7 +2,7 @@ import React, { forwardRef, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Image from "next/image";
 
-import "@/components/common/Dialog-new/dialog.sass";
+import "../dialog.sass";
 import useClickOutside from "@/(shared)/hooks/useClickOutside";
 import { xProps } from "@/admin/(consts)/sidebar";
 import useModal from "@/(shared)/hooks/useModal";
