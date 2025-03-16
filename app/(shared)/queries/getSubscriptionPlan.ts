@@ -5,7 +5,7 @@ import { useToastWrite } from "@/(shared)/atoms/toast.atom";
 import { apiClient } from "@/(shared)/lib/reactQueryProvider";
 import { ApiResponse, QueryConfigOptions } from "@/(shared)/types";
 import { useIsLoggedInValue } from "@/(shared)/atoms/account.atom";
-import { setStatus } from "@/(shared)/utils/storageUtil";
+import { setStatus } from "@/(shared)/auth/storageUtil";
 
 // 요청 타입
 type Request = void;

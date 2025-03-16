@@ -4,10 +4,10 @@ import "./(styles)/admin.modules.sass";
 import Sidebar from "@/admin/(components)/Sidebar";
 import ContentArea from "@/admin/(components)/ContentArea";
 import useModal from "@/(shared)/hooks/useModal";
-import { getLocalStorage } from "@/(shared)/utils/storageUtil";
+import { getLocalStorage } from "@/(shared)/auth/storageUtil";
 
-import Toast from "../(shared)/components/common/Toast/Toast";
-import NotiDialog from "../(shared)/components/common/Dialog-new/Noti-Dialog-new/Dialog";
+import Toast from "../(shared)/components/Toast/Toast";
+import NotiDialog from "../(shared)/components/Dialog-new/Noti-Dialog-new/Dialog";
 import Loader from "../(shared)/components/Loader/Loader";
 
 interface Theme {

@@ -4,6 +4,8 @@ import "./styles/landing.modules.sass";
 import "./styles/mobile.modules.sass";
 import "./styles/pc.modules.sass";
 
+import useAuth from "../(shared)/auth/hooks/useAuth";
+
 import Component1 from "./components/pc/Component1";
 import Component2 from "./components/pc/Component2";
 import Component3 from "./components/pc/Component3";
@@ -23,7 +25,6 @@ import Component9Mobile from "./components/mobile/Component9Mobile";
 import MobileBtn from "./components/mobile/MobileBtn";
 import PcBtn from "./components/pc/PcBtn";
 import useScreen from "./hooks/useScreen";
-import useAuth from "./hooks/useAuth";
 
 function LandingPage() {
   const { LoginLinkProps, SignUpLinkProps } = useAuth();

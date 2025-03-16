@@ -2,9 +2,9 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import { useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import "@/(shared)/apis/firebase";
+import "@/(shared)/utils/firebase";
 
-import useAnalytics from "../../hooks/useAnalytics";
+import useAnalytics from "../../../(shared)/hooks/useAnalytics";
 
 export default function Phone() {
   const { logEvent } = useAnalytics();
@@ -43,8 +43,7 @@ export default function Phone() {
       <div className="title7">
         직관적으로 알 수 있는 시간
         <p className="sub-title7">
-          플레이가 시작되면 메인에서 남은 시간을 그래프와 함께 확인 가능합니다.
-          진행률과 대조하여 직관적으로 시간이 여유있는지, 급한지 알 수 있죠.
+          플레이가 시작되면 남은 시간을 그래프와 함께 제공합니다.
         </p>
       </div>
     </motion.div>

@@ -3,8 +3,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { apiClient } from "@/(shared)/lib/reactQueryProvider";
 import { useToastInfo } from "@/(shared)/atoms/toast.atom";
-import extractFilename from "@/(shared)/utils/helper";
-import { getStatus } from "@/(shared)/utils/storageUtil";
+import extractFilename from "@/admin/(components)/ThemeDrawer/helpers/filenameHelpers";
+import { getStatus } from "@/(shared)/auth/storageUtil";
 import { QUERY_KEY } from "@/(shared)/queries/getHintList";
 
 interface PreSignedUrlRequest {

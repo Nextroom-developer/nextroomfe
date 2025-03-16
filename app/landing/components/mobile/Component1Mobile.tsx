@@ -4,11 +4,11 @@ import { useRouter } from "next/navigation";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-import "@/(shared)/apis/firebase";
-import { setCookie } from "@/(shared)/utils/cookie";
+import "@/(shared)/utils/firebase";
+import { setCookie } from "@/(shared)/auth/cookie";
 
-import useCheckSignIn from "../../hooks/useCheckSignIn";
-import useAnalytics from "../../hooks/useAnalytics";
+import useCheckSignIn from "../../../(shared)/auth/hooks/useCheckSignIn";
+import useAnalytics from "../../../(shared)/hooks/useAnalytics";
 
 const Component1Mobile = forwardRef<HTMLDivElement>((_, ref) => {
   const isSignIn = useCheckSignIn();

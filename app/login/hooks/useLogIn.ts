@@ -2,10 +2,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-import useCheckSignIn from "@/landing/hooks/useCheckSignIn";
+import useCheckSignIn from "@/(shared)/auth/hooks/useCheckSignIn";
 import useChannelTalk from "@/(shared)/hooks/useChannelTalk";
 import { EMAIL, PASSWORD } from "@/login/consts/logIn";
-import { setCookie } from "@/(shared)/utils/cookie";
+import { setCookie } from "@/(shared)/auth/cookie";
 
 import { useGetThemeList } from "../../(shared)/queries/getThemeList";
 import { usePostLogin } from "../../(shared)/mutations/postLogin";

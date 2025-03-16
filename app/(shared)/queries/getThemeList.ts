@@ -8,7 +8,7 @@ import { useIsLoggedInValue } from "@/(shared)/atoms/account.atom";
 import {
   getSelectedThemeId,
   setSelectedThemeId,
-} from "@/(shared)/utils/storageUtil";
+} from "@/(shared)/auth/storageUtil";
 import { useSelectedThemeWrite } from "@/(shared)/atoms/selectedTheme.atom";
 
 type Request = void;

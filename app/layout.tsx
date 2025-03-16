@@ -7,10 +7,10 @@ import MuiProvider from "@/(shared)/lib/muiProvider";
 import StyledJsxRegistry from "@/(shared)/lib/registry";
 import StyledProvider from "@/(shared)/lib/themeProvider";
 import ReactQueryProvider from "@/(shared)/lib/reactQueryProvider";
-import RequireAuth from "@/(shared)/components/RequireAuth/RequireAuth";
+import RequireAuth from "@/(shared)/auth/RequireAuth";
 
-import Clarity from "./(shared)/apis/Clarity";
-import Analytics from "./(shared)/apis/Analytics";
+import Clarity from "./(shared)/utils/Clarity";
+import Analytics from "./(shared)/utils/Analytics";
 
 export const metadata: Metadata = {
   title: "넥스트룸 (NEXT ROOM) | 방탈출 힌트폰 서비스",

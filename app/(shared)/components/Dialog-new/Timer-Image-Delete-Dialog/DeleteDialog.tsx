@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef } from "react";
+import { FunctionComponent, useRef } from "react";
 import Image from "next/image";
 
 import "../dialog.sass";
@@ -12,7 +12,7 @@ import ModalPortal from "../ModalPortal";
 
 import DialogBody from "./DialogBody";
 
-const DeleteDialog = forwardRef<HTMLFormElement>(() => {
+const DeleteDialog: FunctionComponent<HTMLFormElement> = () => {
   const { close } = useModal();
   const divRef = useRef<HTMLDivElement | null>(null);
   const [selectedTheme, setSelectedTheme] = useSelectedTheme();
@@ -56,6 +56,6 @@ const DeleteDialog = forwardRef<HTMLFormElement>(() => {
       </div>
     </ModalPortal>
   );
-});
+};
 
 export default DeleteDialog;

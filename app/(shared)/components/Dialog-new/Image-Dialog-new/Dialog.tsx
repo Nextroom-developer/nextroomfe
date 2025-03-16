@@ -1,4 +1,4 @@
-import React, { FormEvent, forwardRef, useRef } from "react";
+import { FormEvent, FunctionComponent, useRef } from "react";
 import Image from "next/image";
 
 import "../dialog.sass";
@@ -13,7 +13,7 @@ import ModalPortal from "../ModalPortal";
 
 import DialogBody from "./DialogBody";
 
-const Dialog = forwardRef<HTMLFormElement>(() => {
+const Dialog: FunctionComponent<HTMLFormElement> = () => {
   const { close } = useModal();
   const formRef = useRef<HTMLFormElement | null>(null);
 
@@ -80,6 +80,6 @@ const Dialog = forwardRef<HTMLFormElement>(() => {
       </form>
     </ModalPortal>
   );
-});
+};
 
 export default Dialog;

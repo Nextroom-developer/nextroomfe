@@ -1,20 +1,20 @@
 import Image from "next/image";
 
-import * as S from "./Mobile.styled";
+import styles from "./mobile.module.sass";
 
 export default function Mobile() {
   return (
-    <S.Wrap>
+    <div className={styles.wrap}>
       <Image
         src="/images/svg/logo_mobile.svg"
         width={114}
         height={18}
         alt="NEXT ROOM"
       />
-      <S.Title>PC로 접속해 주세요.</S.Title>
-      <S.Description>
+      <h1 className={styles.title}>PC로 접속해 주세요.</h1>
+      <p className={styles.description}>
         넥스트룸 관리자 페이지는 PC 환경에 최적화 되어있습니다.
-      </S.Description>
-    </S.Wrap>
+      </p>
+    </div>
   );
 }

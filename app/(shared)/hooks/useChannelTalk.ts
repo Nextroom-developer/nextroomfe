@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-import ChannelTalk from "@/(shared)/apis/ChannelTalk";
+import ChannelTalk from "@/(shared)/utils/ChannelTalk";
 import { isDevMode } from "@/(shared)/consts/env";
 
 const useChannelTalk = () => {

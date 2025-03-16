@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { useSignUpValue } from "@/(shared)/atoms/signup.atom";
-import { getCookie } from "@/(shared)/utils/cookie";
+import { getCookie } from "@/(shared)/auth/cookie";
 
 export default function RootLayout({
   children,

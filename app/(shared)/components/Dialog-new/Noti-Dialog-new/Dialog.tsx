@@ -1,8 +1,8 @@
-import React, { forwardRef, useRef } from "react";
+import { FunctionComponent, useRef } from "react";
 
 import useClickOutside from "@/(shared)/hooks/useClickOutside";
 import useModal from "@/(shared)/hooks/useModal";
-import { setLocalStorage } from "@/(shared)/utils/storageUtil";
+import { setLocalStorage } from "@/(shared)/auth/storageUtil";
 import { timerImageLinkURL } from "@/admin/(consts)/sidebar";
 
 import ModalPortal from "../ModalPortal";
@@ -15,7 +15,7 @@ interface DialogProps {
   type?: string | "";
 }
 
-const Dialog = forwardRef<HTMLFormElement, DialogProps>((props) => {
+const Dialog: FunctionComponent<DialogProps> = (props) => {
   const { close } = useModal();
   const checkboxRef = useRef<HTMLInputElement>(null);
   const { type = "" } = props;
@@ -63,6 +63,6 @@ const Dialog = forwardRef<HTMLFormElement, DialogProps>((props) => {
       </form>
     </ModalPortal>
   );
-});
+};
 
 export default Dialog;

@@ -1,11 +1,11 @@
 import { JSX, useEffect, useState } from "react";
-import "@/(shared)/apis/firebase";
+import "@/(shared)/utils/firebase";
 import { useRouter } from "next/navigation";
 
-import { setCookie } from "@/(shared)/utils/cookie";
+import { setCookie } from "@/(shared)/auth/cookie";
 
-import useCheckSignIn from "../../hooks/useCheckSignIn";
-import useAnalytics from "../../hooks/useAnalytics";
+import useCheckSignIn from "../../../(shared)/auth/hooks/useCheckSignIn";
+import useAnalytics from "../../../(shared)/hooks/useAnalytics";
 
 export default function Inputbar(): JSX.Element | null {
   const [isVisible, setIsVisible] = useState(false);

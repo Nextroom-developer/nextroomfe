@@ -7,9 +7,9 @@ import { useTimerImageWrite } from "@/(shared)/atoms/timerImage.atom";
 import { useSelectedTheme } from "@/(shared)/atoms/selectedTheme.atom";
 import { defaultTimerImage, QuestionIconProps } from "@/admin/(consts)/sidebar";
 import Tooltip from "@/admin/(components)/Tooltip/Container";
-import DeleteDialog from "@/(shared)/components/common/Dialog-new/Timer-Image-Delete-Dialog/DeleteDialog";
-import PreviewDialog from "@/(shared)/components/common/Dialog-new/Preview-Dialog-new/PreviewDialog";
-import Dialog from "@/(shared)/components/common/Dialog-new/Image-Dialog-new/Dialog";
+import DeleteDialog from "@/(shared)/components/Dialog-new/Timer-Image-Delete-Dialog/DeleteDialog";
+import PreviewDialog from "@/(shared)/components/Dialog-new/Preview-Dialog-new/PreviewDialog";
+import Dialog from "@/(shared)/components/Dialog-new/Image-Dialog-new/Dialog";
 
 import loaderJson from "../../../../public/lottie/loader.json";
 import { getCompressImage } from "../ThemeDrawer/helpers/imageHelpers";

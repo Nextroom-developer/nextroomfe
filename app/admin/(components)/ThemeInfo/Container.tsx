@@ -6,7 +6,7 @@ import "../../(styles)/themeInfo.modules.sass";
 import useModal from "@/(shared)/hooks/useModal";
 import { useDrawerState } from "@/(shared)/atoms/drawer.atom";
 
-import Dialog from "../../../(shared)/components/common/Dialog-new/Theme-Dialog/Dialog";
+import Dialog from "../../../(shared)/components/Dialog-new/Theme-Dialog/Dialog";
 import ThemeDrawer from "../ThemeDrawer/Container";
 
 import ThemeInfoTitle from "./ThemeInfoTitle";

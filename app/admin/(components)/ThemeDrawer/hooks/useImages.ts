@@ -11,7 +11,7 @@ import {
 import { useCreateHint } from "@/(shared)/atoms/createHint.atom";
 import { useSelectedHint } from "@/(shared)/atoms/selectedHint.atom";
 import { useToastWrite } from "@/(shared)/atoms/toast.atom";
-import { getStatus } from "@/(shared)/utils/storageUtil";
+import { getStatus } from "@/(shared)/auth/storageUtil";
 import { subscribeLinkURL } from "@/admin/(consts)/sidebar";
 
 import { getCompressImage } from "../helpers/imageHelpers";

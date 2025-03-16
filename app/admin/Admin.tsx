@@ -3,13 +3,11 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-import useCheckSignIn from "@/landing/hooks/useCheckSignIn";
-import { getLoginInfo, setSelectedThemeId } from "@/(shared)/utils/storageUtil";
+import { setSelectedThemeId } from "@/(shared)/auth/storageUtil";
 import { useSelectedTheme } from "@/(shared)/atoms/selectedTheme.atom";
 import { useToastInfo } from "@/(shared)/atoms/toast.atom";
 
 import { useGetThemeList } from "../(shared)/queries/getThemeList";
-import Loader from "../(shared)/components/Loader/Loader";
 
 import AdminView from "./AdminView";
 
@@ -22,7 +20,6 @@ type Theme = {
 
 function Admin() {
   const { data: categories = [], isLoading } = useGetThemeList();
-  const isLoggedIn = useCheckSignIn();
 
   const [selectedTheme, setSelectedTheme] = useSelectedTheme();
 

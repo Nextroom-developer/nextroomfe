@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import SnackBar from "@/(shared)/components/SnackBar/SnackBar";
-import useAnalytics from "@/landing/hooks/useAnalytics";
+import useAnalytics from "@/(shared)/hooks/useAnalytics";
 
 import useSignUpSuccess from "../hooks/useSignUpSuccess";
 import loaderJson from "../../../public/lottie/signup.json";

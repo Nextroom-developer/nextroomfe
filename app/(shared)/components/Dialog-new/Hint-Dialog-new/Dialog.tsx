@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef } from "react";
+import { FunctionComponent, useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Image from "next/image";
 
@@ -14,7 +14,7 @@ import ModalPortal from "../ModalPortal";
 
 import DialogBody from "./DialogBody";
 
-interface DialogProps {
+interface DialogPropsType {
   type?: string | "";
   fn?: () => void;
 }
@@ -26,7 +26,7 @@ interface FormValues {
   hintLimit: number;
 }
 
-const Dialog = forwardRef<HTMLFormElement, DialogProps>((props) => {
+const Dialog: FunctionComponent<DialogPropsType> = (props) => {
   const { close, closeAll } = useModal();
   const {
     type = "",
@@ -90,6 +90,6 @@ const Dialog = forwardRef<HTMLFormElement, DialogProps>((props) => {
       </form>
     </ModalPortal>
   );
-});
+};
 
 export default Dialog;

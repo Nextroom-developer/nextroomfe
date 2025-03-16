@@ -9,7 +9,7 @@ import {
   getLoginInfo,
   removeLocalStorageAll,
   setLoginInfo,
-} from "@/(shared)/utils/storageUtil";
+} from "@/(shared)/auth/storageUtil";
 
 // Axios 클라이언트 설정
 export const apiClient = axios.create({

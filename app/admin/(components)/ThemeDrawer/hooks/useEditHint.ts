@@ -10,11 +10,11 @@ import { useSelectedThemeValue } from "@/(shared)/atoms/selectedTheme.atom";
 import { useCreateHint } from "@/(shared)/atoms/createHint.atom";
 import useClickOutside from "@/(shared)/hooks/useClickOutside";
 import useModal from "@/(shared)/hooks/useModal";
-import extractFilename from "@/(shared)/utils/helper";
+import extractFilename from "@/admin/(components)/ThemeDrawer/helpers/filenameHelpers";
 import { useDrawerState } from "@/(shared)/atoms/drawer.atom";
 import { getHintList } from "@/(shared)/queries/getHintList";
 import useHintUpload from "@/(shared)/queries/getPreSignedUrl";
-import HintDialog from "@/(shared)/components/common/Dialog-new/Hint-Dialog-new/Dialog";
+import HintDialog from "@/(shared)/components/Dialog-new/Hint-Dialog-new/Dialog";
 
 import { DrawerType } from "../types/themeDrawerTypes";
 

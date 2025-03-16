@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { useSignUpState } from "@/(shared)/atoms/signup.atom";
-import useAnalytics from "@/landing/hooks/useAnalytics";
+import useAnalytics from "@/(shared)/hooks/useAnalytics";
 import { usePostSendMessage } from "@/(shared)/mutations/postSendMessage";
 import { usePostVerification } from "@/(shared)/mutations/postVerification";
 

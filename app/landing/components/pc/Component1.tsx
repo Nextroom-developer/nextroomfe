@@ -4,11 +4,11 @@ import { useRouter } from "next/navigation";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-import { setCookie } from "@/(shared)/utils/cookie";
+import { setCookie } from "@/(shared)/auth/cookie";
 
-import useCheckSignIn from "../../hooks/useCheckSignIn";
-import "@/(shared)/apis/firebase";
-import useAnalytics from "../../hooks/useAnalytics";
+import useCheckSignIn from "../../../(shared)/auth/hooks/useCheckSignIn";
+import "@/(shared)/utils/firebase";
+import useAnalytics from "../../../(shared)/hooks/useAnalytics";
 
 const Component1 = forwardRef<HTMLDivElement>((_, ref) => {
   const { logEvent } = useAnalytics();

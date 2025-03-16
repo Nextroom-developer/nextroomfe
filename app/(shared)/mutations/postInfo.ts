@@ -2,7 +2,7 @@ import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { FirebaseError } from "firebase/app";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { db } from "@/(shared)/apis/firebase";
+import { db } from "@/(shared)/utils/firebase";
 
 interface CreatePostProps {
   info: string;

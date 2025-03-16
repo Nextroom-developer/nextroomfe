@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { usePostTheme } from "@/(shared)/mutations/postTheme";
 import { useCreateThemeValue } from "@/(shared)/atoms/createTheme.atom";
 import { useSelectedThemeWrite } from "@/(shared)/atoms/selectedTheme.atom";
-import { setSelectedThemeId } from "@/(shared)/utils/storageUtil";
+import { setSelectedThemeId } from "@/(shared)/auth/storageUtil";
 
 import CreateThemeTitle from "./CreateThemeTitle";
 import CreateThemeBody from "./CreateThemeBody";

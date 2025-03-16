@@ -2,7 +2,7 @@ import Lottie from "react-lottie-player";
 
 import loaderJson from "../../../../public/lottie/loader.json";
 
-import * as S from "./Loader.styled";
+import styles from "./loader.module.sass";
 
 type Props = {
   isLoading?: boolean;
@@ -14,14 +14,14 @@ function Loader(props: Props) {
   if (!isLoading) return null;
 
   return (
-    <S.LoaderWrapper>
+    <div className={styles.loaderWrapper}>
       <Lottie
         loop
         animationData={loaderJson}
         play
         style={{ width: 150, height: 150 }}
       />
-    </S.LoaderWrapper>
+    </div>
   );
 }
 

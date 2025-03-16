@@ -1,9 +1,9 @@
 import { forwardRef, useEffect } from "react";
 import { useAnimation, motion } from "framer-motion";
 import Image from "next/image";
-import "@/(shared)/apis/firebase";
+import "@/(shared)/utils/firebase";
 
-import useAnalytics from "../../hooks/useAnalytics";
+import useAnalytics from "../../../(shared)/hooks/useAnalytics";
 
 const Phone2 = forwardRef<HTMLDivElement>((props, ref) => {
   const { logEvent } = useAnalytics();

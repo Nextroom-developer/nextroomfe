@@ -13,7 +13,7 @@ import {
 import { useDrawerState } from "@/(shared)/atoms/drawer.atom";
 import useModal from "@/(shared)/hooks/useModal";
 
-import HintDialog from "../../../(shared)/components/common/Dialog-new/Hint-Dialog-new/Dialog";
+import HintDialog from "../../../(shared)/components/Dialog-new/Hint-Dialog-new/Dialog";
 import { useGetHintList } from "../../../(shared)/queries/getHintList";
 
 interface ThemeDrawerProps {

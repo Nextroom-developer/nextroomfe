@@ -1,9 +1,9 @@
 import { useRouter, usePathname } from "next/navigation";
 
-import { useIsLoggedInWrite } from "../../(shared)/atoms/account.atom";
-import { useAsPathStateWrite } from "../../(shared)/atoms/signup.atom";
-import { removeAccessToken } from "../../(shared)/utils/storageUtil";
-import useChannelTalk from "../../(shared)/hooks/useChannelTalk";
+import { useIsLoggedInWrite } from "../../atoms/account.atom";
+import { useAsPathStateWrite } from "../../atoms/signup.atom";
+import { removeAccessToken } from "../storageUtil";
+import useChannelTalk from "../../hooks/useChannelTalk";
 
 import useCheckSignIn from "./useCheckSignIn";
 
