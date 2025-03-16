@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 import { useSnackBarInfo } from "@/(shared)/atoms/snackBar.atom";
 import SnackBar from "@/(shared)/components/SnackBar/SnackBar";

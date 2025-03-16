@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent } from "react";
+import { useState, MouseEvent } from "react";
 
 import { useIsLoggedInWrite } from "@/(shared)/atoms/account.atom";
 import { removeAccessToken } from "@/(shared)/utils/storageUtil";

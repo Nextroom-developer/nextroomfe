@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect } from "react";
+import { forwardRef, useEffect } from "react";
 import { useAnimation, motion } from "framer-motion";
 import Image from "next/image";
 import "@/(shared)/apis/firebase";

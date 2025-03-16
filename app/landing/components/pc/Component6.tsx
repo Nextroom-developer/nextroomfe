@@ -1,12 +1,12 @@
-import React from "react";
 import { useAnimation, motion } from "framer-motion";
+import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 export default function Component6() {
   const controls = useAnimation();
   const [ref, inView] = useInView();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
       controls.start("visible");
     } else {

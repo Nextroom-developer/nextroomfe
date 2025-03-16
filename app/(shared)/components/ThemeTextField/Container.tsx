@@ -1,4 +1,3 @@
-import React from "react";
 import "./textField.modules.sass";
 import classNames from "classnames";
 

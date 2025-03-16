@@ -1,7 +1,7 @@
-import React from "react";
+import { useEffect } from "react";
 import { useAnimation, motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import "@/(shared)/apis/firebase";
+import { useInView } from "react-intersection-observer";
 
 import useAnalytics from "../../hooks/useAnalytics";
 
@@ -24,7 +24,7 @@ export default function Component8() {
     // router.push("/trial");
     window.open("/trial", "_blank");
   };
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
       controls.start("visible");
     } else {

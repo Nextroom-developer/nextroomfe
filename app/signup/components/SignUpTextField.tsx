@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import "../styles/textfield.modules.sass";
 import useClickOutside from "@/(shared)/hooks/useClickOutside";

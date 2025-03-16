@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef, useEffect } from "react";
 import Image from "next/image";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -38,7 +38,7 @@ const Component9 = forwardRef<HTMLDivElement>((_, ref) => {
   const controls = useAnimation();
   const [inViewRef, inView] = useInView();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
       controls.start("visible");
     } else {

@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function DialogDeleteBody() {
   return (
     <div className="theme-info-modal__content">

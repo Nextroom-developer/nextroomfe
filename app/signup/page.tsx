@@ -1,8 +1,5 @@
 "use client";
 
-import React from "react";
-import "./styles/signup.modules.sass";
-
 import { useSignUpValue } from "@/(shared)/atoms/signup.atom";
 
 import SignUpComponent from "./components/SignUp";

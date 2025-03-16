@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import Lottie from "react-lottie-player";
 
 import useModal from "@/(shared)/hooks/useModal";

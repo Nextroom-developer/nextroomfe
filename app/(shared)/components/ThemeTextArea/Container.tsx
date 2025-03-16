@@ -1,4 +1,3 @@
-import React from "react";
 import "./textArea.modules.sass";
 import classNames from "classnames";
 

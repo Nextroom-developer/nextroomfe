@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 
 import { useSignUpValue } from "@/(shared)/atoms/signup.atom";
 import { usePostVerification } from "@/(shared)/mutations/postVerification";

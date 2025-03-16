@@ -1,13 +1,13 @@
-import React from "react";
 import Image from "next/image";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
 
 export default function Component3() {
   const controls = useAnimation();
   const [ref, inView] = useInView();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
       controls.start("visible");
     } else {

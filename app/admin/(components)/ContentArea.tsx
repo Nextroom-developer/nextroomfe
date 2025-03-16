@@ -1,4 +1,3 @@
-import React from "react";
 import { useSearchParams } from "next/navigation";
 
 import { useModalStateValue } from "@/(shared)/atoms/modals.atom";

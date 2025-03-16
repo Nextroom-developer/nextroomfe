@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 
 import { SIGN_UP_BTN_TEXT } from "@/signup/consts/signUp";

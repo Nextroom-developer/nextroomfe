@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 
 import { settingProps } from "@/admin/(consts)/sidebar";
 import { useSelectedThemeValue } from "@/(shared)/atoms/selectedTheme.atom";

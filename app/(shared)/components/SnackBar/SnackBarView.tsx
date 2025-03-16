@@ -1,5 +1,4 @@
 import { Box, Snackbar } from "@mui/material";
-import React from "react";
 
 interface Props {
   open: boolean;

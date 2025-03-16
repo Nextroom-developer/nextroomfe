@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "@/(shared)/apis/firebase";
@@ -19,7 +19,7 @@ export default function Component8Mobile() {
   const controls = useAnimation();
   const [ref, inView] = useInView();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
       controls.start("visible");
     } else {

@@ -5,7 +5,6 @@ import {
   useRecoilValue,
   useSetRecoilState,
 } from "recoil";
-import React from "react";
 
 interface ModalComponentProps<P = any> {
   Component: React.FC<P>;

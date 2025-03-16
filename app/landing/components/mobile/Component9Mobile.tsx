@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useAnimation, motion } from "framer-motion";
@@ -40,7 +40,7 @@ const Component9Mobile = forwardRef<HTMLDivElement>((_, ref) => {
   const controls = useAnimation();
   const [inViewRef, inView] = useInView();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (inView) {
       controls.start("visible");
     } else {
