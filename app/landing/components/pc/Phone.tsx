@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import Image from "next/image";
 
-import "@/apis/firebase";
+import "@/(shared)/apis/firebase";
 import useAnalytics from "../../hooks/useAnalytics";
 
 export default function Phone() {

@@ -1,20 +1,20 @@
 import { useState, useEffect, FormEvent, useRef } from "react";
 
-import HintDialog from "@/components/common/Dialog-new/Hint-Dialog-new/Dialog";
 import {
   InitialSelectedHint,
   SelectedHintType,
   useSelectedHint,
   useSelectedHintReset,
-} from "@/components/atoms/selectedHint.atom";
-import { useSelectedThemeValue } from "@/components/atoms/selectedTheme.atom";
-import { useCreateHint } from "@/components/atoms/createHint.atom";
-import useClickOutside from "@/hooks/useClickOutside";
-import useHintUpload from "@/queries/getPreSignedUrl";
-import useModal from "@/hooks/useModal";
-import extractFilename from "@/utils/helper";
-import { getHintList } from "@/queries/getHintList";
-import { useDrawerState } from "@/components/atoms/drawer.atom";
+} from "@/(shared)/atoms/selectedHint.atom";
+import { useSelectedThemeValue } from "@/(shared)/atoms/selectedTheme.atom";
+import { useCreateHint } from "@/(shared)/atoms/createHint.atom";
+import useClickOutside from "@/(shared)/hooks/useClickOutside";
+import useModal from "@/(shared)/hooks/useModal";
+import extractFilename from "@/(shared)/utils/helper";
+import { useDrawerState } from "@/(shared)/atoms/drawer.atom";
+import { getHintList } from "@/(shared)/queries/getHintList";
+import useHintUpload from "@/(shared)/queries/getPreSignedUrl";
+import HintDialog from "@/(shared)/components/common/Dialog-new/Hint-Dialog-new/Dialog";
 
 import { DrawerType } from "../types/themeDrawerTypes";
 

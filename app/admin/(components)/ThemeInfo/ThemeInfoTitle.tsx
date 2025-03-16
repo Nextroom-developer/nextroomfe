@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 import { settingProps } from "@/admin/(consts)/sidebar";
-import { useSelectedThemeValue } from "@/components/atoms/selectedTheme.atom";
+import { useSelectedThemeValue } from "@/(shared)/atoms/selectedTheme.atom";
 interface Props {
   handleOpenModal: () => void;
 }

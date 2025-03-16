@@ -3,12 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import Loader from "@/components/Loader/Loader";
 import { SignUpTextField } from "@/signup/components/SignUpTextField";
 
+import Loader from "../../(shared)/components/Loader/Loader";
 import useLogIn from "../hooks/useLogIn";
 import { LOGIN, logoImageProps } from "../consts/logIn";
-
 
 const LogInComponent = () => {
   const {

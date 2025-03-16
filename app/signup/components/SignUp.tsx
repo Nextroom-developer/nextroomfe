@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 
 import { SIGN_UP_BTN_TEXT } from "@/signup/consts/signUp";
-import Loader from "@/components/Loader/Loader";
 
+import Loader from "../../(shared)/components/Loader/Loader";
 import useSignUp from "../hooks/useSignUp";
 
 import { SignUpTextField } from "./SignUpTextField";

@@ -1,7 +1,6 @@
 import React from "react";
 
-import Loader from "@/components/Loader/Loader";
-
+import Loader from "../../(shared)/components/Loader/Loader";
 import useStoreInfo from "../hooks/useStoreInfo";
 import { START } from "../consts/signUp";
 

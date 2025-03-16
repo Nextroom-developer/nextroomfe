@@ -3,7 +3,7 @@
 import React from "react";
 import "./styles/signup.modules.sass";
 
-import { useSignUpValue } from "@/components/atoms/signup.atom";
+import { useSignUpValue } from "@/(shared)/atoms/signup.atom";
 
 import SignUpComponent from "./components/SignUp";
 import EmailAuthComponent from "./components/EmailAuth";

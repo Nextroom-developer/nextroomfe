@@ -1,6 +1,6 @@
 import React from "react";
 
-import ThemeTextField from "../../../(shared)/(ThemeTextField)/Container";
+import ThemeTextField from "../../../(shared)/components/ThemeTextField/Container";
 
 import {
   hintCountTextFieldProps,

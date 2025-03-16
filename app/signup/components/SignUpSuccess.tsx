@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
-import SnackBar from "@/components/SnackBar/SnackBar";
+import SnackBar from "@/(shared)/components/SnackBar/SnackBar";
 import useAnalytics from "@/landing/hooks/useAnalytics";
 
 import useSignUpSuccess from "../hooks/useSignUpSuccess";

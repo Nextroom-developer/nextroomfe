@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { useSignUpState } from "@/components/atoms/signup.atom";
+import { useSignUpState } from "@/(shared)/atoms/signup.atom";
 import useAnalytics from "@/landing/hooks/useAnalytics";
 
 import { SIGN_UP_PASSWORD, SIGN_UP_PASSWORD_CONFIRM } from "../consts/signUp";

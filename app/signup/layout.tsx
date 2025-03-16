@@ -5,8 +5,8 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import { useSignUpValue } from "@/components/atoms/signup.atom";
-import { getCookie } from "@/utils/cookie";
+import { useSignUpValue } from "@/(shared)/atoms/signup.atom";
+import { getCookie } from "@/(shared)/utils/cookie";
 
 export default function RootLayout({
   children,

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
 
-import { useSelectedHint } from "@/components/atoms/selectedHint.atom";
+import { useSelectedHint } from "@/(shared)/atoms/selectedHint.atom";
 
 import { GalleryImageProps } from "./consts/themeDrawerProps";
 import useImages from "./hooks/useImages";

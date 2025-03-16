@@ -1,7 +1,7 @@
 import React from "react";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import "@/apis/firebase";
+import "@/(shared)/apis/firebase";
 
 import useAnalytics from "../../hooks/useAnalytics";
 

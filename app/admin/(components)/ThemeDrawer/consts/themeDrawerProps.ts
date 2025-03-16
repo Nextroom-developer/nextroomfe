@@ -1,5 +1,5 @@
-import { ThemeInfoTextFieldType } from "@/(shared)/(ThemeTextField)/TextFieldType";
-import { ThemeInfoTextAreaType } from "@/(shared)/(ThemeTextArea)/TextAreaType";
+import { ThemeInfoTextFieldType } from "@/(shared)/components/ThemeTextField/TextFieldType";
+import { ThemeInfoTextAreaType } from "@/(shared)/components/ThemeTextArea/TextAreaType";
 
 import {
   codeValidations,

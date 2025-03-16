@@ -1,9 +1,9 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { useSnackBarInfo } from "@/components/atoms/snackBar.atom";
+import { useSnackBarInfo } from "@/(shared)/atoms/snackBar.atom";
 import useAnalytics from "@/landing/hooks/useAnalytics";
-import { getCookie } from "@/utils/cookie";
+import { getCookie } from "@/(shared)/utils/cookie";
 
 const useSignUpSuccess = () => {
   const [isWebView, setIsWebView] = useState(false);

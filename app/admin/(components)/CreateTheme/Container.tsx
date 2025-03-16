@@ -2,10 +2,10 @@ import { FormEvent } from "react";
 import "../../(style)/createTheme.modules.sass";
 import { useRouter } from "next/navigation";
 
-import { usePostTheme } from "@/mutations/postTheme";
-import { useCreateThemeValue } from "@/components/atoms/createTheme.atom";
-import { useSelectedThemeWrite } from "@/components/atoms/selectedTheme.atom";
-import { setSelectedThemeId } from "@/utils/storageUtil";
+import { usePostTheme } from "@/(shared)/mutations/postTheme";
+import { useCreateThemeValue } from "@/(shared)/atoms/createTheme.atom";
+import { useSelectedThemeWrite } from "@/(shared)/atoms/selectedTheme.atom";
+import { setSelectedThemeId } from "@/(shared)/utils/storageUtil";
 
 import CreateThemeTitle from "./CreateThemeTitle";
 import CreateThemeBody from "./CreateThemeBody";

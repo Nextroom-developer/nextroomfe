@@ -8,10 +8,10 @@ import {
   useState,
 } from "react";
 
-import { useCreateHint } from "@/components/atoms/createHint.atom";
-import { useSelectedHint } from "@/components/atoms/selectedHint.atom";
-import { useToastWrite } from "@/components/atoms/toast.atom";
-import { getStatus } from "@/utils/storageUtil";
+import { useCreateHint } from "@/(shared)/atoms/createHint.atom";
+import { useSelectedHint } from "@/(shared)/atoms/selectedHint.atom";
+import { useToastWrite } from "@/(shared)/atoms/toast.atom";
+import { getStatus } from "@/(shared)/utils/storageUtil";
 import { subscribeLinkURL } from "@/admin/(consts)/sidebar";
 
 import { getCompressImage } from "../helpers/imageHelpers";

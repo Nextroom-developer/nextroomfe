@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
-import { useSnackBarInfo } from "@/components/atoms/snackBar.atom";
-import SnackBar from "@/components/SnackBar/SnackBar";
+import { useSnackBarInfo } from "@/(shared)/atoms/snackBar.atom";
+import SnackBar from "@/(shared)/components/SnackBar/SnackBar";
 
 import useEmailAuth from "../hooks/useEmailAuth";
 

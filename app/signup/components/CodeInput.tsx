@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 
-import { useSignUpValue } from "@/components/atoms/signup.atom";
-import { usePostVerification } from "@/mutations/postVerification";
+import { useSignUpValue } from "@/(shared)/atoms/signup.atom";
+import { usePostVerification } from "@/(shared)/mutations/postVerification";
 
 import { CodeInputPropsType } from "../types/SignUp";
 

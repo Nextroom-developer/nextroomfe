@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import "@/apis/firebase";
+import "@/(shared)/apis/firebase";
 
 import useAnalytics from "../../hooks/useAnalytics";
 

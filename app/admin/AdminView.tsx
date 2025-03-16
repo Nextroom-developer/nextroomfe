@@ -3,11 +3,12 @@ import React, { useEffect } from "react";
 import "./(style)/admin.modules.sass";
 import Sidebar from "@/admin/(components)/Sidebar";
 import ContentArea from "@/admin/(components)/ContentArea";
-import Toast from "@/components/common/Toast/Toast";
-import NotiDialog from "@/components/common/Dialog-new/Noti-Dialog-new/Dialog";
-import useModal from "@/hooks/useModal";
-import { getLocalStorage } from "@/utils/storageUtil";
-import Loader from "@/components/Loader/Loader";
+import useModal from "@/(shared)/hooks/useModal";
+import { getLocalStorage } from "@/(shared)/utils/storageUtil";
+
+import Toast from "../(shared)/components/common/Toast/Toast";
+import NotiDialog from "../(shared)/components/common/Dialog-new/Noti-Dialog-new/Dialog";
+import Loader from "../(shared)/components/Loader/Loader";
 
 interface Theme {
   id: number;

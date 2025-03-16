@@ -1,8 +1,8 @@
 import { useEffect, useState, JSX } from "react";
-import "@/apis/firebase";
+import "@/(shared)/apis/firebase";
 import { useRouter } from "next/navigation";
 
-import { setCookie } from "@/utils/cookie";
+import { setCookie } from "@/(shared)/utils/cookie";
 
 import useCheckSignIn from "../../hooks/useCheckSignIn";
 import useAnalytics from "../../hooks/useAnalytics";

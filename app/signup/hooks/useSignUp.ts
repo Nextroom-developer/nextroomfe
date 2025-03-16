@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { usePostSendMessage } from "@/mutations/postSendMessage";
+import { usePostSendMessage } from "@/(shared)/mutations/postSendMessage";
 import useCheckSignIn from "@/landing/hooks/useCheckSignIn";
 import useAnalytics from "@/landing/hooks/useAnalytics";
 

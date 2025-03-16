@@ -3,12 +3,12 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 import useCheckSignIn from "@/landing/hooks/useCheckSignIn";
-import useChannelTalk from "@/hooks/useChannelTalk";
-import { useGetThemeList } from "@/queries/getThemeList";
+import useChannelTalk from "@/(shared)/hooks/useChannelTalk";
 import { EMAIL, PASSWORD } from "@/login/consts/logIn";
-import { setCookie } from "@/utils/cookie";
+import { setCookie } from "@/(shared)/utils/cookie";
 
-import { usePostLogin } from "../../mutations/postLogin";
+import { useGetThemeList } from "../../(shared)/queries/getThemeList";
+import { usePostLogin } from "../../(shared)/mutations/postLogin";
 import { LogInValueType } from "../types/LogIn";
 
 const useLogIn = () => {

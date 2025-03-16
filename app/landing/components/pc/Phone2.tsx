@@ -2,7 +2,7 @@ import React, { forwardRef, useEffect } from "react";
 import { useAnimation, motion } from "framer-motion";
 import Image from "next/image";
 
-import "@/apis/firebase";
+import "@/(shared)/apis/firebase";
 import useAnalytics from "../../hooks/useAnalytics";
 
 const Phone2 = forwardRef<HTMLDivElement>((props, ref) => {

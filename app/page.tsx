@@ -1,4 +1,4 @@
-import "./style/reset.css";
+import "./(shared)/style/reset.css";
 import Landing from "./landing/Container";
 
 export default function HomePage() {

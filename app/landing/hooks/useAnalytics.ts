@@ -5,7 +5,7 @@ import {
 } from "firebase/analytics";
 import { useEffect, useState } from "react";
 
-import { isDevMode } from "@/consts/env";
+import { isDevMode } from "@/(shared)/consts/env";
 
 const useAnalytics = () => {
   const [analytics, setAnalytics] = useState<ReturnType<

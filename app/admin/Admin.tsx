@@ -4,11 +4,12 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import useCheckSignIn from "@/landing/hooks/useCheckSignIn";
-import Loader from "@/components/Loader/Loader";
-import { getLoginInfo, setSelectedThemeId } from "@/utils/storageUtil";
-import { useSelectedTheme } from "@/components/atoms/selectedTheme.atom";
-import { useGetThemeList } from "@/queries/getThemeList";
-import { useToastInfo } from "@/components/atoms/toast.atom";
+import { getLoginInfo, setSelectedThemeId } from "@/(shared)/utils/storageUtil";
+import { useSelectedTheme } from "@/(shared)/atoms/selectedTheme.atom";
+import { useToastInfo } from "@/(shared)/atoms/toast.atom";
+
+import { useGetThemeList } from "../(shared)/queries/getThemeList";
+import Loader from "../(shared)/components/Loader/Loader";
 
 import AdminView from "./AdminView";
 
@@ -25,6 +26,8 @@ function Admin() {
 
   const [selectedTheme, setSelectedTheme] = useSelectedTheme();
 
+  // const { accessToken } = getLoginInfo();
+  // console.log(accessToken);
   const [toast, setToast] = useToastInfo();
   const router = useRouter();
 

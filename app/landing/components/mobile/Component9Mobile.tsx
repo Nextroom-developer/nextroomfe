@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-import "@/apis/firebase";
-import { setCookie } from "@/utils/cookie";
+import "@/(shared)/apis/firebase";
+import { setCookie } from "@/(shared)/utils/cookie";
 
 import useCheckSignIn from "../../hooks/useCheckSignIn";
 import useAnalytics from "../../hooks/useAnalytics";
