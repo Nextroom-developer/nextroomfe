@@ -1,5 +1,5 @@
 import { FormEvent } from "react";
-import "../../(style)/createTheme.modules.sass";
+import "../../(styles)/createTheme.modules.sass";
 import { useRouter } from "next/navigation";
 
 import { usePostTheme } from "@/(shared)/mutations/postTheme";

@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
-import "./(style)/admin.modules.sass";
+import "./(styles)/admin.modules.sass";
 import Sidebar from "@/admin/(components)/Sidebar";
 import ContentArea from "@/admin/(components)/ContentArea";
 import useModal from "@/(shared)/hooks/useModal";

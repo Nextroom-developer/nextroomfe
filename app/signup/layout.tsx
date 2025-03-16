@@ -1,7 +1,7 @@
 "use client";
 
 import "./styles/signup.modules.sass";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 

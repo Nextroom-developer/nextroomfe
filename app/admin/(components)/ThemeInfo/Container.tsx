@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import classNames from "classnames";
 
-import "../../(style)/themeInfo.modules.sass";
+import "../../(styles)/themeInfo.modules.sass";
 
 import useModal from "@/(shared)/hooks/useModal";
 import { useDrawerState } from "@/(shared)/atoms/drawer.atom";

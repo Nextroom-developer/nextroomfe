@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { ReactNode, Suspense } from "react";
 
+import "./(shared)/styles/reset.css";
 import Recoil from "@/(shared)/lib/recoil";
 import MuiProvider from "@/(shared)/lib/muiProvider";
 import StyledJsxRegistry from "@/(shared)/lib/registry";
