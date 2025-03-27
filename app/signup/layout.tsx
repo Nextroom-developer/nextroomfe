@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import "./styles/signup.modules.sass";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import { useSignUpValue } from "@/components/atoms/signup.atom";
-import { getCookie } from "@/utils/cookie";
-
-import * as S from "./SignUpView.styled";
+import { useSignUpValue } from "@/(shared)/atoms/signup.atom";
+import { getCookie } from "@/(shared)/auth/cookie";
 
 export default function RootLayout({
   children,
@@ -37,16 +36,21 @@ export default function RootLayout({
   if (isWebView) {
     return (
       <>
-        <S.Wrapper />
+        <div className="signup-wrapper" />
         {children}
       </>
     );
   }
   return (
     <>
-      <S.Wrapper>
-        <S.Header
+      <div className="signup-wrapper">
+        <button
+          className="signup-header"
           onClick={() => {
+            if (useSignUpState.level === 5) {
+              router.push("/login");
+              return;
+            }
             if (useSignUpState.level === 1) {
               router.push(pathName);
             }
@@ -54,8 +58,8 @@ export default function RootLayout({
           }}
         >
           <Image {...ImageProps} />
-        </S.Header>
-      </S.Wrapper>
+        </button>
+      </div>
       {children}
     </>
   );

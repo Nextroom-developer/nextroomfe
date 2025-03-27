@@ -1,9 +1,7 @@
-import React from "react";
+import LogInComponent from "./components/LogIn";
 
-import Login from "./Login";
-
-function HomePage() {
-  return <Login />;
+function LogInPage() {
+  return <LogInComponent />;
 }
 
-export default HomePage;
+export default LogInPage;

@@ -1,20 +1,20 @@
-import React from "react";
 import classNames from "classnames";
 
-import { useGetHintList } from "@/queries/getHintList";
-import { useSelectedThemeValue } from "@/components/atoms/selectedTheme.atom";
-import HintDialog from "@/components/common/Dialog-new/Hint-Dialog-new/Dialog";
+import { useSelectedThemeValue } from "@/(shared)/atoms/selectedTheme.atom";
 import {
   SelectedHintType,
   useSelectedHint,
   useSelectedHintReset,
-} from "@/components/atoms/selectedHint.atom";
+} from "@/(shared)/atoms/selectedHint.atom";
 import {
   useCreateHint,
   useCreateHintReset,
-} from "@/components/atoms/createHint.atom";
-import { useDrawerState } from "@/components/atoms/drawer.atom";
-import useModal from "@/hooks/useModal";
+} from "@/(shared)/atoms/createHint.atom";
+import { useDrawerState } from "@/(shared)/atoms/drawer.atom";
+import useModal from "@/(shared)/hooks/useModal";
+
+import HintDialog from "../../../(shared)/components/Dialog-new/Hint-Dialog-new/Dialog";
+import { useGetHintList } from "../../../(shared)/queries/getHintList";
 
 interface ThemeDrawerProps {
   handleHintCreate: (type: string) => void;

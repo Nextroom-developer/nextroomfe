@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-import { useCreateThemeValue } from "@/components/atoms/createTheme.atom";
+import { useCreateThemeValue } from "@/(shared)/atoms/createTheme.atom";
 
 export default function CreateThemeAddButton() {
   const createTheme = useCreateThemeValue();

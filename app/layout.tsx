@@ -1,15 +1,13 @@
 import { Metadata } from "next";
 import { ReactNode, Suspense } from "react";
 
-import Recoil from "@/lib/recoil";
-import MuiProvider from "@/lib/muiProvider";
-import StyledJsxRegistry from "@/lib/registry";
-import StyledProvider from "@/lib/themeProvider";
-import ReactQueryProvider from "@/lib/reactQueryProvider";
-import RequireAuth from "@/components/RequireAuth/RequireAuth";
+import "./(shared)/styles/reset.css";
+import Recoil from "@/(shared)/lib/recoil";
+import ReactQueryProvider from "@/(shared)/lib/reactQueryProvider";
+import RequireAuth from "@/(shared)/auth/RequireAuth";
 
-import Clarity from "./apis/Clarity";
-import Analytics from "./apis/Analytics";
+import Clarity from "./(shared)/utils/Clarity";
+import Analytics from "./(shared)/utils/Analytics";
 
 export const metadata: Metadata = {
   title: "넥스트룸 (NEXT ROOM) | 방탈출 힌트폰 서비스",
@@ -33,13 +31,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </Suspense>
         <Recoil>
           <ReactQueryProvider>
-            <StyledProvider>
-              <StyledJsxRegistry>
-                <MuiProvider>
-                  <RequireAuth>{children}</RequireAuth>
-                </MuiProvider>
-              </StyledJsxRegistry>
-            </StyledProvider>
+            <RequireAuth>{children}</RequireAuth>
           </ReactQueryProvider>
         </Recoil>
         <div id="modal-root" />

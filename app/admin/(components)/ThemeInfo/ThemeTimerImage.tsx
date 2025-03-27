@@ -1,18 +1,18 @@
 import Image from "next/image";
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import Lottie from "react-lottie-player";
 
-import Dialog from "@/components/common/Dialog-new/Image-Dialog-new/Dialog";
-import PreviewDialog from "@/components/common/Dialog-new/Preview-Dialog-new/PreviewDialog";
-import useModal from "@/hooks/useModal";
-import { useTimerImageWrite } from "@/components/atoms/timerImage.atom";
-import { useSelectedTheme } from "@/components/atoms/selectedTheme.atom";
+import useModal from "@/(shared)/hooks/useModal";
+import { useTimerImageWrite } from "@/(shared)/atoms/timerImage.atom";
+import { useSelectedTheme } from "@/(shared)/atoms/selectedTheme.atom";
 import { defaultTimerImage, QuestionIconProps } from "@/admin/(consts)/sidebar";
-import DeleteDialog from "@/components/common/Dialog-new/Timer-Image-Delete-Dialog/DeleteDialog";
 import Tooltip from "@/admin/(components)/Tooltip/Container";
+import DeleteDialog from "@/(shared)/components/Dialog-new/Timer-Image-Delete-Dialog/DeleteDialog";
+import PreviewDialog from "@/(shared)/components/Dialog-new/Preview-Dialog-new/PreviewDialog";
+import Dialog from "@/(shared)/components/Dialog-new/Image-Dialog-new/Dialog";
 
-import { getCompressImage } from "../ThemeDrawer/helpers/imageHelpers";
 import loaderJson from "../../../../public/lottie/loader.json";
+import { getCompressImage } from "../ThemeDrawer/helpers/imageHelpers";
 
 export default function ThemeTimerImage() {
   const [selectedTheme, setSelectedTheme] = useSelectedTheme();

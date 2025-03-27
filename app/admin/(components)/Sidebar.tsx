@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import classNames from "classnames";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
 
-import HintDialog from "@/components/common/Dialog-new/Hint-Dialog-new/Dialog";
 import {
   logoProps,
   plusDisableProps,
@@ -17,11 +16,12 @@ import {
   getStatus,
   removeAccessToken,
   removeThemeId,
-} from "@/utils/storageUtil";
-import { useSelectedThemeReset } from "@/components/atoms/selectedTheme.atom";
-import { useDrawerState } from "@/components/atoms/drawer.atom";
-import useModal from "@/hooks/useModal";
-import { QUERY_KEY } from "@/queries/getThemeList";
+} from "@/(shared)/auth/storageUtil";
+import { useSelectedThemeReset } from "@/(shared)/atoms/selectedTheme.atom";
+import { useDrawerState } from "@/(shared)/atoms/drawer.atom";
+import useModal from "@/(shared)/hooks/useModal";
+import HintDialog from "@/(shared)/components/Dialog-new/Hint-Dialog-new/Dialog";
+import { QUERY_KEY } from "@/(shared)/queries/getThemeList";
 
 interface Theme {
   id: number;

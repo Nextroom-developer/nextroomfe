@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import { useSelectedHint } from "@/components/atoms/selectedHint.atom";
-import ThemeTextField from "@/(shared)/(ThemeTextField)/Container";
-import ThemeTextArea from "@/(shared)/(ThemeTextArea)/Container";
+import { useSelectedHint } from "@/(shared)/atoms/selectedHint.atom";
+import ThemeTextField from "@/(shared)/components/ThemeTextField/Container";
+import ThemeTextArea from "@/(shared)/components/ThemeTextArea/Container";
 
 import ThemeDrawerAnswer from "./ThemeDrawerAnswer";
 import ThemeDrawerHint from "./ThemeDrawerHint";

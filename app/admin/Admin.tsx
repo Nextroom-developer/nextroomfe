@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-import useCheckSignIn from "@/hooks/useCheckSignIn";
-import Loader from "@/components/Loader/Loader";
-import { getLoginInfo, setSelectedThemeId } from "@/utils/storageUtil";
-import { useSelectedTheme } from "@/components/atoms/selectedTheme.atom";
-import { useGetThemeList } from "@/queries/getThemeList";
-import { useToastInfo } from "@/components/atoms/toast.atom";
+import { setSelectedThemeId } from "@/(shared)/auth/storageUtil";
+import { useSelectedTheme } from "@/(shared)/atoms/selectedTheme.atom";
+import { useToastInfo } from "@/(shared)/atoms/toast.atom";
+
+import { useGetThemeList } from "../(shared)/queries/getThemeList";
 
 import AdminView from "./AdminView";
 
@@ -21,10 +20,11 @@ type Theme = {
 
 function Admin() {
   const { data: categories = [], isLoading } = useGetThemeList();
-  const isLoggedIn = useCheckSignIn();
 
   const [selectedTheme, setSelectedTheme] = useSelectedTheme();
 
+  // const { accessToken } = getLoginInfo();
+  // console.log(accessToken);
   const [toast, setToast] = useToastInfo();
   const router = useRouter();
 
@@ -32,6 +32,7 @@ function Admin() {
     if (!isLoading && categories.length > 0 && selectedTheme.id === 0) {
       setSelectedTheme(categories[categories.length - 1]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
 
   const handleClickSelected = (theme: Theme) => {
