@@ -52,6 +52,7 @@ const useLogIn = () => {
     } else {
       router.push(`/admin`);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [themeList, isThemeLoading]);
 
   const formProps = {

@@ -32,6 +32,7 @@ function Admin() {
     if (!isLoading && categories.length > 0 && selectedTheme.id === 0) {
       setSelectedTheme(categories[categories.length - 1]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
 
   const handleClickSelected = (theme: Theme) => {

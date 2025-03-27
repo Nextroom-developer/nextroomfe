@@ -35,6 +35,7 @@ function AdminView(props: Props) {
     if (!isHideDialog) {
       open(NotiDialog, { type: "put" });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   if (isLoading) return <Loader />;
   return (

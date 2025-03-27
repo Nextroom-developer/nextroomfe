@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { usePostSendMessage } from "@/(shared)/mutations/postSendMessage";

@@ -35,6 +35,7 @@ const useStoreInfo = () => {
       firebase_screen: "sign_up_store_info",
       firebase_screen_class: "sign_up_store_info",
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const {
