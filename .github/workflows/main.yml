@@ -15,10 +15,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: pnpm install --legacy-peer-deps
 
       - name: Checking
-        run: npm run lint && npm run lint:type && npm run lint:eslint && npm run lint:prettier
+        run: pnpm lint && pnpm lint:type && pnpm lint:eslint && pnpm lint:prettier
 
   sync:
     name: Sync forked repo
