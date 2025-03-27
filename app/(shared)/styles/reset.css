@@ -30,6 +30,10 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+html {
+	background: #000;
+	color: #fff;
+}
 body {
 	line-height: 1.5;
 	overflow-x: hidden;

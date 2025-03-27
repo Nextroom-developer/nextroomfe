@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-
-import { useSnackBarInfo } from "@/(shared)/atoms/snackBar.atom";
 import SnackBar from "@/(shared)/components/SnackBar/SnackBar";
 
 import useEmailAuth from "../hooks/useEmailAuth";
@@ -17,16 +14,6 @@ const EmailAuthComponent = () => {
     errorMessage,
     signUpState,
   } = useEmailAuth();
-
-  const [snackInfo, setSnackBarInfo] = useSnackBarInfo();
-
-  useEffect(() => {
-    if (snackInfo.isOpen) {
-      setTimeout(() => {
-        setSnackBarInfo({ ...snackInfo, isOpen: false });
-      }, 3000);
-    }
-  }, [setSnackBarInfo, snackInfo]);
 
   return (
     <div className="signup-cont">
@@ -54,13 +41,7 @@ const EmailAuthComponent = () => {
         </div>
         <div className="signup-server-error-message">{errorMessage}</div>
       </div>
-      <SnackBar
-        open={snackInfo.isOpen}
-        ment={snackInfo.message}
-        vertical="top"
-        horizontal="center"
-        handleClose={() => setSnackBarInfo({ ...snackInfo, isOpen: false })}
-      />
+      <SnackBar />
     </div>
   );
 };

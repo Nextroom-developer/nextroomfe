@@ -3,9 +3,6 @@ import { ReactNode, Suspense } from "react";
 
 import "./(shared)/styles/reset.css";
 import Recoil from "@/(shared)/lib/recoil";
-import MuiProvider from "@/(shared)/lib/muiProvider";
-import StyledJsxRegistry from "@/(shared)/lib/registry";
-import StyledProvider from "@/(shared)/lib/themeProvider";
 import ReactQueryProvider from "@/(shared)/lib/reactQueryProvider";
 import RequireAuth from "@/(shared)/auth/RequireAuth";
 
@@ -34,13 +31,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </Suspense>
         <Recoil>
           <ReactQueryProvider>
-            <StyledProvider>
-              <StyledJsxRegistry>
-                <MuiProvider>
-                  <RequireAuth>{children}</RequireAuth>
-                </MuiProvider>
-              </StyledJsxRegistry>
-            </StyledProvider>
+            <RequireAuth>{children}</RequireAuth>
           </ReactQueryProvider>
         </Recoil>
         <div id="modal-root" />

@@ -3,7 +3,6 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
-import SnackBar from "@/(shared)/components/SnackBar/SnackBar";
 import useAnalytics from "@/(shared)/hooks/useAnalytics";
 
 import useSignUpSuccess from "../hooks/useSignUpSuccess";
@@ -44,35 +43,19 @@ const SignUpSuccessComponent = () => {
             <p className="signup-success-sub-title">
               힌트 등록은 PC에서만 진행할 수 있습니다
             </p>
-            {isWebView ? (
-              /*
-              <S.SuccessButton
-                onClick={() => {
-                  logEvent(analytics, "btn_click", {
-                    btn_name: "sign_up_main_btn",
-                    btn_position: "top",
-                  });
-                  window.postMessage("close");
-                }}
-              >
-                메인으로 돌아가기
-              </S.SuccessButton>
-              */
-              ""
-            ) : (
-              <button
-                className="signup-success-btn"
-                onClick={() => {
-                  logEvent("btn_click", {
-                    btn_name: "sign_up_hint_btn",
-                    btn_position: "top",
-                  });
-                  router.push("/login");
-                }}
-              >
-                힌트 등록하기
-              </button>
-            )}
+
+            <button
+              className="signup-success-btn"
+              onClick={() => {
+                logEvent("btn_click", {
+                  btn_name: "sign_up_hint_btn",
+                  btn_position: "top",
+                });
+                router.push("/login");
+              }}
+            >
+              힌트 등록하기
+            </button>
           </>
         )}
       </div>
@@ -89,15 +72,6 @@ const SignUpSuccessComponent = () => {
           </div>
           <Image {...rightImageProps} />
         </Link>
-      )}
-      {isWebView && (
-        <SnackBar
-          open={snackInfo.isOpen}
-          ment="PC에서 힌트 등록을 진행해 주세요."
-          vertical="top"
-          horizontal="center"
-          handleClose={() => setSnackBarInfo({ ...snackInfo, isOpen: false })}
-        />
       )}
     </div>
   );

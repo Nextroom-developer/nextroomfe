@@ -14,13 +14,6 @@
     "preinstall": "husky install"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@fullpage/react-fullpage": "^0.1.40",
-    "@material/material-color-utilities": "^0.2.7",
-    "@mui/icons-material": "^5.14.0",
-    "@mui/material": "^5.13.7",
-    "@mui/styled-engine": "^5.13.2",
     "@tanstack/react-query": "^4.29.19",
     "@tanstack/react-query-devtools": "^4.29.19",
     "@types/node": "20.3.3",
@@ -41,7 +34,6 @@
     "react-lottie-player": "^1.5.4",
     "recoil": "^0.7.7",
     "sass": "^1.80.6",
-    "styled-components": "^6.0.2",
     "tss-react": "^4.8.6",
     "typescript": "5.1.6"
   },
@@ -50,16 +42,13 @@
     "@types/http-proxy": "^1.17.15",
     "@types/js-cookie": "^3.0.6",
     "@types/lodash": "^4.17.13",
-    "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.61.0",
-    "babel-plugin-styled-components": "^2.1.4",
     "eslint": "^8.44.0",
     "eslint-config-next": "^15.0.3",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.3",
     "js-cookie": "^3.0.5",
     "prettier": "^2.8.8"

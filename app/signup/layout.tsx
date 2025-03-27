@@ -47,6 +47,10 @@ export default function RootLayout({
         <button
           className="signup-header"
           onClick={() => {
+            if (useSignUpState.level === 5) {
+              router.push("/login");
+              return;
+            }
             if (useSignUpState.level === 1) {
               router.push(pathName);
             }

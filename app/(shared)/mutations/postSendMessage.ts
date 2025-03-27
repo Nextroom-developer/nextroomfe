@@ -41,7 +41,7 @@ export const usePostSendMessage = (configOptions?: MutationConfigOptions) => {
     onSuccess: (res, req) => {
       setSnackBar({
         isOpen: true,
-        message: `인증번호를 보냈습니다.`,
+        message: `인증번호를 발송했습니다.`,
       });
       queryClient.invalidateQueries(QUERY_KEY);
       setSignUpState({ level: 2, email: req.email, password: "" });
