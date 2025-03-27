@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import classNames from "classnames";
 
-import "../../(style)/themeInfo.modules.sass";
+import "../../(styles)/themeInfo.modules.sass";
 
-import useModal from "@/hooks/useModal";
-import Dialog from "@/components/common/Dialog-new/Theme-Dialog/Dialog";
-import { useDrawerState } from "@/components/atoms/drawer.atom";
+import useModal from "@/(shared)/hooks/useModal";
+import { useDrawerState } from "@/(shared)/atoms/drawer.atom";
 
+import Dialog from "../../../(shared)/components/Dialog-new/Theme-Dialog/Dialog";
 import ThemeDrawer from "../ThemeDrawer/Container";
 
 import ThemeInfoTitle from "./ThemeInfoTitle";

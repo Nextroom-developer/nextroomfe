@@ -1,7 +1,6 @@
 import Image from "next/image";
-import React from "react";
 
-import "../../(style)/tooltip.modules.sass";
+import "../../(styles)/tooltip.modules.sass";
 import { arrowProps, timerTooltipProps } from "@/admin/(consts)/sidebar";
 
 export default function Container() {

@@ -1,0 +1,267 @@
+.signup
+  &-wrapper
+    display: flex
+    max-width: 520px
+    height: 60px
+    align-items: center
+    flex-direction: column
+    margin: auto
+
+  &-success-wrapper
+    max-width: 520px
+    height: calc(100vh - 60px)
+    margin: auto
+
+  &-lottie-wrapper
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: 78px 0 22px
+
+  &-header
+    width: 100%
+    display: block
+    img
+      float: right
+      margin: 16px 14px
+      cursor: pointer
+  
+  &-cont
+    max-width: 520px
+    margin: 0 auto
+    padding: 0 24px
+
+  @keyframes fadeIn 
+    0%
+      opacity: 0
+    100%
+      opacity: 1
+  
+  &-success-cont
+    max-width: 520px
+    margin: 0 auto
+    text-align: center
+    animation: fadeIn 1s
+    animation-delay: 1.5s
+    position: relative
+
+  &-form
+    display: flex
+    gap: 20px
+
+  &-grid
+    margin-bottom: 20px
+
+  &-title
+    font-size: 20px
+    font-weight: 600
+    line-height: 28px
+    margin: 0
+
+  &-sub-title
+    font-size: 14px
+    font-weight: 400
+    line-height: 20px
+    margin: 8px 0 40px
+    color: #9e9ea1
+
+    a
+      text-decoration: underline
+      text-underline-position: under
+      color: #9e9ea1
+      -webkit-appearance: none
+      -moz-appearance: none
+      appearance: none
+      border: 0
+      outline: 0
+      cursor: pointer
+      margin: 0
+      padding: 0
+      margin-left: 4px
+
+  &-success-title
+    font-size: 24px
+    font-weight: 600
+    line-height: 32px
+    margin: 0
+
+  &-success-sub-title
+    font-size: 16px
+    font-weight: 600
+    line-height: 20px
+    margin: 8px 0 24px
+    color: white
+
+  &-label
+    font-size: 14px
+    font-weight: 400
+    line-height: 24px
+    margin-left: 0px !important
+    text-align: left
+    color: #9e9ea1
+
+  &-code-wrap
+    display: grid
+    max-width: 100%
+    grid-gap: 8px
+    grid-template-columns: repeat(6, 1fr)
+
+  &-code-input
+    aspect-ratio: 53 / 65 // 너비:높이 비율 설정
+    border-radius: 6px
+    width: 100% //* 그리드 간격을 고려하여 요소의 너비를 설정
+    background-color: #1f2225
+
+    font-size: 26px
+    font-weight: 400
+    line-height: 20px
+    text-align: center
+    color: white
+    border: 1px solid #474547
+    &[data-error="true"]
+      border: 2px solid #F2B8B5
+    &::-webkit-outer-spin-button, &::-webkit-inner-spin-button
+      -webkit-appearance: none
+      margin: 0
+
+    input[type="number"]
+      -moz-appearance: textfield
+
+  &-server-error-message
+    color: #f2b8b5
+    font-weight: 400
+    font-size: 12px
+    text-align: center
+    margin-top: 16px
+
+  &-re-request
+    font-size: 14px
+    font-weight: 400
+    margin: 18px auto 0
+    line-height: 20px
+    p
+      color: #9e9ea1
+      margin-right: 4px
+      float: left
+    button
+      text-decoration: underline
+      text-underline-position: under
+      color: white
+      -webkit-appearance: none
+      -moz-appearance: none
+      appearance: none
+      background-color: transparent
+      border: 0
+      outline: 0
+      cursor: pointer
+      margin: 0
+      padding: 0
+
+  &-btn
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    margin-top: 20px
+    text-transform: uppercase
+    padding: 6px 16px
+    border-radius: 30px
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out
+    border: none
+    width: 100%
+    height: 58px
+
+    font-size: 18px
+    font-weight: 500
+    line-height: 20px
+
+    color: black
+    background-color: white
+
+    &:disabled
+      cursor: default
+      background-color: rgba(255, 255, 255, 0.7)
+      color: rgba(0, 0, 0, 0.38)
+      box-shadow: none
+
+  &-success-btn
+    height: 58px
+    width: 211px
+    padding: 0 56px
+    border-radius: 75px
+    background-color: white
+    color: black
+    font-size: 18px
+    font-weight: 500
+    line-height: 20px
+
+  &-play-btn
+    max-width: 476px
+    width: calc(100% - 48px)
+    height: 97px
+    border-radius: 18px
+    background: #141414
+    text-align: left
+    padding: 24px 20px 29px
+    position: fixed
+    bottom: 40px
+    left: 50%
+    transform: translateX(-50%)
+    img
+      position: absolute
+      top: 37px
+      right: 14px
+
+  &-play-title
+    font-size: 14px
+    font-weight: 400
+    line-height: 20px
+    letter-spacing: 0.10000000149011612px
+    color: #9e9ea1
+
+  &-styled-box
+    display: flex
+    flex-direction: column
+
+  &-content
+    color: #ffffff70
+    font-size: 12px
+    font-weight: 400
+    line-height: normal
+    text-align: center
+
+    a:not(selector)
+      color: #ffffff70
+      text-decoration: none
+      outline: none
+
+  &-form-group
+    display: flex
+    flex-direction: column
+    gap: 8px
+
+  &-check-box-label
+    display: flex
+    align-items: center
+    gap: 8px
+    cursor: pointer
+    font-size: 14px
+    font-weight: 400
+    line-height: 24px
+    margin-left: 20px
+    text-align: left
+    color: #9e9ea1
+
+  &-check-box-input
+    appearance: none
+    width: 14px
+    height: 14px
+    border: 1px solid #707070
+    border-radius: 2px
+    display: flex
+    gap: 10px
+    align-items: center
+    justify-content: center
+    cursor: pointer
+    &:checked
+      border: none
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E")

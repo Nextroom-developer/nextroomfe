@@ -1,4 +1,4 @@
-import { ThemeInfoTextFieldType } from "../../../(shared)/(ThemeTextField)/TextFieldType";
+import { ThemeInfoTextFieldType } from "../../../(shared)/components/ThemeTextField/TextFieldType";
 
 export const CREATE_THEME_TITLE_TEXT = "테마 정보를 입력해 주세요";
 

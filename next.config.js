@@ -2,9 +2,6 @@
 const nextConfig = {
   swcMinify: true,
   reactStrictMode: false,
-  compiler: {
-    styledComponents: true,
-  },
   async rewrites() {
     return [
       {

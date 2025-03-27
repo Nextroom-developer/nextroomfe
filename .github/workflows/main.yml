@@ -14,11 +14,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: pnpm install
 
       - name: Checking
-        run: npm run lint && npm run lint:type && npm run lint:eslint && npm run lint:prettier
+        run: pnpm lint && pnpm lint:type && pnpm lint:eslint && pnpm lint:prettier
 
   sync:
     name: Sync forked repo
