@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import { useSignUpState } from "@/(shared)/atoms/signup.atom";
 import useAnalytics from "@/(shared)/hooks/useAnalytics";
-import { usePostSignUp } from "@/(shared)/mutations/postSignUp";
+import { usePostSignUp } from "@/signup/apis/postSignUp";
 
 import { StoreInfoValueType, TextFieldPropsType } from "../types/SignUp";
 

@@ -3,8 +3,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import { usePutTheme } from "@/(shared)/mutations/putTheme";
-import { useDeleteTheme } from "@/(shared)/mutations/deleteTheme";
+import { usePutTheme } from "@/admin/apis/theme/putTheme";
+import { useDeleteTheme } from "@/admin/apis/theme/deleteTheme";
 import { useSelectedTheme } from "@/(shared)/atoms/selectedTheme.atom";
 import {
   useCreateThemeReset,

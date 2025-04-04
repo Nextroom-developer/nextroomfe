@@ -5,7 +5,7 @@ import "../dialog.sass";
 import useClickOutside from "@/(shared)/hooks/useClickOutside";
 import { xProps } from "@/admin/(consts)/sidebar";
 import useModal from "@/(shared)/hooks/useModal";
-import { useDeleteTimerImage } from "@/(shared)/mutations/deleteTimerImage";
+import { useDeleteTimerImage } from "@/admin/apis/timerImage/deleteTimerImage";
 import { useSelectedTheme } from "@/(shared)/atoms/selectedTheme.atom";
 
 import ModalPortal from "../ModalPortal";

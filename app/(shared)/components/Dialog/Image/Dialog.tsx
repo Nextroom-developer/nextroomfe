@@ -5,7 +5,7 @@ import "../dialog.sass";
 import { useSelectedTheme } from "@/(shared)/atoms/selectedTheme.atom";
 import useClickOutside from "@/(shared)/hooks/useClickOutside";
 import useModal from "@/(shared)/hooks/useModal";
-import useTimerImageUpload from "@/(shared)/mutations/useTimerImageUpload";
+import useTimerImageUpload from "@/admin/apis/timerImage/postTimerImage";
 import { useTimerImageValue } from "@/(shared)/atoms/timerImage.atom";
 import { XImageProps } from "@/admin/(components)/ThemeDrawer/consts/themeDrawerProps";
 

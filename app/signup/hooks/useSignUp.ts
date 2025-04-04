@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { usePostSendMessage } from "@/(shared)/mutations/postSendMessage";
+import { usePostSendMessage } from "@/signup/apis/postSendMessage";
 import useCheckSignIn from "@/(shared)/auth/hooks/useCheckSignIn";
 import useAnalytics from "@/(shared)/hooks/useAnalytics";
 

@@ -4,31 +4,38 @@ import { AxiosError, AxiosResponse } from "axios";
 import { useToastWrite } from "@/(shared)/atoms/toast.atom";
 import { apiClient } from "@/(shared)/lib/reactQueryProvider";
 import { MutationConfigOptions } from "@/(shared)/types";
-import { QUERY_KEY } from "@/(shared)/queries/getHintList";
+import { QUERY_KEY } from "@/admin/apis/theme/getThemeList";
 
+interface Request {
+  id: number;
+}
 type Response = void;
 
-const MUTATION_KEY = ["DeleteTimerImage"];
-const deleteTimerImage = async (themeId: number) => {
-  const URL_PATH = `/v1/theme/timer/${themeId}`;
-  const res = await apiClient.delete<number, AxiosResponse<Response>>(URL_PATH);
+const URL_PATH = `/v1/theme`;
+const MUTATION_KEY = [URL_PATH];
+
+export const deleteTheme = async (req: Request) => {
+  const res = await apiClient.delete<Request, AxiosResponse<Response>>(
+    URL_PATH,
+    { data: req }
+  );
 
   return res.data;
 };
 
-export const useDeleteTimerImage = (configOptions?: MutationConfigOptions) => {
+export const useDeleteTheme = (configOptions?: MutationConfigOptions) => {
   const queryClient = useQueryClient();
   const setToast = useToastWrite();
 
-  const info = useMutation<Response, void, number, void>({
+  const info = useMutation<Response, void, Request, void>({
     mutationKey: MUTATION_KEY,
-    mutationFn: (req) => deleteTimerImage(req),
+    mutationFn: (req) => deleteTheme(req),
     ...configOptions?.options,
     onSuccess: () => {
       queryClient.invalidateQueries(QUERY_KEY);
       setToast({
         isOpen: true,
-        title: "타이머 배경을 삭제했습니다.",
+        title: "테마를 삭제했습니다.",
         text: "",
       });
       // console.log("성공 시 실행")

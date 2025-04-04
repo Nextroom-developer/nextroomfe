@@ -6,7 +6,7 @@ import "../dialog.sass";
 import useClickOutside from "@/(shared)/hooks/useClickOutside";
 import { xProps } from "@/admin/(consts)/sidebar";
 import useModal from "@/(shared)/hooks/useModal";
-import { useDeleteHint } from "@/(shared)/mutations/deleteHint";
+import { useDeleteHint } from "@/admin/apis/hint/deleteHint";
 import { useSelectedHint } from "@/(shared)/atoms/selectedHint.atom";
 import { useDrawerState } from "@/(shared)/atoms/drawer.atom";
 

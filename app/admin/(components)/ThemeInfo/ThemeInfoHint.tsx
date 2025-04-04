@@ -14,7 +14,7 @@ import { useDrawerState } from "@/(shared)/atoms/drawer.atom";
 import useModal from "@/(shared)/hooks/useModal";
 
 import HintDialog from "../../../(shared)/components/Dialog/Hint/Dialog";
-import { useGetHintList } from "../../../(shared)/queries/getHintList";
+import { useGetHintList } from "../../apis/hint/getHintList";
 
 interface ThemeDrawerProps {
   handleHintCreate: (type: string) => void;

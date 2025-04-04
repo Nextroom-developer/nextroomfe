@@ -4,7 +4,7 @@ import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { apiClient } from "@/(shared)/lib/reactQueryProvider";
 import { ApiResponse, QueryConfigOptions } from "@/(shared)/types";
 
-import { useToastWrite } from "../atoms/toast.atom";
+import { useToastWrite } from "../../../(shared)/atoms/toast.atom";
 
 type Request = { themeId: number };
 export type Hints = {

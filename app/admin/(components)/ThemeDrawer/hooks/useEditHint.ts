@@ -12,8 +12,8 @@ import useClickOutside from "@/(shared)/hooks/useClickOutside";
 import useModal from "@/(shared)/hooks/useModal";
 import extractFilename from "@/admin/(components)/ThemeDrawer/helpers/filenameHelpers";
 import { useDrawerState } from "@/(shared)/atoms/drawer.atom";
-import { getHintList } from "@/(shared)/queries/getHintList";
-import useHintUpload from "@/(shared)/queries/getPreSignedUrl";
+import { getHintList } from "@/admin/apis/hint/getHintList";
+import useHintUpload from "@/admin/apis/hint/postHint";
 import HintDialog from "@/(shared)/components/Dialog/Hint/Dialog";
 
 import { DrawerType } from "../types/themeDrawerTypes";

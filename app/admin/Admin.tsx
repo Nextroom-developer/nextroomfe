@@ -7,8 +7,7 @@ import { setSelectedThemeId } from "@/(shared)/auth/storageUtil";
 import { useSelectedTheme } from "@/(shared)/atoms/selectedTheme.atom";
 import { useToastInfo } from "@/(shared)/atoms/toast.atom";
 
-import { useGetThemeList } from "../(shared)/queries/getThemeList";
-
+import { useGetThemeList } from "./apis/theme/getThemeList";
 import AdminView from "./AdminView";
 
 type Theme = {

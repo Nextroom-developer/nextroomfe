@@ -10,7 +10,7 @@ import {
   setSelectedThemeId,
 } from "@/(shared)/auth/storageUtil";
 
-import { useToastWrite } from "../atoms/toast.atom";
+import { useToastWrite } from "../../../(shared)/atoms/toast.atom";
 
 type Request = void;
 export type Theme = {

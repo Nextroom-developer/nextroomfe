@@ -4,7 +4,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiClient } from "@/(shared)/lib/reactQueryProvider";
 import { useToastInfo } from "@/(shared)/atoms/toast.atom";
 import extractFilename from "@/admin/(components)/ThemeDrawer/helpers/filenameHelpers";
-import { QUERY_KEY } from "@/(shared)/queries/getThemeList";
+import { QUERY_KEY } from "@/admin/apis/theme/getThemeList";
 
 interface PreSignedUrlRequest {
   themeId: number;

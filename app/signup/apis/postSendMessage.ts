@@ -1,29 +1,26 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AxiosError, AxiosResponse } from "axios";
 
-import { useSignUpState } from "@/(shared)/atoms/signup.atom";
+import { useSignUpWrite } from "@/(shared)/atoms/signup.atom";
+import { useSnackBarWrite } from "@/(shared)/atoms/snackBar.atom";
 import { apiClient } from "@/(shared)/lib/reactQueryProvider";
 import { ApiError, ApiResponse, MutationConfigOptions } from "@/(shared)/types";
 
-import { QUERY_KEY } from "../../(shared)/queries/getHintList";
+import { QUERY_KEY } from "../../admin/apis/hint/getHintList";
 
 interface Request {
   email: string;
-  password: string;
-  name: string;
-  isNotOpened: boolean;
-  type: number;
 }
-interface SignUpResponse {
+interface SendMessageResponse {
   code: number;
   message: string;
 }
-type Response = ApiResponse<SignUpResponse>;
+type Response = ApiResponse<SendMessageResponse>;
 
-const URL_PATH = `/v1/auth/signup`;
+const URL_PATH = `/v1/email/verification-requests`;
 const MUTATION_KEY = [URL_PATH];
 
-export const postSignUp = async (req: Request) => {
+export const postSendMessage = async (req: Request) => {
   const res = await apiClient.post<Request, AxiosResponse<Response>>(
     URL_PATH,
     req
@@ -32,18 +29,22 @@ export const postSignUp = async (req: Request) => {
   return res.data;
 };
 
-export const usePostSignUp = (configOptions?: MutationConfigOptions) => {
+export const usePostSendMessage = (configOptions?: MutationConfigOptions) => {
   const queryClient = useQueryClient();
-  const [signUpState, setSignUpState] = useSignUpState();
+  const setSignUpState = useSignUpWrite();
+  const setSnackBar = useSnackBarWrite();
 
   const info = useMutation<Response, AxiosError<ApiError>, Request, void>({
     mutationKey: MUTATION_KEY,
-    mutationFn: (req) => postSignUp(req),
+    mutationFn: (req) => postSendMessage(req),
     ...configOptions?.options,
-    onSuccess: () => {
+    onSuccess: (res, req) => {
+      setSnackBar({
+        isOpen: true,
+        message: `인증번호를 발송했습니다.`,
+      });
       queryClient.invalidateQueries(QUERY_KEY);
-      setSignUpState({ ...signUpState, level: 5 });
-
+      setSignUpState({ level: 2, email: req.email, password: "" });
       // console.log("성공 시 실행")
     },
     onSettled: () => {

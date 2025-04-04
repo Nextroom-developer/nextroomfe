@@ -1,26 +1,29 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AxiosError, AxiosResponse } from "axios";
 
-import { useSignUpWrite } from "@/(shared)/atoms/signup.atom";
+import { useSignUpState } from "@/(shared)/atoms/signup.atom";
 import { apiClient } from "@/(shared)/lib/reactQueryProvider";
 import { ApiError, ApiResponse, MutationConfigOptions } from "@/(shared)/types";
 
-import { QUERY_KEY } from "../../(shared)/queries/getHintList";
+import { QUERY_KEY } from "../../admin/apis/hint/getHintList";
 
 interface Request {
   email: string;
-  code: string;
+  password: string;
+  name: string;
+  isNotOpened: boolean;
+  type: number;
 }
-interface VerificationResponse {
+interface SignUpResponse {
   code: number;
   message: string;
 }
-type Response = ApiResponse<VerificationResponse>;
+type Response = ApiResponse<SignUpResponse>;
 
-const URL_PATH = `/v1/email/verifications`;
+const URL_PATH = `/v1/auth/signup`;
 const MUTATION_KEY = [URL_PATH];
 
-export const postVerification = async (req: Request) => {
+export const postSignUp = async (req: Request) => {
   const res = await apiClient.post<Request, AxiosResponse<Response>>(
     URL_PATH,
     req
@@ -29,17 +32,17 @@ export const postVerification = async (req: Request) => {
   return res.data;
 };
 
-export const usePostVerification = (configOptions?: MutationConfigOptions) => {
+export const usePostSignUp = (configOptions?: MutationConfigOptions) => {
   const queryClient = useQueryClient();
-  const setSignUpState = useSignUpWrite();
+  const [signUpState, setSignUpState] = useSignUpState();
 
   const info = useMutation<Response, AxiosError<ApiError>, Request, void>({
     mutationKey: MUTATION_KEY,
-    mutationFn: (req) => postVerification(req),
+    mutationFn: (req) => postSignUp(req),
     ...configOptions?.options,
-    onSuccess: (res, req) => {
+    onSuccess: () => {
       queryClient.invalidateQueries(QUERY_KEY);
-      setSignUpState({ level: 3, email: req.email, password: "" });
+      setSignUpState({ ...signUpState, level: 5 });
 
       // console.log("성공 시 실행")
     },

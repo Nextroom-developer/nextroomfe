@@ -2,25 +2,25 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AxiosError, AxiosResponse } from "axios";
 
 import { useSignUpWrite } from "@/(shared)/atoms/signup.atom";
-import { useSnackBarWrite } from "@/(shared)/atoms/snackBar.atom";
 import { apiClient } from "@/(shared)/lib/reactQueryProvider";
 import { ApiError, ApiResponse, MutationConfigOptions } from "@/(shared)/types";
 
-import { QUERY_KEY } from "../../(shared)/queries/getHintList";
+import { QUERY_KEY } from "../../admin/apis/hint/getHintList";
 
 interface Request {
   email: string;
+  code: string;
 }
-interface SendMessageResponse {
+interface VerificationResponse {
   code: number;
   message: string;
 }
-type Response = ApiResponse<SendMessageResponse>;
+type Response = ApiResponse<VerificationResponse>;
 
-const URL_PATH = `/v1/email/verification-requests`;
+const URL_PATH = `/v1/email/verifications`;
 const MUTATION_KEY = [URL_PATH];
 
-export const postSendMessage = async (req: Request) => {
+export const postVerification = async (req: Request) => {
   const res = await apiClient.post<Request, AxiosResponse<Response>>(
     URL_PATH,
     req
@@ -29,22 +29,18 @@ export const postSendMessage = async (req: Request) => {
   return res.data;
 };
 
-export const usePostSendMessage = (configOptions?: MutationConfigOptions) => {
+export const usePostVerification = (configOptions?: MutationConfigOptions) => {
   const queryClient = useQueryClient();
   const setSignUpState = useSignUpWrite();
-  const setSnackBar = useSnackBarWrite();
 
   const info = useMutation<Response, AxiosError<ApiError>, Request, void>({
     mutationKey: MUTATION_KEY,
-    mutationFn: (req) => postSendMessage(req),
+    mutationFn: (req) => postVerification(req),
     ...configOptions?.options,
     onSuccess: (res, req) => {
-      setSnackBar({
-        isOpen: true,
-        message: `인증번호를 발송했습니다.`,
-      });
       queryClient.invalidateQueries(QUERY_KEY);
-      setSignUpState({ level: 2, email: req.email, password: "" });
+      setSignUpState({ level: 3, email: req.email, password: "" });
+
       // console.log("성공 시 실행")
     },
     onSettled: () => {
