@@ -18,7 +18,6 @@ const useAuth = () => {
     setIsLoggedIn(false);
   };
   setAsPathState(pathName);
-  // document.cookie = `pathName =${pathName}`;
 
   useChannelTalk();
 

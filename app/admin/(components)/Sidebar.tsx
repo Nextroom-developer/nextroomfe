@@ -20,7 +20,7 @@ import {
 import { useSelectedThemeReset } from "@/(shared)/atoms/selectedTheme.atom";
 import { useDrawerState } from "@/(shared)/atoms/drawer.atom";
 import useModal from "@/(shared)/hooks/useModal";
-import HintDialog from "@/(shared)/components/Dialog-new/Hint-Dialog-new/Dialog";
+import HintDialog from "@/(shared)/components/Dialog/Hint/Dialog";
 import { QUERY_KEY } from "@/(shared)/queries/getThemeList";
 
 interface Theme {

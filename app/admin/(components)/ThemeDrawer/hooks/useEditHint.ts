@@ -14,7 +14,7 @@ import extractFilename from "@/admin/(components)/ThemeDrawer/helpers/filenameHe
 import { useDrawerState } from "@/(shared)/atoms/drawer.atom";
 import { getHintList } from "@/(shared)/queries/getHintList";
 import useHintUpload from "@/(shared)/queries/getPreSignedUrl";
-import HintDialog from "@/(shared)/components/Dialog-new/Hint-Dialog-new/Dialog";
+import HintDialog from "@/(shared)/components/Dialog/Hint/Dialog";
 
 import { DrawerType } from "../types/themeDrawerTypes";
 

@@ -1,4 +1,3 @@
-// modals.atom.ts
 import {
   atom,
   useRecoilState,

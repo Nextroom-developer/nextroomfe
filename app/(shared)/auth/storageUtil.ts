@@ -15,7 +15,6 @@ interface LoginInfo {
   refreshToken: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const setLocalStorage = (key: string, value: any) => {
   if (typeof window !== "undefined") {
     const storage = window.localStorage;
