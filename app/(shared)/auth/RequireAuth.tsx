@@ -11,7 +11,7 @@ interface RequireAuthProps {
   children: ReactNode;
 }
 function RequireAuth({ children }: RequireAuthProps) {
-  const [isLoggedIn, setIsLoggedIn] = useIsLoggedIn();
+  const [isLoggedIn] = useIsLoggedIn();
 
   const router = useRouter();
   const pathname = usePathname();

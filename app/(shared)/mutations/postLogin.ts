@@ -59,10 +59,13 @@ export const usePostLogin = (configOptions?: MutationConfigOptions) => {
         queryClient.invalidateQueries({ queryKey: ["/v1/theme"] });
       }
     },
-    onError: (error) => {
+    onError: (error: unknown) => {
       setSnackBar({
         isOpen: true,
-        message: `${(error as any)?.response?.data?.message || error}`,
+        message: `${
+          (error as AxiosError<{ message?: string }>)?.response?.data
+            ?.message || error
+        }`,
       });
     },
   });

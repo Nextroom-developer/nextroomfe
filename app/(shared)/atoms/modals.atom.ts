@@ -5,6 +5,7 @@ import {
   useSetRecoilState,
 } from "recoil";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 interface ModalComponentProps<P = any> {
   Component: React.FC<P>;
   props?: P;

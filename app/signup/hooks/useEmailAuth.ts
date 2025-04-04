@@ -49,11 +49,7 @@ const useEmailAuth = () => {
     };
   }, []);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<EmailAuthValueType>();
+  const { handleSubmit } = useForm<EmailAuthValueType>();
 
   useEffect(() => {
     logEvent("screen_view", {

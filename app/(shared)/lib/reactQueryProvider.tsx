@@ -16,11 +16,16 @@ export const apiClient = axios.create({
   withCredentials: true,
 });
 
+interface FailedRequest {
+  resolve: (token: string) => void;
+  reject: (error: unknown) => void;
+}
+
 let isRefreshing = false;
-let failedQueue: any[] = [];
+let failedQueue: FailedRequest[] = [];
 
 // 대기 중인 요청 처리
-const processQueue = (error: any, token: string | null = null) => {
+const processQueue = (error: unknown, token: string | null = null) => {
   failedQueue.forEach((prom) => {
     if (token) {
       prom.resolve(token);
@@ -111,7 +116,7 @@ apiClient.interceptors.response.use(
             originalRequest.headers.Authorization = `Bearer ${token}`;
             resolve(apiClient(originalRequest));
           },
-          reject: (err: any) => reject(err),
+          reject: (err: unknown) => reject(err),
         });
       });
     }

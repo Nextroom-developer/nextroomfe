@@ -3,13 +3,6 @@ import Image from "next/image";
 import { notiImageProps } from "@/admin/(consts)/sidebar";
 
 export default function DialogBody() {
-  const previewProps = {
-    src: "/images/svg/preview.svg",
-    alt: "NEXT ROOM",
-    width: 158,
-    height: 340,
-  };
-
   return (
     <div className="new-feature-modal__noti-content">
       <Image {...notiImageProps} />

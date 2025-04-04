@@ -25,7 +25,7 @@ const ThemeInfoHint: React.FC<ThemeDrawerProps> = ({ handleHintCreate }) => {
 
   const { data: hints = [] } = useGetHintList({ themeId });
   const [selectedHint, setSelectedHint] = useSelectedHint();
-  const [_, setCreateHint] = useCreateHint();
+  const [, setCreateHint] = useCreateHint();
   const resetSelectedHint = useSelectedHintReset();
   const resetCreateHint = useCreateHintReset();
   const [drawer, setDrawer] = useDrawerState();

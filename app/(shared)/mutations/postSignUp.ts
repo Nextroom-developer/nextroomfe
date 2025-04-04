@@ -51,11 +51,6 @@ export const usePostSignUp = (configOptions?: MutationConfigOptions) => {
     },
     onError: (error) => {
       console.error(error);
-
-      // setSnackBar({
-      //   isOpen: true,
-      //   message: `${(error as any)?.response?.data?.message || error}`,
-      // });
     },
   });
 

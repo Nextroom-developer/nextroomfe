@@ -1,5 +1,10 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { AxiosRequestConfig, AxiosResponse, AxiosResponseHeaders } from "axios";
+import {
+  AxiosError,
+  AxiosRequestConfig,
+  AxiosResponse,
+  AxiosResponseHeaders,
+} from "axios";
 
 import { useToastWrite } from "@/(shared)/atoms/toast.atom";
 import { apiClient } from "@/(shared)/lib/reactQueryProvider";
@@ -11,6 +16,7 @@ interface Request {
   timeLimit: number;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface PostThemeResponseType<T = any, D = any> {
   id: number;
   data: T;
@@ -48,7 +54,7 @@ export const usePostTheme = (configOptions?: MutationConfigOptions) => {
     mutationKey: MUTATION_KEY,
     mutationFn: (req) => postTheme(req),
     ...configOptions?.options,
-    onSuccess: ({ data }) => {
+    onSuccess: () => {
       queryClient.invalidateQueries(QUERY_KEY);
       setToast({
         isOpen: true,
@@ -59,10 +65,13 @@ export const usePostTheme = (configOptions?: MutationConfigOptions) => {
     onSettled: () => {
       //   console.log("항상 실행");
     },
-    onError: (error) => {
+    onError: (error: unknown) => {
       setToast({
         isOpen: true,
-        title: `${(error as any)?.response?.data?.message || error}`,
+        title: `${
+          (error as AxiosError<{ message?: string }>)?.response?.data
+            ?.message || error
+        }`,
         text: "",
       });
     },

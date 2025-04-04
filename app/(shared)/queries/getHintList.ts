@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 
-import { useSnackBarWrite } from "@/(shared)/atoms/snackBar.atom";
 import { apiClient } from "@/(shared)/lib/reactQueryProvider";
 import { ApiResponse, QueryConfigOptions } from "@/(shared)/types";
+
+import { useToastWrite } from "../atoms/toast.atom";
 
 type Request = { themeId: number };
 export type Hints = {
@@ -43,7 +44,7 @@ export const useGetHintList = (
   req: Request,
   configOptions?: QueryConfigOptions
 ) => {
-  const setSnackBar = useSnackBarWrite();
+  const setToast = useToastWrite();
 
   const info = useQuery<Response, Request, Hints>({
     queryKey: [...QUERY_KEY, req],
@@ -51,10 +52,14 @@ export const useGetHintList = (
     select: (res) => res.data,
     enabled: req.themeId > 0,
     ...configOptions?.options,
-    onError: (error) => {
-      setSnackBar({
+    onError: (error: unknown) => {
+      setToast({
         isOpen: true,
-        message: `${(error as any)?.response?.data?.message || error}`,
+        title: `${
+          (error as AxiosError<{ message?: string }>)?.response?.data
+            ?.message || error
+        }`,
+        text: "",
       });
     },
   });

@@ -1,7 +1,7 @@
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { useQuery } from "@tanstack/react-query";
 
-import { useSnackBarWrite } from "@/(shared)/atoms/snackBar.atom";
+import { useSelectedThemeWrite } from "@/(shared)/atoms/selectedTheme.atom";
 import { apiClient } from "@/(shared)/lib/reactQueryProvider";
 import { ApiResponse, QueryConfigOptions } from "@/(shared)/types";
 import { useIsLoggedInValue } from "@/(shared)/atoms/account.atom";
@@ -9,7 +9,8 @@ import {
   getSelectedThemeId,
   setSelectedThemeId,
 } from "@/(shared)/auth/storageUtil";
-import { useSelectedThemeWrite } from "@/(shared)/atoms/selectedTheme.atom";
+
+import { useToastWrite } from "../atoms/toast.atom";
 
 type Request = void;
 export type Theme = {
@@ -38,7 +39,7 @@ export const getThemeList = async (config?: AxiosRequestConfig) => {
 };
 
 export const useGetThemeList = (configOptions?: QueryConfigOptions) => {
-  const setSnackBar = useSnackBarWrite();
+  const setToast = useToastWrite();
   const isLoggedIn = useIsLoggedInValue();
   const setSelectedTheme = useSelectedThemeWrite();
   const info = useQuery<Response, AxiosError, Themes>({
@@ -62,10 +63,14 @@ export const useGetThemeList = (configOptions?: QueryConfigOptions) => {
       } else setSelectedThemeId(0);
     },
 
-    onError: (error: AxiosError) => {
-      setSnackBar({
+    onError: (error: unknown) => {
+      setToast({
         isOpen: true,
-        message: `${(error as any)?.response?.data?.message || error}`,
+        title: `${
+          (error as AxiosError<{ message?: string }>)?.response?.data
+            ?.message || error
+        }`,
+        text: "",
       });
     },
   });

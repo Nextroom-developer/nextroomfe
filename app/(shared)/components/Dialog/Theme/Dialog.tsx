@@ -5,10 +5,7 @@ import { useRouter } from "next/navigation";
 
 import { usePutTheme } from "@/(shared)/mutations/putTheme";
 import { useDeleteTheme } from "@/(shared)/mutations/deleteTheme";
-import {
-  useSelectedTheme,
-  useSelectedThemeReset,
-} from "@/(shared)/atoms/selectedTheme.atom";
+import { useSelectedTheme } from "@/(shared)/atoms/selectedTheme.atom";
 import {
   useCreateThemeReset,
   useCreateThemeValue,
@@ -49,7 +46,7 @@ const Dialog: FunctionComponent<DialogProps> = (props) => {
   const [selectedTheme, setSelectedTheme] = useSelectedTheme();
   const createTheme = useCreateThemeValue();
   const resetCreateTheme = useCreateThemeReset();
-  const resetSelectedTheme = useSelectedThemeReset();
+
   const isDisabled =
     type === "put"
       ? (String(createTheme.title) === String(selectedTheme.title) &&

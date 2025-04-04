@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 
 import { useToastWrite } from "@/(shared)/atoms/toast.atom";
 import { apiClient } from "@/(shared)/lib/reactQueryProvider";
@@ -43,10 +43,13 @@ export const useDeleteHint = (configOptions?: MutationConfigOptions) => {
     onSettled: () => {
       //   console.log("항상 실행");
     },
-    onError: (error) => {
+    onError: (error: unknown) => {
       setToast({
         isOpen: true,
-        title: `${(error as any)?.response?.data?.message || error}`,
+        title: `${
+          (error as AxiosError<{ message?: string }>)?.response?.data
+            ?.message || error
+        }`,
         text: "",
       });
     },
