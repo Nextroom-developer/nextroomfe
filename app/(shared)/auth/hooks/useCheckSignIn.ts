@@ -4,7 +4,7 @@ import { apiClient } from "@/(shared)/lib/reactQueryProvider";
 import { getLoginInfo } from "@/(shared)/auth/storageUtil";
 import { useIsLoggedIn } from "@/(shared)/atoms/account.atom";
 
-import { getSubscriptionPlan } from "../../queries/getSubscriptionPlan";
+import { getSubscriptionPlan } from "../../../admin/apis/getSubscriptionPlan";
 
 const useCheckSignIn = () => {
   const { accessToken } = getLoginInfo();

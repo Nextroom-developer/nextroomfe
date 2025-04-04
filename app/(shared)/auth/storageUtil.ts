@@ -15,17 +15,16 @@ interface LoginInfo {
   refreshToken: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const setLocalStorage = (key: string, value: any) => {
+export const setLocalStorage = (key: string, value: string | number) => {
   if (typeof window !== "undefined") {
     const storage = window.localStorage;
     if (!storage) {
       return;
     }
+    const stringifiedValue = JSON.stringify(value);
     switch (typeof value) {
       case `string`: {
         try {
-          const stringifiedValue = JSON.stringify(value);
           storage.setItem(key, stringifiedValue);
         } catch (e) {
           console.error(`failed to stringify`);
@@ -33,7 +32,7 @@ export const setLocalStorage = (key: string, value: any) => {
         break;
       }
       default:
-        storage.setItem(key, value);
+        storage.setItem(key, stringifiedValue);
     }
   }
 };

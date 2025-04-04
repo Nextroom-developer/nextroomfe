@@ -13,8 +13,8 @@ import {
 import { useDrawerState } from "@/(shared)/atoms/drawer.atom";
 import useModal from "@/(shared)/hooks/useModal";
 
-import HintDialog from "../../../(shared)/components/Dialog-new/Hint-Dialog-new/Dialog";
-import { useGetHintList } from "../../../(shared)/queries/getHintList";
+import HintDialog from "../../../(shared)/components/Dialog/Hint/Dialog";
+import { useGetHintList } from "../../apis/hint/getHintList";
 
 interface ThemeDrawerProps {
   handleHintCreate: (type: string) => void;
@@ -25,7 +25,7 @@ const ThemeInfoHint: React.FC<ThemeDrawerProps> = ({ handleHintCreate }) => {
 
   const { data: hints = [] } = useGetHintList({ themeId });
   const [selectedHint, setSelectedHint] = useSelectedHint();
-  const [_, setCreateHint] = useCreateHint();
+  const [, setCreateHint] = useCreateHint();
   const resetSelectedHint = useSelectedHintReset();
   const resetCreateHint = useCreateHintReset();
   const [drawer, setDrawer] = useDrawerState();

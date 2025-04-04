@@ -4,8 +4,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import { useSignUpState } from "@/(shared)/atoms/signup.atom";
 import useAnalytics from "@/(shared)/hooks/useAnalytics";
-import { usePostSendMessage } from "@/(shared)/mutations/postSendMessage";
-import { usePostVerification } from "@/(shared)/mutations/postVerification";
+import { usePostSendMessage } from "@/signup/apis/postSendMessage";
+import { usePostVerification } from "@/signup/apis/postVerification";
 
 import { CodeInputPropsType, EmailAuthValueType } from "../types/SignUp";
 
@@ -49,11 +49,7 @@ const useEmailAuth = () => {
     };
   }, []);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<EmailAuthValueType>();
+  const { handleSubmit } = useForm<EmailAuthValueType>();
 
   useEffect(() => {
     logEvent("screen_view", {

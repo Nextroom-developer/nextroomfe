@@ -7,8 +7,8 @@ import useChannelTalk from "@/(shared)/hooks/useChannelTalk";
 import { EMAIL, PASSWORD } from "@/login/consts/logIn";
 import { setCookie } from "@/(shared)/auth/cookie";
 
-import { useGetThemeList } from "../../(shared)/queries/getThemeList";
-import { usePostLogin } from "../../(shared)/mutations/postLogin";
+import { useGetThemeList } from "../../admin/apis/theme/getThemeList";
+import { usePostLogin } from "../apis/postLogin";
 import { LogInValueType } from "../types/LogIn";
 
 const useLogIn = () => {
