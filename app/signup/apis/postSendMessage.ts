@@ -45,10 +45,6 @@ export const usePostSendMessage = (configOptions?: MutationConfigOptions) => {
       });
       queryClient.invalidateQueries(QUERY_KEY);
       setSignUpState({ level: 2, email: req.email, password: "" });
-      // console.log("성공 시 실행")
-    },
-    onSettled: () => {
-      //   console.log("항상 실행");
     },
     onError: (error) => {
       console.error(error);

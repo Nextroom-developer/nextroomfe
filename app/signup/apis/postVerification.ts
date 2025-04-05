@@ -40,11 +40,6 @@ export const usePostVerification = (configOptions?: MutationConfigOptions) => {
     onSuccess: (res, req) => {
       queryClient.invalidateQueries(QUERY_KEY);
       setSignUpState({ level: 3, email: req.email, password: "" });
-
-      // console.log("성공 시 실행")
-    },
-    onSettled: () => {
-      //   console.log("항상 실행");
     },
     onError: (error) => {
       console.error(error);

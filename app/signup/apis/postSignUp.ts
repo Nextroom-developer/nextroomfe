@@ -43,11 +43,6 @@ export const usePostSignUp = (configOptions?: MutationConfigOptions) => {
     onSuccess: () => {
       queryClient.invalidateQueries(QUERY_KEY);
       setSignUpState({ ...signUpState, level: 5 });
-
-      // console.log("성공 시 실행")
-    },
-    onSettled: () => {
-      //   console.log("항상 실행");
     },
     onError: (error) => {
       console.error(error);
