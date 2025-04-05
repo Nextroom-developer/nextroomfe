@@ -38,7 +38,6 @@ const useSignUpSuccess = () => {
   }, [setSnackBarInfo, isFinished, snackInfo]);
 
   const browserPreventEvent = () => {
-    history.pushState(null, "", location.href);
     const url = isWebView ? "/" : getCookie();
     router.push(url);
   };

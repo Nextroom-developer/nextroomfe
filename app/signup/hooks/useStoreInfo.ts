@@ -79,21 +79,16 @@ const useStoreInfo = () => {
   }, [isChecked, reset, setFocus]);
 
   const browserPreventEvent = () => {
-    history.pushState(null, "", location.href);
     setSignUpState({ ...signUpState, level: 3 });
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      history.pushState(null, "", location.href);
-      window.addEventListener("popstate", browserPreventEvent);
-    }
+    history.pushState(null, "", location.href);
+    window.addEventListener("popstate", () => browserPreventEvent());
     return () => {
-      if (typeof window !== "undefined") {
-        window.removeEventListener("popstate", browserPreventEvent);
-      }
+      window.removeEventListener("popstate", () => browserPreventEvent());
     };
-  }, [browserPreventEvent]);
+  }, []);
 
   const onSubmit: SubmitHandler<StoreInfoValueType> = (data) => {
     postSignUp({
