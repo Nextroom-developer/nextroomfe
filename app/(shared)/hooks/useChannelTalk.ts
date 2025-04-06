@@ -7,7 +7,8 @@ import { isDevMode } from "@/(shared)/consts/env";
 
 const useChannelTalk = () => {
   useEffect(() => {
-    if (isDevMode) return () => null;
+    // if (isDevMode) return () => null;
+    console.warn("DevMode ChannelTalk 실행");
     const channelTalkInstance = new ChannelTalk();
 
     channelTalkInstance.loadScript();

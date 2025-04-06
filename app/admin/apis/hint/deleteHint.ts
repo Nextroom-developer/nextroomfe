@@ -38,10 +38,6 @@ export const useDeleteHint = (configOptions?: MutationConfigOptions) => {
         title: "힌트를 삭제했습니다.",
         text: "",
       });
-      // console.log("성공 시 실행")
-    },
-    onSettled: () => {
-      //   console.log("항상 실행");
     },
     onError: (error: unknown) => {
       setToast({

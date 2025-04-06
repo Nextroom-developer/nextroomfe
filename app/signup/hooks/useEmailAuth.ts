@@ -33,7 +33,6 @@ const useEmailAuth = () => {
   const second = String(Math.floor((timeLeft / 1000) % 60)).padStart(2, "0");
 
   const browserPreventEvent = () => {
-    history.pushState(null, "", location.href);
     setSignUpState({ ...signUpState, level: 1 });
   };
 

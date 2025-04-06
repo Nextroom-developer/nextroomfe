@@ -27,7 +27,6 @@ const usePassword = () => {
   const { logEvent } = useAnalytics();
 
   const browserPreventEvent = () => {
-    history.pushState(null, "", location.href);
     setSignUpState({ ...signUpState, level: 2 });
   };
 

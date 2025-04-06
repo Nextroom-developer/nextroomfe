@@ -62,9 +62,6 @@ export const usePostTheme = (configOptions?: MutationConfigOptions) => {
         text: "",
       });
     },
-    onSettled: () => {
-      //   console.log("항상 실행");
-    },
     onError: (error: unknown) => {
       setToast({
         isOpen: true,

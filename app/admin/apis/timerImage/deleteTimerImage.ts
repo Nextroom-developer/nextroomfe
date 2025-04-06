@@ -31,10 +31,6 @@ export const useDeleteTimerImage = (configOptions?: MutationConfigOptions) => {
         title: "타이머 배경을 삭제했습니다.",
         text: "",
       });
-      // console.log("성공 시 실행")
-    },
-    onSettled: () => {
-      //   console.log("항상 실행");
     },
     onError: (error: unknown) => {
       setToast({
