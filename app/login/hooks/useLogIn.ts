@@ -6,6 +6,7 @@ import useCheckSignIn from "@/(shared)/auth/hooks/useCheckSignIn";
 import useChannelTalk from "@/(shared)/hooks/useChannelTalk";
 import { EMAIL, PASSWORD } from "@/login/consts/logIn";
 import { setCookie } from "@/(shared)/auth/cookie";
+import { useSignUpState } from "@/(shared)/atoms/signup.atom";
 
 import { useGetThemeList } from "../../admin/apis/theme/getThemeList";
 import { usePostLogin } from "../apis/postLogin";
@@ -36,6 +37,8 @@ const useLogIn = () => {
 
   const { data: themeList, isLoading: isThemeLoading } = useGetThemeList();
   const router = useRouter();
+
+  const [signUpState, setSignUpState] = useSignUpState();
 
   const onSubmit: SubmitHandler<LogInValueType> = async (data) => {
     try {
@@ -103,6 +106,13 @@ const useLogIn = () => {
 
   const errorMessage = isError && error?.response?.data?.message;
 
+  const handleClickGoogle = () => {
+    setSignUpState({ ...signUpState, level: 0 });
+    const redirect_url = "localhost:3000/signup";
+    const URL = `https://accounts.google.com/o/oauth2/auth?client_id=${process.env.NEXT_PUBLIC_GOOGLE_AUTH_CLIENT_ID}&redirect_uri=${redirect_url}&response_type=code&scope=email profile`;
+    window.location.href = URL;
+  };
+
   return {
     formProps,
     emailProps,
@@ -110,6 +120,7 @@ const useLogIn = () => {
     isLoading,
     errorMessage,
     handleClickSignUpBtn,
+    handleClickGoogle,
   };
 };
 

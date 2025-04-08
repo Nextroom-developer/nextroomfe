@@ -7,10 +7,13 @@ import EmailAuthComponent from "./components/EmailAuth";
 import PasswordComponent from "./components/Password";
 import StoreInfoComponent from "./components/StoreInfo";
 import SignUpSuccessComponent from "./components/SignUpSuccess";
+import SignUpWithGoogleComponent from "./components/SignUpWithGoogle";
 
 function SignUpPage() {
   const useSignUpState = useSignUpValue();
   switch (useSignUpState.level) {
+    case 0:
+      return <SignUpWithGoogleComponent />;
     case 1:
       return <SignUpComponent />;
     case 2:
