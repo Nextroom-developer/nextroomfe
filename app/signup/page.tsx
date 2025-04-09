@@ -1,5 +1,7 @@
 "use client";
 
+import { useLayoutEffect, useState } from "react";
+
 import { useSignUpValue } from "@/(shared)/atoms/signup.atom";
 
 import SignUpComponent from "./components/SignUp";
@@ -11,9 +13,17 @@ import SignUpWithGoogleComponent from "./components/SignUpWithGoogle";
 
 function SignUpPage() {
   const useSignUpState = useSignUpValue();
+  const [query, setQuery] = useState("");
+  useLayoutEffect(() => {
+    if (window === undefined) return;
+    const data = window.location.search;
+    setQuery(data);
+  }, []);
+
+  if (query) {
+    return <SignUpWithGoogleComponent query={query} />;
+  }
   switch (useSignUpState.level) {
-    case 0:
-      return <SignUpWithGoogleComponent />;
     case 1:
       return <SignUpComponent />;
     case 2:

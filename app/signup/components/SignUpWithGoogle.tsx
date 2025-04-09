@@ -7,7 +7,8 @@ import useSignUp from "../hooks/useSignUp";
 
 import { SignUpTextField } from "./SignUpTextField";
 
-const SignUpWithGoogleComponent = () => {
+const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
+  // console.log(query);
   const { formProps, textFieldInfoProps, isValid, isLoading } = useSignUp();
 
   if (isLoading) {
