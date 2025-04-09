@@ -5,7 +5,7 @@ import { useRouter, usePathname } from "next/navigation";
 
 import { useIsLoggedIn } from "@/(shared)/atoms/account.atom";
 
-import Mobile from "../components/Mobile/Mobile";
+import Mobile from "../../components/Mobile/Mobile";
 
 interface RequireAuthProps {
   children: ReactNode;

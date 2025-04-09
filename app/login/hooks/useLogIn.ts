@@ -5,8 +5,8 @@ import { useEffect } from "react";
 import useCheckSignIn from "@/(shared)/auth/hooks/useCheckSignIn";
 import useChannelTalk from "@/(shared)/hooks/useChannelTalk";
 import { EMAIL, PASSWORD } from "@/login/consts/logIn";
-import { setCookie } from "@/(shared)/auth/cookie";
 import { useSignUpState } from "@/(shared)/atoms/signup.atom";
+import { setCookie } from "@/(shared)/auth/helpers/cookie";
 
 import { useGetThemeList } from "../../admin/apis/theme/getThemeList";
 import { usePostLogin } from "../apis/postLogin";

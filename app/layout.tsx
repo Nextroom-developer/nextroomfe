@@ -4,7 +4,7 @@ import { ReactNode, Suspense } from "react";
 import "./(shared)/styles/reset.css";
 import Recoil from "@/(shared)/lib/recoil";
 import ReactQueryProvider from "@/(shared)/lib/reactQueryProvider";
-import RequireAuth from "@/(shared)/auth/RequireAuth";
+import RequireAuth from "@/(shared)/auth/helpers/RequireAuth";
 
 import Clarity from "./(shared)/utils/Clarity";
 import Analytics from "./(shared)/utils/Analytics";
