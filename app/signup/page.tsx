@@ -21,9 +21,6 @@ function SignUpPage() {
     setQuery(data);
   }, []);
 
-  if (!query) {
-    return <Loader />;
-  }
   if (query) {
     return <SignUpWithGoogleComponent query={query} />;
   }
