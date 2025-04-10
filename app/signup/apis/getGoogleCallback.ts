@@ -5,53 +5,39 @@ import { apiClient } from "@/(shared)/lib/reactQueryProvider";
 import { ApiResponse } from "@/(shared)/types";
 
 type Request = void;
-interface GoogleRequest {
-  code: string;
-}
+
 export type data = {
-  code: number;
-  message: string;
-  data: {
-    shopName: string;
-    adminCode: string;
-    grantType: string;
-    accessToken: string;
-    accessTokenExpiresIn: string;
-    refreshToken: string;
-    shopId: string;
-    isComplete: boolean;
-  };
+  shopName: string;
+  adminCode: string;
+  grantType: string;
+  accessToken: string;
+  accessTokenExpiresIn: string;
+  refreshToken: string;
+  shopId: string;
+  isComplete: boolean;
 };
 
 type Response = ApiResponse<data>;
 
-const URL_PATH = "/api/v1/auth/login/google/callback";
-export const QUERY_KEY = [URL_PATH];
+const URL_PATH = "/v1/auth/login/google/callback";
 
-export const getGoogleCallback = async (params: GoogleRequest) => {
+const getGoogleCallback = async (code: string) => {
   const res = await apiClient.get<Request, AxiosResponse<Response>>(URL_PATH, {
-    params: params,
+    params: { code },
   });
-  // console.log(res, "getGoogleCallback");
+
   return res.data;
 };
 
-export const useGetThemeList = (code: GoogleRequest) => {
-  const info = useQuery<Response, AxiosError, data>({
-    queryKey: QUERY_KEY,
+export const useGetGoogleCallbackData = (code: string) => {
+  const { data, isLoading } = useQuery<Response, AxiosError, data>({
+    queryKey: ["google-callback", code],
     queryFn: () => getGoogleCallback(code),
     select: (res) => res.data,
-    onSuccess: (data) => {
-      if (data.code === 401) {
-        return;
-      }
-    },
     onError: (error: unknown) => {
-      console.error(error, "2323");
+      console.error(error);
     },
   });
 
-  return {
-    info,
-  };
+  return { data, isLoading };
 };

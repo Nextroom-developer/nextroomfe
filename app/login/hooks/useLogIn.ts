@@ -107,8 +107,8 @@ const useLogIn = () => {
   const errorMessage = isError && error?.response?.data?.message;
 
   const handleClickGoogle = () => {
-    const redirect_url = "http://localhost:3000/signup";
-    const URL = `https://accounts.google.com/o/oauth2/auth?client_id=${process.env.NEXT_PUBLIC_GOOGLE_AUTH_CLIENT_ID}&redirect_uri=${redirect_url}&response_type=code&scope=email profile`;
+    const redirect_uri = "http://localhost:3000/signup";
+    const URL = `https://accounts.google.com/o/oauth2/auth?client_id=${process.env.NEXT_PUBLIC_GOOGLE_AUTH_CLIENT_ID}&redirect_uri=${redirect_uri}&response_type=code&scope=email profile`;
     window.location.href = URL;
   };
 

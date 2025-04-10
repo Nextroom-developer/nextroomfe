@@ -3,6 +3,7 @@
 import { useLayoutEffect, useState } from "react";
 
 import { useSignUpValue } from "@/(shared)/atoms/signup.atom";
+import Loader from "@/(shared)/components/Loader/Loader";
 
 import SignUpComponent from "./components/SignUp";
 import EmailAuthComponent from "./components/EmailAuth";
@@ -20,6 +21,9 @@ function SignUpPage() {
     setQuery(data);
   }, []);
 
+  if (!query) {
+    return <Loader />;
+  }
   if (query) {
     return <SignUpWithGoogleComponent query={query} />;
   }
@@ -35,7 +39,7 @@ function SignUpPage() {
     case 5:
       return <SignUpSuccessComponent />;
     default:
-      return <SignUpComponent />;
+      return <Loader />;
   }
 }
 
