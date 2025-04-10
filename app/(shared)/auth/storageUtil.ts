@@ -16,24 +16,23 @@ interface LoginInfo {
 }
 
 export const setLocalStorage = (key: string, value: string | number) => {
-  if (typeof window !== "undefined") {
-    const storage = window.localStorage;
-    if (!storage) {
-      return;
-    }
-    const stringifiedValue = JSON.stringify(value);
-    switch (typeof value) {
-      case `string`: {
-        try {
-          storage.setItem(key, stringifiedValue);
-        } catch (e) {
-          console.error(`failed to stringify`);
-        }
-        break;
+  if (typeof window === "undefined") return;
+
+  const storage = window.localStorage;
+  if (!storage) return;
+
+  // const stringifiedValue = JSON.stringify(value);
+  switch (typeof value) {
+    case `string`: {
+      try {
+        storage.setItem(key, value);
+      } catch (e) {
+        console.error(`failed to stringify`);
       }
-      default:
-        storage.setItem(key, stringifiedValue);
+      break;
     }
+    default:
+      storage.setItem(key, JSON.stringify(value));
   }
 };
 

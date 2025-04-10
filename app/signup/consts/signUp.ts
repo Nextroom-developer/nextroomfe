@@ -7,6 +7,7 @@ const SIGN_UP_PASSWORD_CONFIRM = "비밀번호 확인";
 const SIGN_UP_BTN_TEXT = "인증번호 요청하기";
 const START = "넥스트룸 시작하기";
 const NEXT = "다음";
+const END = "가입완료";
 
 export {
   SIGN_UP_EMAIL,
@@ -15,6 +16,7 @@ export {
   SIGN_UP_BTN_TEXT,
   NEXT,
   START,
+  END,
   SIGN_UP_PASSWORD,
   SIGN_UP_PASSWORD_CONFIRM,
 };

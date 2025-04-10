@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import useCheckSignIn from "@/(shared)/auth/hooks/useCheckSignIn";
 import useChannelTalk from "@/(shared)/hooks/useChannelTalk";
 import { EMAIL, PASSWORD } from "@/login/consts/logIn";
-import { setCookie } from "@/(shared)/auth/cookie";
+import { setCookie } from "@/(shared)/auth/helpers/cookie";
 
 import { useGetThemeList } from "../../admin/apis/theme/getThemeList";
 import { usePostLogin } from "../apis/postLogin";
@@ -103,6 +103,12 @@ const useLogIn = () => {
 
   const errorMessage = isError && error?.response?.data?.message;
 
+  const handleClickGoogle = () => {
+    const redirect_uri = "http://localhost:3000/signup";
+    const URL = `https://accounts.google.com/o/oauth2/auth?client_id=${process.env.NEXT_PUBLIC_GOOGLE_AUTH_CLIENT_ID}&redirect_uri=${redirect_uri}&response_type=code&scope=email profile`;
+    window.location.href = URL;
+  };
+
   return {
     formProps,
     emailProps,
@@ -110,6 +116,7 @@ const useLogIn = () => {
     isLoading,
     errorMessage,
     handleClickSignUpBtn,
+    handleClickGoogle,
   };
 };
 

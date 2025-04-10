@@ -18,6 +18,7 @@ const LogInComponent = () => {
     isLoading,
     errorMessage,
     handleClickSignUpBtn,
+    handleClickGoogle,
   } = useLogIn();
 
   return (
@@ -43,6 +44,9 @@ const LogInComponent = () => {
           </button>
         </div>
       </form>
+      <div>
+        <div onClick={handleClickGoogle}>구글로그인</div>
+      </div>
     </div>
   );
 };

@@ -43,7 +43,7 @@ export const getSubscriptionPlan = async (config?: AxiosRequestConfig) => {
   const { data } = res;
   if (data?.data) {
     setStatus(data?.data?.status);
-    // console.log(data); // 구독 플랜 데이터 로그
+    // 필요시 구독 플랜 데이터 로그
   } else {
     console.error("구독 플랜이 없습니다:", data); // 플랜 데이터가 없는 경우 에러 로그
   }

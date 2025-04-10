@@ -2,7 +2,7 @@ import { JSX, useEffect, useState } from "react";
 import "@/(shared)/utils/firebase";
 import { useRouter } from "next/navigation";
 
-import { setCookie } from "@/(shared)/auth/cookie";
+import { setCookie } from "@/(shared)/auth/helpers/cookie";
 
 import useCheckSignIn from "../../../(shared)/auth/hooks/useCheckSignIn";
 import useAnalytics from "../../../(shared)/hooks/useAnalytics";
