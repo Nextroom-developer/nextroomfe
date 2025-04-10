@@ -3,6 +3,8 @@ import { AxiosError, AxiosResponse } from "axios";
 
 import { apiClient } from "@/(shared)/lib/reactQueryProvider";
 import { ApiResponse } from "@/(shared)/types";
+import { setLoginInfo } from "@/(shared)/auth/storageUtil";
+import { useIsLoggedInWrite } from "@/(shared)/atoms/account.atom";
 
 type Request = void;
 
@@ -30,10 +32,22 @@ const getGoogleCallback = async (code: string) => {
 };
 
 export const useGetGoogleCallbackData = (code: string) => {
+  const setIsLoggedIn = useIsLoggedInWrite();
   const { data, isLoading } = useQuery<Response, AxiosError, data>({
     queryKey: ["google-callback", code],
     queryFn: () => getGoogleCallback(code),
+    refetchOnMount: false,
     select: (res) => res.data,
+    onSuccess: (data) => {
+      setLoginInfo({
+        accessToken: data.accessToken.replace(/^"(.*)"$/, "$1"),
+        refreshToken: data.refreshToken,
+        shopName: data.shopName,
+        adminCode: data.adminCode,
+        accessTokenExpiresIn: Number(data.accessTokenExpiresIn),
+      });
+      setIsLoggedIn(true);
+    },
     onError: (error: unknown) => {
       console.error(error);
     },

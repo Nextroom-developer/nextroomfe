@@ -16,6 +16,7 @@ export interface PasswordValueType {
 export interface StoreInfoValueType {
   name: string;
   isNotOpened: boolean;
+  path: string;
   reason: string;
   type: number;
 }

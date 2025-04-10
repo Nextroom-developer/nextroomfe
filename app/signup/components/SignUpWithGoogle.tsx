@@ -1,9 +1,11 @@
+"use client";
+
 import Link from "next/link";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 import { END } from "@/signup/consts/signUp";
-import { setLoginInfo } from "@/(shared)/auth/storageUtil";
+import { getLoginInfo, setLoginInfo } from "@/(shared)/auth/storageUtil";
 
 import Loader from "../../(shared)/components/Loader/Loader";
 import useSignUpWithGoogle from "../hooks/useSignUpWithGoogle";
@@ -12,40 +14,39 @@ import { useGetGoogleCallbackData } from "../apis/getGoogleCallback";
 import { SignUpTextField } from "./SignUpTextField";
 
 const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
+  const loginInfo = getLoginInfo();
   const router = useRouter();
+
   const decodedCode = decodeURIComponent(query.split("&")[0].slice(6));
   const { data: callbackData, isLoading } =
     useGetGoogleCallbackData(decodedCode);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (callbackData?.isComplete === true) {
-      // console.log(callbackData.isComplete, " isComplete");
-      // login처리
-      setLoginInfo({
-        accessToken: callbackData.accessToken,
-        refreshToken: callbackData.refreshToken,
-        shopName: callbackData.shopName,
-        adminCode: callbackData.adminCode,
-        accessTokenExpiresIn: Number(callbackData.accessTokenExpiresIn),
-      });
-      router.push("/admin");
+      // router.push("/admin");
+      window.location.href = "/admin";
     } else if (callbackData?.accessToken) {
-      localStorage.setItem("accessToken", callbackData.accessToken);
+      setLoginInfo({
+        ...loginInfo,
+        accessToken: callbackData.accessToken,
+      });
     }
-  }, [callbackData]);
+  }, [callbackData?.isComplete]);
 
   const {
     formProps,
     storeNameProps,
     pathProps,
     reasonProps,
-    checkboxProps,
+    totalCheckboxProps,
+    requireCheckboxProps,
+    adsCheckboxProps,
+    isLoadingPut,
     errorMessage,
+    disabled,
   } = useSignUpWithGoogle();
 
-  const { label, checked, onChange, onClick } = checkboxProps;
-
-  if (isLoading) {
+  if (isLoading || isLoadingPut) {
     return <Loader />;
   }
 
@@ -55,29 +56,54 @@ const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
         방탈출 힌트폰 서비스 <br />
         넥스트룸 추가 정보 입력
       </p>
-      {/* <p className="signup-sub-title">
-        <Link
-          href="https://held-notebook-420.notion.site/d7bea4318d754b61999e9cb6179a2f70?pvs=4"
-          target="_blank"
-        />
-      </p> */}
       <form {...formProps}>
         <SignUpTextField {...storeNameProps} />
         <SignUpTextField {...pathProps} />
         <SignUpTextField {...reasonProps} />
-        <label className="signup-check-box-label" aria-label={label}>
+
+        <label
+          className="signup-check-box-label"
+          aria-label={"모두 동의합니다."}
+        >
           <input
             type="checkbox"
-            className="signup-check-box-input"
-            onClick={onClick}
-            onChange={onChange}
+            className="signup-check-box-input-total"
+            {...totalCheckboxProps}
           />
-          {label}
+          <span>모두 동의합니다.</span>
         </label>
-        {/* <div className="signup-form-group">
-        </div> */}
+        <label
+          className="signup-check-box-label"
+          aria-label={"서비스 이용약관"}
+        >
+          <input
+            type="checkbox"
+            className="signup-check-box-input-require"
+            {...requireCheckboxProps}
+          />
+          <span>
+            <Link
+              href="https://held-notebook-420.notion.site/d7bea4318d754b61999e9cb6179a2f70?pvs=4"
+              target="_blank"
+            >
+              서비스 이용약관
+            </Link>{" "}
+            동의 <span style={{ color: "red" }}>(필수)</span>
+          </span>
+        </label>
+        <label
+          className="signup-check-box-label"
+          aria-label={"새로운 업데이트 소식 받기"}
+        >
+          <input
+            type="checkbox"
+            className="signup-check-box-input-optional"
+            {...adsCheckboxProps}
+          />
+          <span>새로운 업데이트 소식 받기</span>
+        </label>
 
-        <button className="signup-btn" type="submit">
+        <button className="signup-btn" type="submit" disabled={disabled}>
           {END}
         </button>
         <div className="signup-server-error-message">{errorMessage}</div>
