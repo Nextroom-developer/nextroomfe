@@ -15,6 +15,7 @@ import SignUpWithGoogleComponent from "./components/SignUpWithGoogle";
 function SignUpPage() {
   const useSignUpState = useSignUpValue();
   const [query, setQuery] = useState<string | null>(null);
+
   useLayoutEffect(() => {
     if (window === undefined) return;
     const data = window.location.search;
