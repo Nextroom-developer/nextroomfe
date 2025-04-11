@@ -1,42 +1,45 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { END } from "@/signup/consts/signUp";
-import { getLoginInfo, setLoginInfo } from "@/(shared)/auth/storageUtil";
 
 import Loader from "../../(shared)/components/Loader/Loader";
 import useSignUpWithGoogle from "../hooks/useSignUpWithGoogle";
 import { useGetGoogleCallbackData } from "../apis/getGoogleCallback";
 
 import { SignUpTextField } from "./SignUpTextField";
+import { SignUpDropDownField } from "./SignUpDropDownField";
 
 const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
-  const loginInfo = getLoginInfo();
   const router = useRouter();
 
   const decodedCode = decodeURIComponent(query.split("&")[0].slice(6));
+  if (decodedCode === "=access_denied") {
+    router.push("/login");
+  }
+
   const { data: callbackData, isLoading } =
     useGetGoogleCallbackData(decodedCode);
 
+  const [isRedirecting, setIsRedirecting] = useState(false);
   useEffect(() => {
     if (callbackData?.isComplete === true) {
-      // router.push("/admin");
-      window.location.href = "/admin";
-    } else if (callbackData?.accessToken) {
-      setLoginInfo({
-        ...loginInfo,
-        accessToken: callbackData.accessToken,
-      });
+      setIsRedirecting(true);
+      setTimeout(() => {
+        router.push("/admin");
+      }, 0);
     }
-  }, [callbackData?.isComplete]);
+  }, [callbackData?.isComplete, router]);
 
   const {
     formProps,
     storeNameProps,
+    pathDropDownProps,
     pathProps,
+    reasonDropDownProps,
     reasonProps,
     totalCheckboxProps,
     requireCheckboxProps,
@@ -44,9 +47,10 @@ const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
     isLoadingPut,
     errorMessage,
     disabled,
+    isRedirectingPut,
   } = useSignUpWithGoogle();
 
-  if (isLoading || isLoadingPut) {
+  if (isLoading || isLoadingPut || isRedirecting || isRedirectingPut) {
     return <Loader />;
   }
 
@@ -58,27 +62,35 @@ const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
       </p>
       <form {...formProps}>
         <SignUpTextField {...storeNameProps} />
-        <SignUpTextField {...pathProps} />
-        <SignUpTextField {...reasonProps} />
+        <SignUpDropDownField {...pathDropDownProps} />
+        {pathDropDownProps.value === "기타" && (
+          <SignUpTextField {...pathProps} />
+        )}
+        <SignUpDropDownField {...reasonDropDownProps} />
+        {reasonDropDownProps.value === "기타" && (
+          <SignUpTextField {...reasonProps} />
+        )}
 
-        <label
-          className="signup-check-box-label"
-          aria-label={"모두 동의합니다."}
-        >
-          <input
-            type="checkbox"
-            className="signup-check-box-input-total"
-            {...totalCheckboxProps}
-          />
-          <span>모두 동의합니다.</span>
-        </label>
+        <div className="signup-check-box-total">
+          <label
+            className="signup-check-box-label"
+            aria-label={"모두 동의합니다."}
+          >
+            <input
+              type="checkbox"
+              className="signup-check-box-input"
+              {...totalCheckboxProps}
+            />
+            <span>모두 동의합니다.</span>
+          </label>
+        </div>
         <label
           className="signup-check-box-label"
           aria-label={"서비스 이용약관"}
         >
           <input
             type="checkbox"
-            className="signup-check-box-input-require"
+            className="signup-check-box-input"
             {...requireCheckboxProps}
           />
           <span>
@@ -86,9 +98,9 @@ const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
               href="https://held-notebook-420.notion.site/d7bea4318d754b61999e9cb6179a2f70?pvs=4"
               target="_blank"
             >
-              서비스 이용약관
+              <u>서비스 이용약관</u>
             </Link>{" "}
-            동의 <span style={{ color: "red" }}>(필수)</span>
+            동의 <span className="signup-google-require">(필수)</span>
           </span>
         </label>
         <label
@@ -97,7 +109,7 @@ const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
         >
           <input
             type="checkbox"
-            className="signup-check-box-input-optional"
+            className="signup-check-box-input"
             {...adsCheckboxProps}
           />
           <span>새로운 업데이트 소식 받기</span>

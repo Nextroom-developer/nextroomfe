@@ -16,7 +16,7 @@ interface LoginResponse {
   shopName: string;
   adminCode: string;
   accessToken: string;
-  accessTokenExpiresIn: number;
+  accessTokenExpiresIn: string;
   grantType: string;
   refreshToken: string;
 }

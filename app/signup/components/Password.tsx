@@ -11,8 +11,7 @@ const PasswordComponent = () => {
     <div className="signup-cont">
       <p className="signup-title">비밀번호를 입력해 주세요.</p>
       <p className="signup-sub-title">
-        대문자, 소문자, 숫자, 기호를 조합하여 8자리 이상의 안전한 비밀번호를
-        만드세요
+        숫자 또는 기호를 포함하여 8자리 이상의 안전한 비밀번호를 만드세요
       </p>
       <form {...formProps}>
         <div className="signup-grid">

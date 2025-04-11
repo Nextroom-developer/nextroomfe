@@ -11,7 +11,7 @@ interface LoginInfo {
   accessToken: string;
   shopName: string;
   adminCode: string;
-  accessTokenExpiresIn: number;
+  accessTokenExpiresIn: string;
   refreshToken: string;
 }
 
@@ -21,7 +21,6 @@ export const setLocalStorage = (key: string, value: string | number) => {
   const storage = window.localStorage;
   if (!storage) return;
 
-  // const stringifiedValue = JSON.stringify(value);
   switch (typeof value) {
     case `string`: {
       try {
@@ -71,8 +70,8 @@ export const setLoginInfo = (loginInfo: LoginInfo) => {
     sameSite: "Strict",
     expires: 7,
   });
-  setLocalStorage(SHOP_NAME, shopName?.replaceAll(`"`, ""));
-  setLocalStorage(ADMIN_CODE, adminCode?.replaceAll(`"`, ""));
+  setLocalStorage(SHOP_NAME, shopName);
+  setLocalStorage(ADMIN_CODE, adminCode);
   setLocalStorage(ACCESS_TOKEN_EXPIRES_IN, accessTokenExpiresIn);
 };
 
@@ -90,7 +89,7 @@ export const getLoginInfo = (): LoginInfo => {
     refreshToken: Cookies.get(REFRESH_TOKEN) || "",
     shopName: getLocalStorage(SHOP_NAME) || "",
     adminCode: getLocalStorage(ADMIN_CODE) || "",
-    accessTokenExpiresIn: Number(getLocalStorage(ACCESS_TOKEN_EXPIRES_IN)) || 0,
+    accessTokenExpiresIn: getLocalStorage(ACCESS_TOKEN_EXPIRES_IN) || "",
   };
 };
 export const getStatus = () => getLocalStorage(STATUS);
@@ -98,6 +97,7 @@ export const getSelectedThemeId = () => getLocalStorage(THEME_ID);
 
 export const removeAccessToken = () => {
   removeLocalStorageItem(ACCESS_TOKEN);
+  Cookies.remove(REFRESH_TOKEN);
 };
 
 export const removeThemeId = () => {

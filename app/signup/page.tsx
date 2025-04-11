@@ -14,16 +14,22 @@ import SignUpWithGoogleComponent from "./components/SignUpWithGoogle";
 
 function SignUpPage() {
   const useSignUpState = useSignUpValue();
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState<string | null>(null);
+
   useLayoutEffect(() => {
     if (window === undefined) return;
     const data = window.location.search;
     setQuery(data);
   }, []);
 
+  if (query === null) {
+    return <Loader />;
+  }
+
   if (query) {
     return <SignUpWithGoogleComponent query={query} />;
   }
+
   switch (useSignUpState.level) {
     case 1:
       return <SignUpComponent />;
