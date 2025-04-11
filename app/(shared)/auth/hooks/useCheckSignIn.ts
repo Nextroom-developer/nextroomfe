@@ -7,19 +7,21 @@ import { useIsLoggedIn } from "@/(shared)/atoms/account.atom";
 import { getSubscriptionPlan } from "../../../admin/apis/getSubscriptionPlan";
 
 const useCheckSignIn = () => {
-  const { accessToken } = getLoginInfo();
+  const { accessToken, refreshToken, shopName } = getLoginInfo();
   const [isLoggedIn, setIsLoggedIn] = useIsLoggedIn();
 
   useEffect(() => {
-    if (accessToken) {
+    if (accessToken && refreshToken && shopName) {
       apiClient.defaults.headers.common.Authorization = `Bearer ${accessToken.replace(
         /^"(.*)"$/,
         "$1"
       )}`;
       setIsLoggedIn(true);
       getSubscriptionPlan();
+    } else {
+      setIsLoggedIn(false);
     }
-  }, [accessToken, setIsLoggedIn]);
+  }, [accessToken, refreshToken, shopName, setIsLoggedIn]);
 
   return accessToken && isLoggedIn;
 };
