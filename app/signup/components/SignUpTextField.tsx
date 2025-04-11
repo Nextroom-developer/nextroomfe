@@ -18,6 +18,7 @@ export const SignUpTextField = (props: TextFieldPropsType) => {
     disabled,
     value,
     className,
+    require,
   } = props;
   const inputRef = useRef<HTMLLabelElement>(null);
   const divRef = useRef<HTMLDivElement>(null);
@@ -55,6 +56,7 @@ export const SignUpTextField = (props: TextFieldPropsType) => {
           data-error={error}
         >
           {label}
+          {require && <span style={{ color: "#F04438" }}>*</span>}
         </label>
         <input
           className="textfield-input"

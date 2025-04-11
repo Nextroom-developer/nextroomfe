@@ -38,7 +38,9 @@ const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
     formProps,
     storeNameProps,
     pathDropDownProps,
+    pathProps,
     reasonDropDownProps,
+    reasonProps,
     totalCheckboxProps,
     requireCheckboxProps,
     adsCheckboxProps,
@@ -60,7 +62,13 @@ const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
       <form {...formProps}>
         <SignUpTextField {...storeNameProps} />
         <SignUpDropDownField {...pathDropDownProps} />
+        {pathDropDownProps.value === "기타" && (
+          <SignUpTextField {...pathProps} />
+        )}
         <SignUpDropDownField {...reasonDropDownProps} />
+        {reasonDropDownProps.value === "기타" && (
+          <SignUpTextField {...reasonProps} />
+        )}
 
         <label
           className="signup-check-box-label"

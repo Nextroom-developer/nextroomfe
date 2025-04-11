@@ -1,5 +1,5 @@
 "use client";
-/* eslint-disable react-hooks/exhaustive-deps */
+
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
@@ -21,6 +21,9 @@ const useSignUpWithGoogle = () => {
   const [totalChecked, setTotalChecked] = useState(false);
   const [requireChecked, setRequireChecked] = useState(false);
   const [adsChecked, setAdsChecked] = useState(false);
+
+  const [pathText, setPathText] = useState("");
+  const [reasonText, setReasonText] = useState("");
 
   const loginInfo = getLoginInfo();
   const { logEvent } = useAnalytics();
@@ -100,22 +103,23 @@ const useSignUpWithGoogle = () => {
   const onSubmit: SubmitHandler<StoreInfoValueType> = async (data) => {
     await postSignUpWithGoogle({
       name: data.name,
-      signupSource: data.path,
-      comment: data.reason,
+      signupSource: data.path || pathText,
+      comment: data.reason || reasonText,
       adsConsent: adsChecked,
       type,
     });
-
     setLoginInfo({
       ...loginInfo,
       shopName: data.name,
     });
 
+    router.push("/signup/success");
+
     logEvent("btn_click", {
       btn_name: "sign_up_store_with_google_info_btn",
       btn_position: "top",
     });
-    router.push("/admin");
+    // router.push("/admin");
   };
 
   const formProps = {
@@ -131,15 +135,16 @@ const useSignUpWithGoogle = () => {
     helperText: errors?.name && errors?.name.message,
     error: Boolean(errors?.name) || isError,
     variant: "filled",
-    label: "매장명",
-    placeholder: "매장명",
+    label: "매장명 ",
+    placeholder: "(오픈 예정) 매장명을 입력해주세요.",
     inputProps: { ...register("name") },
     value: formValue.name,
     className: "textfield-store-name google",
+    require: true,
   };
 
   const pathDropDownProps: DropDownPropsType = {
-    label: "가입 경로",
+    label: "가입 경로 ",
     selectedText: "선택해 주세요.",
     options: [
       "네이버 검색",
@@ -149,6 +154,9 @@ const useSignUpWithGoogle = () => {
       "홍보물",
       "기타",
     ],
+    value: pathText,
+    setValue: setPathText,
+    require: true,
   };
 
   const pathProps: TextFieldPropsType = {
@@ -158,10 +166,10 @@ const useSignUpWithGoogle = () => {
     error: Boolean(errors?.name) || isError,
     variant: "filled",
     label: "가입 경로",
-    placeholder: "네이버/구글 검색, 네이버 카페, 지인 추천, 홍보물 등",
+    placeholder: "(필수) 기타 가입 경로를 입력해주세요.",
     inputProps: { ...register("path") },
     value: formValue.path,
-    className: "textfield-store-path google",
+    className: "textfield-store-path dropdown-textfield",
   };
 
   const reasonDropDownProps: DropDownPropsType = {
@@ -173,6 +181,9 @@ const useSignUpWithGoogle = () => {
       "학교 혹은 공공기관에서 이벤트성으로 사용",
       "기타",
     ],
+    value: reasonText,
+    setValue: setReasonText,
+    require: false,
   };
 
   const reasonProps: TextFieldPropsType = {
@@ -182,10 +193,10 @@ const useSignUpWithGoogle = () => {
     error: Boolean(errors?.name) || isError,
     variant: "filled",
     label: "가입 이유",
-    placeholder: "운영 중/오픈 예정 매장 도입, 이벤트성 사용 등",
+    placeholder: "(선택) 기타 가입 이유를 입력해주세요.",
     inputProps: { ...register("reason") },
     value: formValue.reason,
-    className: "textfield-reason google",
+    className: "textfield-reason dropdown-textfield",
   };
 
   const totalCheckboxProps = {
@@ -219,7 +230,8 @@ const useSignUpWithGoogle = () => {
   };
 
   const errorMessage = isError && error?.response?.data?.message;
-  const disabled = !formValue.name || !formValue.path || !requireChecked;
+  const disabled =
+    !formValue.name || (!pathText && !formValue.path) || !requireChecked;
 
   return {
     formProps,

@@ -9,7 +9,7 @@ import useClickOutside from "@/(shared)/hooks/useClickOutside";
 import { DropDownPropsType } from "../types/SignUp";
 
 export const SignUpDropDownField = (props: DropDownPropsType) => {
-  const { label, selectedText, options } = props;
+  const { label, selectedText, options, setValue, require } = props;
   const divRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +18,7 @@ export const SignUpDropDownField = (props: DropDownPropsType) => {
   const handleSelect = (option: string) => {
     setSelected(option);
     setIsOpen(false);
+    setValue(option);
   };
 
   useClickOutside(divRef, () => {
@@ -38,7 +39,10 @@ export const SignUpDropDownField = (props: DropDownPropsType) => {
         onClick={() => setIsOpen((prev) => !prev)}
       >
         <div className="dropdown-textbox">
-          <div className="dropdown-label">{label}</div>
+          <div className="dropdown-label">
+            {label}
+            {require && <span style={{ color: "#F04438" }}>*</span>}
+          </div>
           <button className="dropdown-input-text">{selected}</button>
         </div>
         <Image {...arrawDownImageProps} />

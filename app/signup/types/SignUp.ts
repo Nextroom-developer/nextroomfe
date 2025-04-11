@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 
 export interface SignUpValueType {
@@ -40,10 +41,14 @@ export type TextFieldPropsType = {
   inputProps: UseFormRegisterReturn;
   className?: string;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  require?: boolean;
 };
 
 export type DropDownPropsType = {
   label: string;
   selectedText: string;
   options: string[];
+  value: string;
+  setValue: Dispatch<SetStateAction<string>>;
+  require: boolean;
 };
