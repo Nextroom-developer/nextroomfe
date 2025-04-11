@@ -9,6 +9,7 @@ import {
   setLoginInfo,
 } from "@/(shared)/auth/storageUtil";
 import { useIsLoggedInWrite } from "@/(shared)/atoms/account.atom";
+import { useToastWrite } from "@/(shared)/atoms/toast.atom";
 
 type Request = void;
 
@@ -38,6 +39,8 @@ const getGoogleCallback = async (code: string) => {
 export const useGetGoogleCallbackData = (code: string) => {
   const loginInfo = getLoginInfo();
   const setIsLoggedIn = useIsLoggedInWrite();
+  const setToast = useToastWrite();
+
   const { data, isLoading } = useQuery<Response, AxiosError, data>({
     queryKey: [`google-callback-${code}`],
     queryFn: () => getGoogleCallback(code),
@@ -63,6 +66,11 @@ export const useGetGoogleCallbackData = (code: string) => {
     },
     onError: (error: unknown) => {
       removeAccessToken();
+      setToast({
+        isOpen: true,
+        title: "로그인에 실패하였습니다.",
+        text: "다시 시도해주세요.",
+      });
       console.error(error);
       window.location.href = "/login";
     },

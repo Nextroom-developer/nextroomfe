@@ -25,6 +25,8 @@ const useSignUpWithGoogle = () => {
   const [pathText, setPathText] = useState("");
   const [reasonText, setReasonText] = useState("");
 
+  const [isRedirecting, setIsRedirecting] = useState(false);
+
   const loginInfo = getLoginInfo();
   const { logEvent } = useAnalytics();
   const router = useRouter();
@@ -103,6 +105,7 @@ const useSignUpWithGoogle = () => {
   }, [setFocus]);
 
   const onSubmit: SubmitHandler<StoreInfoValueType> = async (data) => {
+    setIsRedirecting(true);
     await postSignUpWithGoogle({
       name: data.name,
       signupSource: data.path || pathText,
@@ -121,7 +124,6 @@ const useSignUpWithGoogle = () => {
       btn_name: "sign_up_store_with_google_info_btn",
       btn_position: "top",
     });
-    // router.push("/admin");
   };
 
   const formProps = {
@@ -248,6 +250,7 @@ const useSignUpWithGoogle = () => {
     isLoadingPut,
     errorMessage,
     disabled,
+    isRedirectingPut: isRedirecting,
   };
 };
 

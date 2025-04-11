@@ -15,7 +15,10 @@ function RequireAuth({ children }: RequireAuthProps) {
 
   const router = useRouter();
   const pathname = usePathname();
-  const allowUnauthPaths = useMemo(() => ["/", "/signup"], []);
+  const allowUnauthPaths = useMemo(
+    () => ["/", "/signup", "/signup/success"],
+    []
+  );
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -33,6 +36,7 @@ function RequireAuth({ children }: RequireAuthProps) {
     } else if (isLoggedIn) {
       router.push(pathname);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedIn, pathname]);
 
   if (isMobile && !allowUnauthPaths.includes(pathname)) return <Mobile />;

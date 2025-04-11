@@ -47,9 +47,10 @@ const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
     isLoadingPut,
     errorMessage,
     disabled,
+    isRedirectingPut,
   } = useSignUpWithGoogle();
 
-  if (isLoading || isLoadingPut || isRedirecting) {
+  if (isLoading || isLoadingPut || isRedirecting || isRedirectingPut) {
     return <Loader />;
   }
 
