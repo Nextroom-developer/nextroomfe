@@ -21,7 +21,7 @@ const useLogIn = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
     watch,
   } = useForm<LogInValueType>({
     defaultValues: {
@@ -110,6 +110,7 @@ const useLogIn = () => {
     isLoading,
     errorMessage,
     handleClickSignUpBtn,
+    isValid,
   };
 };
 
