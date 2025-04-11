@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 import { END } from "@/signup/consts/signUp";
-import { getLoginInfo, setLoginInfo } from "@/(shared)/auth/storageUtil";
 
 import Loader from "../../(shared)/components/Loader/Loader";
 import useSignUpWithGoogle from "../hooks/useSignUpWithGoogle";
@@ -14,8 +13,7 @@ import { useGetGoogleCallbackData } from "../apis/getGoogleCallback";
 import { SignUpTextField } from "./SignUpTextField";
 
 const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
-  const loginInfo = getLoginInfo();
-  const router = useRouter();
+  // const router = useRouter();
 
   const decodedCode = decodeURIComponent(query.split("&")[0].slice(6));
   const { data: callbackData, isLoading } =
@@ -25,11 +23,6 @@ const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
     if (callbackData?.isComplete === true) {
       // router.push("/admin");
       window.location.href = "/admin";
-    } else if (callbackData?.accessToken) {
-      setLoginInfo({
-        ...loginInfo,
-        accessToken: callbackData.accessToken,
-      });
     }
   }, [callbackData?.isComplete]);
 
@@ -58,6 +51,7 @@ const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
       </p>
       <form {...formProps}>
         <SignUpTextField {...storeNameProps} />
+        {/* <SignUpDropDownField /> */}
         <SignUpTextField {...pathProps} />
         <SignUpTextField {...reasonProps} />
 
