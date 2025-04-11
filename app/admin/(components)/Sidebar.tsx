@@ -14,7 +14,7 @@ import {
   getLoginInfo,
   getSelectedThemeId,
   getStatus,
-  removeAccessToken,
+  removeLocalStorageAll,
   removeThemeId,
 } from "@/(shared)/auth/storageUtil";
 import { useSelectedThemeReset } from "@/(shared)/atoms/selectedTheme.atom";
@@ -60,7 +60,7 @@ export default function Sidebar(props: Props) {
   }, []);
 
   const handleLogout = () => {
-    removeAccessToken();
+    removeLocalStorageAll();
     resetSelectedTheme();
     setLoginInfo({
       adminCode: "",

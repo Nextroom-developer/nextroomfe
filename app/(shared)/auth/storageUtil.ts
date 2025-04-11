@@ -97,6 +97,7 @@ export const getSelectedThemeId = () => getLocalStorage(THEME_ID);
 
 export const removeAccessToken = () => {
   removeLocalStorageItem(ACCESS_TOKEN);
+  Cookies.remove(REFRESH_TOKEN);
 };
 
 export const removeThemeId = () => {
