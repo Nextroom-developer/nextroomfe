@@ -70,24 +70,26 @@ const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
           <SignUpTextField {...reasonProps} />
         )}
 
-        <label
-          className="signup-check-box-label"
-          aria-label={"모두 동의합니다."}
-        >
-          <input
-            type="checkbox"
-            className="signup-check-box-input-total"
-            {...totalCheckboxProps}
-          />
-          <span>모두 동의합니다.</span>
-        </label>
+        <div className="signup-check-box-total">
+          <label
+            className="signup-check-box-label"
+            aria-label={"모두 동의합니다."}
+          >
+            <input
+              type="checkbox"
+              className="signup-check-box-input"
+              {...totalCheckboxProps}
+            />
+            <span>모두 동의합니다.</span>
+          </label>
+        </div>
         <label
           className="signup-check-box-label"
           aria-label={"서비스 이용약관"}
         >
           <input
             type="checkbox"
-            className="signup-check-box-input-require"
+            className="signup-check-box-input"
             {...requireCheckboxProps}
           />
           <span>
@@ -95,9 +97,9 @@ const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
               href="https://held-notebook-420.notion.site/d7bea4318d754b61999e9cb6179a2f70?pvs=4"
               target="_blank"
             >
-              서비스 이용약관
+              <u>서비스 이용약관</u>
             </Link>{" "}
-            동의 <span style={{ color: "red" }}>(필수)</span>
+            동의 <span className="signup-google-require">(필수)</span>
           </span>
         </label>
         <label
@@ -106,7 +108,7 @@ const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
         >
           <input
             type="checkbox"
-            className="signup-check-box-input-optional"
+            className="signup-check-box-input"
             {...adsCheckboxProps}
           />
           <span>새로운 업데이트 소식 받기</span>

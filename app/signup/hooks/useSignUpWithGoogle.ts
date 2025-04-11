@@ -34,6 +34,8 @@ const useSignUpWithGoogle = () => {
       setTotalChecked(true);
     } else if (!requireChecked && !adsChecked) {
       setTotalChecked(false);
+    } else {
+      setTotalChecked(false);
     }
   }, [totalChecked, requireChecked, adsChecked]);
 

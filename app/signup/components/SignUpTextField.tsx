@@ -56,7 +56,7 @@ export const SignUpTextField = (props: TextFieldPropsType) => {
           data-error={error}
         >
           {label}
-          {require && <span style={{ color: "#F04438" }}>*</span>}
+          {require && <span className="signup-google-require">*</span>}
         </label>
         <input
           className="textfield-input"

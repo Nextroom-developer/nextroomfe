@@ -41,7 +41,7 @@ export const SignUpDropDownField = (props: DropDownPropsType) => {
         <div className="dropdown-textbox">
           <div className="dropdown-label">
             {label}
-            {require && <span style={{ color: "#F04438" }}>*</span>}
+            {require && <span className="signup-google-require">*</span>}
           </div>
           <button className="dropdown-input-text">{selected}</button>
         </div>
