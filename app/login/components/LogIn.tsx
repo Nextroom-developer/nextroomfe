@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { SignUpTextField } from "@/signup/components/SignUpTextField";
+import { handleClickGoogle } from "@/(shared)/auth/hooks/useAuth";
 
 import styles from "../styles/login.module.sass";
 import Loader from "../../(shared)/components/Loader/Loader";
@@ -18,7 +19,6 @@ const LogInComponent = () => {
     isLoading,
     errorMessage,
     handleClickSignUpBtn,
-    handleClickGoogle,
   } = useLogIn();
 
   return (
