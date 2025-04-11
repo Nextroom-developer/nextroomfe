@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { END } from "@/signup/consts/signUp";
@@ -23,12 +23,15 @@ const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
   const { data: callbackData, isLoading } =
     useGetGoogleCallbackData(decodedCode);
 
+  const [isRedirecting, setIsRedirecting] = useState(false);
   useEffect(() => {
     if (callbackData?.isComplete === true) {
-      // router.push("/admin");
-      window.location.href = "/admin";
+      setIsRedirecting(true);
+      setTimeout(() => {
+        router.push("/admin");
+      }, 0);
     }
-  }, [callbackData?.isComplete]);
+  }, [callbackData?.isComplete, router]);
 
   const {
     formProps,
@@ -43,7 +46,7 @@ const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
     disabled,
   } = useSignUpWithGoogle();
 
-  if (isLoading || isLoadingPut) {
+  if (isLoading || isLoadingPut || isRedirecting) {
     return <Loader />;
   }
 
