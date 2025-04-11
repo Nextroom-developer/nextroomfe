@@ -41,3 +41,9 @@ export type TextFieldPropsType = {
   className?: string;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 };
+
+export type DropDownPropsType = {
+  label: string;
+  selectedText: string;
+  options: string[];
+};

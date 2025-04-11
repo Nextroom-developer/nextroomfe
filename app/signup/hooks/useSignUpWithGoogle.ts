@@ -7,7 +7,11 @@ import { useRouter } from "next/navigation";
 import useAnalytics from "@/(shared)/hooks/useAnalytics";
 import { getLoginInfo, setLoginInfo } from "@/(shared)/auth/storageUtil";
 
-import { StoreInfoValueType, TextFieldPropsType } from "../types/SignUp";
+import {
+  DropDownPropsType,
+  StoreInfoValueType,
+  TextFieldPropsType,
+} from "../types/SignUp";
 import { usePutSignUpWithGoogle } from "../apis/putSignUpWithGoogle";
 
 const useSignUpWithGoogle = () => {
@@ -134,6 +138,19 @@ const useSignUpWithGoogle = () => {
     className: "textfield-store-name google",
   };
 
+  const pathDropDownProps: DropDownPropsType = {
+    label: "가입 경로",
+    selectedText: "선택해 주세요.",
+    options: [
+      "네이버 검색",
+      "구글 검색",
+      "네이버 카페(오프라인 방탈출)",
+      "지인 추천",
+      "홍보물",
+      "기타",
+    ],
+  };
+
   const pathProps: TextFieldPropsType = {
     id: "filled-path",
     type: "text",
@@ -145,6 +162,17 @@ const useSignUpWithGoogle = () => {
     inputProps: { ...register("path") },
     value: formValue.path,
     className: "textfield-store-path google",
+  };
+
+  const reasonDropDownProps: DropDownPropsType = {
+    label: "가입 이유",
+    selectedText: "선택해 주세요.",
+    options: [
+      "운영 중인 매장에 도입하기 위해",
+      "오픈 예정인 매장에 도입하기 위해",
+      "학교 혹은 공공기관에서 이벤트성으로 사용",
+      "기타",
+    ],
   };
 
   const reasonProps: TextFieldPropsType = {
@@ -196,7 +224,9 @@ const useSignUpWithGoogle = () => {
   return {
     formProps,
     storeNameProps,
+    pathDropDownProps,
     pathProps,
+    reasonDropDownProps,
     reasonProps,
     totalCheckboxProps,
     requireCheckboxProps,

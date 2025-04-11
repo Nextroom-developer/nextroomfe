@@ -11,6 +11,7 @@ import useSignUpWithGoogle from "../hooks/useSignUpWithGoogle";
 import { useGetGoogleCallbackData } from "../apis/getGoogleCallback";
 
 import { SignUpTextField } from "./SignUpTextField";
+import { SignUpDropDownField } from "./SignUpDropDownField";
 
 const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
   const router = useRouter();
@@ -36,8 +37,8 @@ const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
   const {
     formProps,
     storeNameProps,
-    pathProps,
-    reasonProps,
+    pathDropDownProps,
+    reasonDropDownProps,
     totalCheckboxProps,
     requireCheckboxProps,
     adsCheckboxProps,
@@ -58,9 +59,8 @@ const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
       </p>
       <form {...formProps}>
         <SignUpTextField {...storeNameProps} />
-        {/* <SignUpDropDownField /> */}
-        <SignUpTextField {...pathProps} />
-        <SignUpTextField {...reasonProps} />
+        <SignUpDropDownField {...pathDropDownProps} />
+        <SignUpDropDownField {...reasonDropDownProps} />
 
         <label
           className="signup-check-box-label"
