@@ -3,7 +3,7 @@ import { AxiosError, AxiosResponse } from "axios";
 
 import { apiClient } from "@/(shared)/lib/reactQueryProvider";
 import { ApiResponse } from "@/(shared)/types";
-import { setLoginInfo } from "@/(shared)/auth/storageUtil";
+import { getLoginInfo, setLoginInfo } from "@/(shared)/auth/storageUtil";
 import { useIsLoggedInWrite } from "@/(shared)/atoms/account.atom";
 
 type Request = void;
@@ -32,6 +32,7 @@ const getGoogleCallback = async (code: string) => {
 };
 
 export const useGetGoogleCallbackData = (code: string) => {
+  const loginInfo = getLoginInfo();
   const setIsLoggedIn = useIsLoggedInWrite();
   const { data, isLoading } = useQuery<Response, AxiosError, data>({
     queryKey: ["google-callback", code],
@@ -39,16 +40,25 @@ export const useGetGoogleCallbackData = (code: string) => {
     refetchOnMount: false,
     select: (res) => res.data,
     onSuccess: (data) => {
-      setLoginInfo({
-        accessToken: data.accessToken.replace(/^"(.*)"$/, "$1"),
-        refreshToken: data.refreshToken,
-        shopName: data.shopName,
-        adminCode: data.adminCode,
-        accessTokenExpiresIn: Number(data.accessTokenExpiresIn),
-      });
-      setIsLoggedIn(true);
+      // console.log(data, "in google callback");
+      if (data.isComplete === true) {
+        setLoginInfo({
+          accessToken: data.accessToken.replace(/^"(.*)"$/, "$1"),
+          refreshToken: data.refreshToken,
+          shopName: data.shopName,
+          adminCode: data.adminCode,
+          accessTokenExpiresIn: data.accessTokenExpiresIn,
+        });
+        setIsLoggedIn(true);
+      } else {
+        setLoginInfo({
+          ...loginInfo,
+          accessToken: data.accessToken,
+        });
+      }
     },
     onError: (error: unknown) => {
+      // console.log(data, code);
       console.error(error);
     },
   });

@@ -2,19 +2,27 @@ import { useRouter, usePathname } from "next/navigation";
 
 import { useIsLoggedInWrite } from "../../atoms/account.atom";
 import { useAsPathStateWrite } from "../../atoms/signup.atom";
-import { removeAccessToken } from "../storageUtil";
+import { removeAccessToken, setLoginInfo } from "../storageUtil";
 import useChannelTalk from "../../hooks/useChannelTalk";
 
 import useCheckSignIn from "./useCheckSignIn";
 
 const useAuth = () => {
   const setIsLoggedIn = useIsLoggedInWrite();
+
   const router = useRouter();
   const pathName = usePathname();
   const isSignIn = useCheckSignIn();
   const setAsPathState = useAsPathStateWrite();
   const handleLogout = () => {
     removeAccessToken();
+    setLoginInfo({
+      accessToken: "",
+      accessTokenExpiresIn: "",
+      refreshToken: "",
+      adminCode: "",
+      shopName: "",
+    });
     setIsLoggedIn(false);
   };
   setAsPathState(pathName);
