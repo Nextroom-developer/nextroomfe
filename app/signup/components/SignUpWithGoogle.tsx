@@ -13,9 +13,13 @@ import { useGetGoogleCallbackData } from "../apis/getGoogleCallback";
 import { SignUpTextField } from "./SignUpTextField";
 
 const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
-  // const router = useRouter();
+  const router = useRouter();
 
   const decodedCode = decodeURIComponent(query.split("&")[0].slice(6));
+  if (decodedCode === "=access_denied") {
+    router.push("/login");
+  }
+
   const { data: callbackData, isLoading } =
     useGetGoogleCallbackData(decodedCode);
 
