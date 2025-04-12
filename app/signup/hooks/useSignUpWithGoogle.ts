@@ -140,7 +140,7 @@ const useSignUpWithGoogle = () => {
     error: Boolean(errors?.name) || isError,
     variant: "filled",
     label: "매장명 ",
-    placeholder: "(오픈 예정) 매장명을 입력해주세요.",
+    placeholder: "매장명을 입력해주세요.",
     inputProps: { ...register("name") },
     value: formValue.name,
     className: "textfield-store-name google",

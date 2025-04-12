@@ -106,7 +106,13 @@ export const removeThemeId = () => {
 
 export const removeLocalStorageAll = () => {
   if (typeof window !== "undefined") {
-    window.localStorage.clear();
+    setLoginInfo({
+      accessToken: "",
+      refreshToken: "",
+      shopName: "",
+      adminCode: "",
+      accessTokenExpiresIn: "",
+    });
     Cookies.remove(REFRESH_TOKEN);
   }
 };
