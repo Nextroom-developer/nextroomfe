@@ -6,6 +6,7 @@ import { useInView } from "react-intersection-observer";
 
 import "@/(shared)/utils/firebase";
 import { setCookie } from "@/(shared)/auth/helpers/cookie";
+import { handleClickGoogle } from "@/(shared)/auth/hooks/useAuth";
 
 import useCheckSignIn from "../../../(shared)/auth/hooks/useCheckSignIn";
 import useAnalytics from "../../../(shared)/hooks/useAnalytics";
@@ -22,9 +23,12 @@ const Component9Mobile = forwardRef<HTMLDivElement>((_, ref) => {
   });
 
   const navigateToTrial = () => {
-    const url = isSignIn ? "/admin" : "/signup";
+    if (isSignIn) {
+      router.push("/admin");
+    } else {
+      handleClickGoogle();
+    }
     setCookie("/");
-    router.push(url);
     logEvent("btn_click", {
       btn_name: "homepage_start_free_trial_click",
       btn_position: "bottom",

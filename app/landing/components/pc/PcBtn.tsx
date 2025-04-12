@@ -3,6 +3,7 @@ import "@/(shared)/utils/firebase";
 import { useRouter } from "next/navigation";
 
 import { setCookie } from "@/(shared)/auth/helpers/cookie";
+import { handleClickGoogle } from "@/(shared)/auth/hooks/useAuth";
 
 import useCheckSignIn from "../../../(shared)/auth/hooks/useCheckSignIn";
 import useAnalytics from "../../../(shared)/hooks/useAnalytics";
@@ -14,9 +15,12 @@ export default function Inputbar(): JSX.Element | null {
   const isSignIn = useCheckSignIn();
 
   const navigateToTrial = () => {
-    const url = isSignIn ? "/admin" : "/signup";
+    if (isSignIn) {
+      router.push("/admin");
+    } else {
+      handleClickGoogle();
+    }
     setCookie("/");
-    router.push(url);
     logEvent("btn_click", {
       firebase_screen: "homepage_input_contact",
       firebase_screen_class: "homepage_input_contact",
