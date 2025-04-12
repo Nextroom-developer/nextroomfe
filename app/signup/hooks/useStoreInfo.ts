@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import { useSignUpState } from "@/(shared)/atoms/signup.atom";
 import useAnalytics from "@/(shared)/hooks/useAnalytics";
-import { usePostSignUp } from "@/(shared)/mutations/postSignUp";
+import { usePostSignUp } from "@/signup/apis/postSignUp";
 
 import { StoreInfoValueType, TextFieldPropsType } from "../types/SignUp";
 
@@ -79,21 +79,16 @@ const useStoreInfo = () => {
   }, [isChecked, reset, setFocus]);
 
   const browserPreventEvent = () => {
-    history.pushState(null, "", location.href);
     setSignUpState({ ...signUpState, level: 3 });
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      history.pushState(null, "", location.href);
-      window.addEventListener("popstate", browserPreventEvent);
-    }
+    history.pushState(null, "", location.href);
+    window.addEventListener("popstate", () => browserPreventEvent());
     return () => {
-      if (typeof window !== "undefined") {
-        window.removeEventListener("popstate", browserPreventEvent);
-      }
+      window.removeEventListener("popstate", () => browserPreventEvent());
     };
-  }, [browserPreventEvent]);
+  }, []);
 
   const onSubmit: SubmitHandler<StoreInfoValueType> = (data) => {
     postSignUp({

@@ -11,30 +11,27 @@ interface LoginInfo {
   accessToken: string;
   shopName: string;
   adminCode: string;
-  accessTokenExpiresIn: number;
+  accessTokenExpiresIn: string;
   refreshToken: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const setLocalStorage = (key: string, value: any) => {
-  if (typeof window !== "undefined") {
-    const storage = window.localStorage;
-    if (!storage) {
-      return;
-    }
-    switch (typeof value) {
-      case `string`: {
-        try {
-          const stringifiedValue = JSON.stringify(value);
-          storage.setItem(key, stringifiedValue);
-        } catch (e) {
-          console.error(`failed to stringify`);
-        }
-        break;
-      }
-      default:
+export const setLocalStorage = (key: string, value: string | number) => {
+  if (typeof window === "undefined") return;
+
+  const storage = window.localStorage;
+  if (!storage) return;
+
+  switch (typeof value) {
+    case `string`: {
+      try {
         storage.setItem(key, value);
+      } catch (e) {
+        console.error(`failed to stringify`);
+      }
+      break;
     }
+    default:
+      storage.setItem(key, JSON.stringify(value));
   }
 };
 
@@ -73,8 +70,8 @@ export const setLoginInfo = (loginInfo: LoginInfo) => {
     sameSite: "Strict",
     expires: 7,
   });
-  setLocalStorage(SHOP_NAME, shopName?.replaceAll(`"`, ""));
-  setLocalStorage(ADMIN_CODE, adminCode?.replaceAll(`"`, ""));
+  setLocalStorage(SHOP_NAME, shopName);
+  setLocalStorage(ADMIN_CODE, adminCode);
   setLocalStorage(ACCESS_TOKEN_EXPIRES_IN, accessTokenExpiresIn);
 };
 
@@ -92,7 +89,7 @@ export const getLoginInfo = (): LoginInfo => {
     refreshToken: Cookies.get(REFRESH_TOKEN) || "",
     shopName: getLocalStorage(SHOP_NAME) || "",
     adminCode: getLocalStorage(ADMIN_CODE) || "",
-    accessTokenExpiresIn: Number(getLocalStorage(ACCESS_TOKEN_EXPIRES_IN)) || 0,
+    accessTokenExpiresIn: getLocalStorage(ACCESS_TOKEN_EXPIRES_IN) || "",
   };
 };
 export const getStatus = () => getLocalStorage(STATUS);
@@ -100,6 +97,7 @@ export const getSelectedThemeId = () => getLocalStorage(THEME_ID);
 
 export const removeAccessToken = () => {
   removeLocalStorageItem(ACCESS_TOKEN);
+  Cookies.remove(REFRESH_TOKEN);
 };
 
 export const removeThemeId = () => {
@@ -108,7 +106,13 @@ export const removeThemeId = () => {
 
 export const removeLocalStorageAll = () => {
   if (typeof window !== "undefined") {
-    window.localStorage.clear();
+    setLoginInfo({
+      accessToken: "",
+      refreshToken: "",
+      shopName: "",
+      adminCode: "",
+      accessTokenExpiresIn: "",
+    });
     Cookies.remove(REFRESH_TOKEN);
   }
 };

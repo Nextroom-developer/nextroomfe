@@ -7,8 +7,7 @@ import { setSelectedThemeId } from "@/(shared)/auth/storageUtil";
 import { useSelectedTheme } from "@/(shared)/atoms/selectedTheme.atom";
 import { useToastInfo } from "@/(shared)/atoms/toast.atom";
 
-import { useGetThemeList } from "../(shared)/queries/getThemeList";
-
+import { useGetThemeList } from "./apis/theme/getThemeList";
 import AdminView from "./AdminView";
 
 type Theme = {
@@ -23,17 +22,18 @@ function Admin() {
 
   const [selectedTheme, setSelectedTheme] = useSelectedTheme();
 
-  // const { accessToken } = getLoginInfo();
-  // console.log(accessToken);
   const [toast, setToast] = useToastInfo();
   const router = useRouter();
 
   useEffect(() => {
+    if (categories.length === 0) {
+      router.push("/admin");
+    }
     if (!isLoading && categories.length > 0 && selectedTheme.id === 0) {
       setSelectedTheme(categories[categories.length - 1]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading]);
+  }, [isLoading, categories.length]);
 
   const handleClickSelected = (theme: Theme) => {
     setSelectedTheme(theme);

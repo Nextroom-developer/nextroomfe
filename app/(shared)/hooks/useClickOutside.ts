@@ -9,7 +9,7 @@ import { useEffect, RefObject } from "react";
  * @param {boolean} ignoreSiblings - 형제 요소 클릭 시에도 닫힐지 여부
  */
 function useClickOutside(
-  ref: React.RefObject<HTMLElement | HTMLElement[] | HTMLFormElement | null>,
+  ref: RefObject<HTMLElement | HTMLElement[] | HTMLFormElement | null>,
   handler: (event: MouseEvent) => void,
   isActive = true,
   targetIndex = 0,

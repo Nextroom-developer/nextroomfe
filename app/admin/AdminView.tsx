@@ -7,7 +7,7 @@ import useModal from "@/(shared)/hooks/useModal";
 import { getLocalStorage } from "@/(shared)/auth/storageUtil";
 
 import Toast from "../(shared)/components/Toast/Toast";
-import NotiDialog from "../(shared)/components/Dialog-new/Noti-Dialog-new/Dialog";
+import NotiDialog from "../(shared)/components/Dialog/Noti/Dialog";
 import Loader from "../(shared)/components/Loader/Loader";
 
 interface Theme {

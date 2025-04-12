@@ -2,7 +2,7 @@ import { FormEvent } from "react";
 import "../../(styles)/createTheme.modules.sass";
 import { useRouter } from "next/navigation";
 
-import { usePostTheme } from "@/(shared)/mutations/postTheme";
+import { usePostTheme } from "@/admin/apis/theme/postTheme";
 import { useCreateThemeValue } from "@/(shared)/atoms/createTheme.atom";
 import { useSelectedThemeWrite } from "@/(shared)/atoms/selectedTheme.atom";
 import { setSelectedThemeId } from "@/(shared)/auth/storageUtil";

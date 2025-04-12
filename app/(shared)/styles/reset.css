@@ -4,6 +4,69 @@
    License: none (public domain)
 */
 
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 900;
+	font-display: swap;
+	src: local('Pretendard Black'), url('/fonts/woff2/Pretendard-Black.woff2') format('woff2'), url('/fonts/woff/Pretendard-Black.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 800;
+	font-display: swap;
+	src: local('Pretendard ExtraBold'), url('/fonts/woff2/Pretendard-ExtraBold.woff2') format('woff2'), url('/fonts/woff/Pretendard-ExtraBold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 700;
+	font-display: swap;
+	src: local('Pretendard Bold'), url('/fonts/woff2/Pretendard-Bold.woff2') format('woff2'), url('/fonts/woff/Pretendard-Bold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 600;
+	font-display: swap;
+	src: local('Pretendard SemiBold'), url('/fonts/woff2/Pretendard-SemiBold.woff2') format('woff2'), url('/fonts/woff/Pretendard-SemiBold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 500;
+	font-display: swap;
+	src: local('Pretendard Medium'), url('/fonts/woff2/Pretendard-Medium.woff2') format('woff2'), url('/fonts/woff/Pretendard-Medium.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 400;
+	font-display: swap;
+	src: local('Pretendard Regular'), url('/fonts/woff2/Pretendard-Regular.woff2') format('woff2'), url('/fonts/woff/Pretendard-Regular.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 300;
+	font-display: swap;
+	src: local('Pretendard Light'), url('/fonts/woff2/Pretendard-Light.woff2') format('woff2'), url('/fonts/woff/Pretendard-Light.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 200;
+	font-display: swap;
+	src: local('Pretendard ExtraLight'), url('/fonts/woff2/Pretendard-ExtraLight.woff2') format('woff2'), url('/fonts/woff/Pretendard-ExtraLight.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 100;
+	font-display: swap;
+	src: local('Pretendard Thin'), url('/fonts/woff2/Pretendard-Thin.woff2') format('woff2'), url('/fonts/woff/Pretendard-Thin.woff') format('woff');
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -16,12 +79,13 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, textarea {
 	margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
+	font: 'Pretendard';
+	font-family: 'Pretendard', 'sans-serif';
 	vertical-align: baseline;
   white-space: pre-wrap;
 }
@@ -37,6 +101,7 @@ html {
 body {
 	line-height: 1.5;
 	overflow-x: hidden;
+	font-family: 'Pretendard';
 }
 ol, ul {
 	list-style: none;
@@ -73,10 +138,28 @@ button {
 	margin: 0;
 	padding: 0;
   white-space: pre-wrap;
+	font-family: inherit;
 }
 
 input,a{
 	border: none;
 	text-decoration: none;
 	padding: 0;
+}
+a:link {
+	text-decoration: none;
+	color: inherit
+}
+a:visited {
+	text-decoration: none;
+	color: inherit
+}
+a:active {
+	text-decoration: none;
+	color: inherit
+}
+a:hover {
+	text-decoration: none;
+	cursor: pointer;
+	color: inherit
 }

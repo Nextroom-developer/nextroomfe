@@ -14,14 +14,14 @@ import {
   getLoginInfo,
   getSelectedThemeId,
   getStatus,
-  removeAccessToken,
+  removeLocalStorageAll,
   removeThemeId,
 } from "@/(shared)/auth/storageUtil";
 import { useSelectedThemeReset } from "@/(shared)/atoms/selectedTheme.atom";
 import { useDrawerState } from "@/(shared)/atoms/drawer.atom";
 import useModal from "@/(shared)/hooks/useModal";
-import HintDialog from "@/(shared)/components/Dialog-new/Hint-Dialog-new/Dialog";
-import { QUERY_KEY } from "@/(shared)/queries/getThemeList";
+import HintDialog from "@/(shared)/components/Dialog/Hint/Dialog";
+import { QUERY_KEY } from "@/admin/apis/theme/getThemeList";
 
 interface Theme {
   id: number;
@@ -60,7 +60,7 @@ export default function Sidebar(props: Props) {
   }, []);
 
   const handleLogout = () => {
-    removeAccessToken();
+    removeLocalStorageAll();
     resetSelectedTheme();
     setLoginInfo({
       adminCode: "",

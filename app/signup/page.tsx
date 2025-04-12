@@ -1,15 +1,35 @@
 "use client";
 
+import { useLayoutEffect, useState } from "react";
+
 import { useSignUpValue } from "@/(shared)/atoms/signup.atom";
+import Loader from "@/(shared)/components/Loader/Loader";
 
 import SignUpComponent from "./components/SignUp";
 import EmailAuthComponent from "./components/EmailAuth";
 import PasswordComponent from "./components/Password";
 import StoreInfoComponent from "./components/StoreInfo";
 import SignUpSuccessComponent from "./components/SignUpSuccess";
+import SignUpWithGoogleComponent from "./components/SignUpWithGoogle";
 
 function SignUpPage() {
   const useSignUpState = useSignUpValue();
+  const [query, setQuery] = useState<string | null>(null);
+
+  useLayoutEffect(() => {
+    if (window === undefined) return;
+    const data = window.location.search;
+    setQuery(data);
+  }, []);
+
+  if (query === null) {
+    return <Loader />;
+  }
+
+  if (query) {
+    return <SignUpWithGoogleComponent query={query} />;
+  }
+
   switch (useSignUpState.level) {
     case 1:
       return <SignUpComponent />;
@@ -22,7 +42,7 @@ function SignUpPage() {
     case 5:
       return <SignUpSuccessComponent />;
     default:
-      return <SignUpComponent />;
+      return <Loader />;
   }
 }
 

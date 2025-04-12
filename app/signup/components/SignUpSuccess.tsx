@@ -63,6 +63,7 @@ const SignUpSuccessComponent = () => {
         <Link
           className="signup-play-btn"
           href="https://play.google.com/store/search?q=%EB%84%A5%EC%8A%A4%ED%8A%B8%EB%A3%B8&c=apps&hl=ko-KR"
+          target="_blank"
         >
           <div>
             <p className="signup-play-title">Google Play 스토어에서</p>

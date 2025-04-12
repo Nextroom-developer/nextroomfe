@@ -6,7 +6,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { useSignUpValue } from "@/(shared)/atoms/signup.atom";
-import { getCookie } from "@/(shared)/auth/cookie";
+import { getCookie } from "@/(shared)/auth/helpers/cookie";
+import { removeAccessToken } from "@/(shared)/auth/storageUtil";
 
 export default function RootLayout({
   children,
@@ -53,6 +54,9 @@ export default function RootLayout({
             }
             if (useSignUpState.level === 1) {
               router.push(pathName);
+            }
+            if (window.location.search) {
+              removeAccessToken();
             }
             router.back();
           }}

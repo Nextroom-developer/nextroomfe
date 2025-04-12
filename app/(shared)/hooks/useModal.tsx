@@ -1,4 +1,3 @@
-// useModal.ts
 import { FC, useCallback } from "react";
 
 import { useModalState } from "@/(shared)/atoms/modals.atom";

@@ -4,7 +4,8 @@ import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useRouter } from "next/navigation";
 
-import { setCookie } from "@/(shared)/auth/cookie";
+import { setCookie } from "@/(shared)/auth/helpers/cookie";
+import { handleClickGoogle } from "@/(shared)/auth/hooks/useAuth";
 
 import useCheckSignIn from "../../../(shared)/auth/hooks/useCheckSignIn";
 import "@/(shared)/utils/firebase";
@@ -20,9 +21,12 @@ const Component9 = forwardRef<HTMLDivElement>((_, ref) => {
   });
 
   const navigateToTrial = () => {
-    const url = isSignIn ? "/admin" : "/signup";
+    if (isSignIn) {
+      router.push("/admin");
+    } else {
+      handleClickGoogle();
+    }
     setCookie("/");
-    router.push(url);
     logEvent("btn_click", {
       btn_name: "homepage_start_free_trial_click",
       btn_position: "bottom",

@@ -2,29 +2,39 @@ import { useRouter, usePathname } from "next/navigation";
 
 import { useIsLoggedInWrite } from "../../atoms/account.atom";
 import { useAsPathStateWrite } from "../../atoms/signup.atom";
-import { removeAccessToken } from "../storageUtil";
+import { removeLocalStorageAll } from "../storageUtil";
 import useChannelTalk from "../../hooks/useChannelTalk";
 
 import useCheckSignIn from "./useCheckSignIn";
 
+export const handleClickGoogle = () => {
+  // const redirect_uri = "http://localhost:3000/signup";
+  const redirect_uri = "https://dev.nextroom.co.kr/signup";
+  const URL = `https://accounts.google.com/o/oauth2/auth?client_id=${process.env.NEXT_PUBLIC_GOOGLE_AUTH_CLIENT_ID}&redirect_uri=${redirect_uri}&response_type=code&scope=email profile`;
+  window.location.href = URL;
+};
+
 const useAuth = () => {
   const setIsLoggedIn = useIsLoggedInWrite();
+
   const router = useRouter();
   const pathName = usePathname();
   const isSignIn = useCheckSignIn();
   const setAsPathState = useAsPathStateWrite();
   const handleLogout = () => {
-    removeAccessToken();
+    removeLocalStorageAll();
     setIsLoggedIn(false);
   };
   setAsPathState(pathName);
-  // document.cookie = `pathName =${pathName}`;
 
   useChannelTalk();
 
   const handleSignUpBtn = () => {
-    const url = isSignIn ? "/admin" : "/signup";
-    router.push(url);
+    if (isSignIn) {
+      router.push("/admin");
+    } else {
+      handleClickGoogle();
+    }
   };
 
   const handleLoginBtn = () => {

@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef, useState } from "react";
 
 import "../styles/textfield.modules.sass";
@@ -17,6 +18,7 @@ export const SignUpTextField = (props: TextFieldPropsType) => {
     disabled,
     value,
     className,
+    require,
   } = props;
   const inputRef = useRef<HTMLLabelElement>(null);
   const divRef = useRef<HTMLDivElement>(null);
@@ -54,6 +56,7 @@ export const SignUpTextField = (props: TextFieldPropsType) => {
           data-error={error}
         >
           {label}
+          {require && <span className="signup-google-require">*</span>}
         </label>
         <input
           className="textfield-input"
