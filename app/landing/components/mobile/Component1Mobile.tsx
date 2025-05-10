@@ -1,5 +1,4 @@
 import { forwardRef, useEffect } from "react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -21,12 +20,6 @@ const Component1Mobile = forwardRef<HTMLDivElement>((_, ref) => {
     firebase_screen_class: "homepage_top",
   });
 
-  const imgProps = {
-    src: "/images/landing/main_image.png",
-    alt: "NEXT ROOM",
-    width: 360,
-    height: 266,
-  };
   const router = useRouter();
   const controls = useAnimation();
   const [inViewRef, inView] = useInView();
@@ -83,7 +76,17 @@ const Component1Mobile = forwardRef<HTMLDivElement>((_, ref) => {
           힌트폰 서비스 <br />
           넥스트룸
         </h1>
-        <Image {...imgProps} />
+        <video
+          width={350}
+          height={266}
+          controls
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src="/videos/0507_홍보영상.MP4" type="video/mp4" />
+        </video>
         <button className="btn" type="button" onClick={navigateToTrial}>
           지금 바로 시작하기
         </button>
