@@ -38,8 +38,8 @@ const processQueue = (error: unknown, token: string | null = null) => {
 
 apiClient.interceptors.request.use(
   (config) => {
-    const { accessToken } = getLoginInfo();
-    if (accessToken) {
+    const { accessToken, accessTokenExpiresIn } = getLoginInfo();
+    if (accessToken && accessTokenExpiresIn) {
       config.headers.Authorization = `Bearer ${accessToken.replace(
         /^"(.*)"$/,
         "$1"
