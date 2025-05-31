@@ -47,7 +47,7 @@ export const useGetGoogleCallbackData = (code: string) => {
     refetchOnMount: false,
     refetchOnWindowFocus: false,
     select: (res) => res.data,
-    onSuccess: (data) => {
+    onSuccess: (data: data) => {
       if (data.isComplete) {
         setLoginInfo({
           accessToken: data.accessToken.replace(/^"(.*)"$/, "$1"),

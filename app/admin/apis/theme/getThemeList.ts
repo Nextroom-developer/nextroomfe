@@ -48,15 +48,17 @@ export const useGetThemeList = (configOptions?: QueryConfigOptions) => {
     ...configOptions?.options,
     select: (res) => res.data,
     enabled: !!isLoggedIn,
-    onSuccess: (data) => {
+    onSuccess: (data: Themes) => {
       const selectedThemeId = getSelectedThemeId();
       if (data.length > 0) {
-        if (!data.some((item) => item.id.toString() === selectedThemeId)) {
+        if (
+          !data.some((item: Theme) => item.id.toString() === selectedThemeId)
+        ) {
           setSelectedThemeId(data[data.length - 1].id);
           setSelectedTheme(data[data.length - 1]);
         } else {
           const selectedItem = data.find(
-            (item) => item.id.toString() === selectedThemeId
+            (item: Theme) => item.id.toString() === selectedThemeId
           );
           if (selectedItem) setSelectedTheme(selectedItem);
         }
