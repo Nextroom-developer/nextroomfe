@@ -51,8 +51,9 @@ export const usePutSignUpWithGoogle = (
     onSuccess: () => {
       queryClient.invalidateQueries(QUERY_KEY);
     },
-    onError: (error) => {
-      console.error(error);
+    onError: () => {
+      window.alert("토큰이 만료되어 로그인 화면으로 이동합니다.");
+      window.location.href = "/login";
     },
   });
 
