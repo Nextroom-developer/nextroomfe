@@ -1,8 +1,6 @@
 "use client";
 
 import "./styles/landing.modules.sass";
-import "./styles/mobile.modules.sass";
-import "./styles/pc.modules.sass";
 
 import useAuth from "../(shared)/auth/hooks/useAuth";
 
@@ -43,7 +41,15 @@ function LandingPage() {
         <>
           <div className="container-wrapper">
             <div className="logo-wrapper">
-              <div className="logo" />
+              <div className="logo-nav-wrapper">
+                <div className="logo" />
+                <div className="logo-nav">
+                  <div className="nav-item">넥스트룸 소개</div>
+                  <div className="nav-item">사용 가이드</div>
+                  <div className="nav-item">공지사항</div>
+                  <div className="nav-item">자주 묻는 질문</div>
+                </div>
+              </div>
               {!isMobile && (
                 <div>
                   <button className="login-btn" {...LoginLinkProps}>
