@@ -56,7 +56,6 @@ export default function Component2() {
       </h4>
       <motion.div
         className="pc-wrapper2"
-        ref={ref}
         variants={boxVariants}
         initial="hidden"
         animate={controls}
