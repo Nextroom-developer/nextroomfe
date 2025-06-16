@@ -1,11 +1,15 @@
 import { useAnimation, motion } from "framer-motion";
-import { forwardRef, useEffect } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 const Component9 = forwardRef<HTMLDivElement>((_, divref) => {
   const controls = useAnimation();
   const [ref, inView] = useInView();
-  const curIdx = 0;
+  const [index, setIndex] = useState(0);
+
+  const prev = () =>
+    setIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
+  const next = () => setIndex((prev) => (prev + 1) % reviews.length);
 
   useEffect(() => {
     if (inView) {
@@ -30,7 +34,7 @@ const Component9 = forwardRef<HTMLDivElement>((_, divref) => {
     },
   };
 
-  const reviewContents = [
+  const reviews = [
     {
       idx: 1,
       title: "“여러 기기에서 바로 연동되니 훨씬 효율적이에요”",
@@ -40,7 +44,7 @@ const Component9 = forwardRef<HTMLDivElement>((_, divref) => {
     },
     {
       idx: 2,
-      title: "“힌트 입력 과정이 너무 쉬워서 한 줄기 빛 같았어요”",
+      title: `“힌트 입력 과정이 너무 쉬워서 한 줄기 빛 같았어요”`,
       content:
         "아무것도 모르는 상태에서도 설명서만 보고 바로 따라 할 수 있을 정도로 쉽고 편했어요. 처음 시스템을 도입하는 입장에서 정말 큰 도움이 됐습니다.",
       writer: "– 홍대 *두 사장님",
@@ -65,11 +69,36 @@ const Component9 = forwardRef<HTMLDivElement>((_, divref) => {
       >
         <div className="pc-main4">
           <div className="pc-review-box">
-            <p className="pc-review-title">{reviewContents[curIdx].title}</p>
-            <p className="pc-review-content">
-              {reviewContents[curIdx].content}
-            </p>
-            <p className="pc-review-writer">{reviewContents[curIdx].writer}</p>
+            <div className="pc-review-slider-window">
+              <motion.div
+                className="pc-review-track"
+                animate={{ x: `-${index * 100}%` }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+              >
+                {reviews.map((review, i) => (
+                  <div className="pc-review-slide" key={i}>
+                    <p className="pc-review-title">{review.title}</p>
+                    <p className="pc-review-content">{review.content}</p>
+                    <p className="pc-review-writer">{review.writer}</p>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+            <button className="arrow-left" onClick={prev}>
+              ‹
+            </button>
+            <div className="dots">
+              {reviews.map((_, i) => (
+                <span
+                  key={i}
+                  className={`dot ${i === index ? "active" : ""}`}
+                  onClick={() => setIndex(i)}
+                />
+              ))}
+            </div>
+            <button className="arrow-right" onClick={next}>
+              ›
+            </button>
           </div>
           <div className="pc-title4">
             사장님들의 리얼 후기,
@@ -79,14 +108,32 @@ const Component9 = forwardRef<HTMLDivElement>((_, divref) => {
         </div>
         <div className="pc-review-wrapper">
           <div className="pc-review-logos">
-            <img alt="1" />
-            <img alt="2" />
-            <img alt="3" />
-            <img alt="4" />
-            <img alt="1" />
-            <img alt="2" />
-            <img alt="3" />
-            <img alt="4" />
+            <img
+              src="/images/landing/storeLogos/episode.png"
+              alt="episode_logo"
+            />
+            <img
+              src="/images/landing/storeLogos/doopdoo.png"
+              alt="doopdoo_logo"
+            />
+            <img
+              src="/images/landing/storeLogos/signalhunter.png"
+              alt="signalhunter_logo"
+            />
+            <img src="/images/landing/storeLogos/doom.png" alt="doom_logo" />
+            <img
+              src="/images/landing/storeLogos/episode.png"
+              alt="episode_logo"
+            />
+            <img
+              src="/images/landing/storeLogos/doopdoo.png"
+              alt="doopdoo_logo"
+            />
+            <img
+              src="/images/landing/storeLogos/signalhunter.png"
+              alt="signalhunter_logo"
+            />
+            <img src="/images/landing/storeLogos/doom.png" alt="doom_logo" />
           </div>
         </div>
       </motion.div>
