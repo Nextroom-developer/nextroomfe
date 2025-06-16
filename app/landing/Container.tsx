@@ -1,6 +1,7 @@
 "use client";
 
 import "./styles/landing.modules.sass";
+import "./styles/mobile.modules.sass";
 
 import useAuth from "../(shared)/auth/hooks/useAuth";
 
@@ -10,8 +11,6 @@ import Component3 from "./components/pc/Component3";
 import Component4 from "./components/pc/Component4";
 import Component5 from "./components/pc/Component5";
 import Component6 from "./components/pc/Component6";
-import Component7 from "./components/pc/Component7";
-import Component9 from "./components/pc/Component9";
 import Component1Mobile from "./components/mobile/Component1Mobile";
 import Component2Mobile from "./components/mobile/Component2Mobile";
 import Component3Mobile from "./components/mobile/Component3Mobile";
@@ -23,6 +22,7 @@ import Component9Mobile from "./components/mobile/Component9Mobile";
 import MobileBtn from "./components/mobile/MobileBtn";
 import PcBtn from "./components/pc/PcBtn";
 import useScreen from "./hooks/useScreen";
+import FooterComponent from "./components/Footer";
 
 function LandingPage() {
   const { LoginLinkProps, SignUpLinkProps } = useAuth();
@@ -82,18 +82,18 @@ function LandingPage() {
                 <Component1 ref={component1Ref} />
                 <Component2 />
                 <Component3 />
-                <Component4 />
+                <Component4 ref={component9Ref} />
                 <Component5 />
                 <Component6 />
-                <Component7 ref={component7Ref} />
+                {/* <Component7 ref={component7Ref} /> */}
                 {/* <Component8 /> */}
-                <Component9 ref={component9Ref} />
+                {/* <Component9 /> */}
                 {showBtn && <PcBtn />}
+                {/* <Button {...buttonProps}>지금 바로 시작하기</Button> */}
               </>
             )}
-            {/* <Button {...buttonProps}>지금 바로 시작하기</Button> */}
           </div>
-          <footer className="footer"> Copyright © 2023 Next room</footer>
+          <FooterComponent />
         </>
       )}
     </div>

@@ -12,7 +12,7 @@ const useScreen = () => {
   const handleScroll = () => {
     if (component1Ref.current) {
       const rect1 = component1Ref.current.getBoundingClientRect();
-      setShowBtn(rect1.bottom < 500);
+      setShowBtn(rect1.bottom < window.innerHeight - 230);
     }
 
     if (component9Ref.current) {

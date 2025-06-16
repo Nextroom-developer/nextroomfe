@@ -88,6 +88,27 @@ export default function Component2() {
             어느 화면에서도 직관적으로 확인할 수 있어요.
           </h4>
         </div>
+        <div className="pc-func-box3">
+          <p className="pc-func-title2">
+            테마에 딱 맞게,
+            <br />
+            배경화면도 커스터마이징
+          </p>
+          <div className="pc-func-img-box1">
+            <img
+              className="pc-func-img"
+              src="/images/landing/hint_phone2.png"
+              alt="hint_phone2"
+            />
+          </div>
+          <h4 className="pc-func-text3">
+            매장의 개성을 살리는
+            <br />
+            각 테마의 독특한 분위기로
+            <br />
+            배경화면을 커스텀해보세요.
+          </h4>
+        </div>
       </motion.div>
     </motion.div>
   );
