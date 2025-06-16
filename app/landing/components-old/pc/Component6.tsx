@@ -1,9 +1,8 @@
-import Image from "next/image";
 import { useAnimation, motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
-export default function Component3() {
+export default function Component6() {
   const controls = useAnimation();
   const [ref, inView] = useInView();
 
@@ -30,26 +29,27 @@ export default function Component3() {
     },
   };
 
-  const imgProps = {
-    src: "/images/landing/macbook.svg",
-    alt: "NEXT ROOM",
-    width: 786,
-    height: 500,
-  };
   return (
     <motion.div
-      className="pc-main3"
+      className="pc-wrapper"
       ref={ref}
       variants={boxVariants}
       initial="hidden"
       animate={controls}
     >
-      <p className="pc-sub-title3">
-        테마 관리는 웹에서
+      <span className="pc-span">넥스트룸은</span>
+      <p className="pc-title6">
+        방탈출에만 몰입할 수 있는
         <br />
-        쉽고 빠르게 힌트를 등록하고 수정하세요.
+        특별한 기능을 제공합니다.
       </p>
-      <Image {...imgProps} />
+      <p className="pc-sub-title6">
+        직관적으로 확인할 수 있는 진행률부터 힌트 확인까지, <br />
+        최소한의 동작으로 기능을 실행합니다. <br />
+        <br />
+        테마 몰입에 방해되는 요소는 최소한으로 줄이고 <br />
+        편의성을 높은 기능들을 준비했죠.
+      </p>
     </motion.div>
   );
 }

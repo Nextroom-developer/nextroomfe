@@ -3,7 +3,7 @@ import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 
-export default function Component3() {
+export default function Component3Mobile() {
   const controls = useAnimation();
   const [ref, inView] = useInView();
 
@@ -17,38 +17,37 @@ export default function Component3() {
 
   const boxVariants = {
     hidden: {
-      y: 100, // 시작 위치를 아래로 조정합니다.
+      y: 50, // 시작 위치를 아래로 조정합니다.
       opacity: 0,
     },
     visible: {
       y: 0, // 최종 위치를 원래 위치로 설정합니다.
       opacity: 1,
       transition: {
-        duration: 1,
+        duration: 0.5,
         ease: "easeOut",
       },
     },
   };
 
   const imgProps = {
-    src: "/images/landing/macbook.svg",
+    src: "/images/landing/landing.png",
     alt: "NEXT ROOM",
-    width: 786,
-    height: 500,
+    width: 360,
+    height: 228,
   };
   return (
     <motion.div
-      className="pc-main3"
+      className="main3"
       ref={ref}
       variants={boxVariants}
       initial="hidden"
       animate={controls}
     >
-      <p className="pc-sub-title3">
-        테마 관리는 웹에서
-        <br />
-        쉽고 빠르게 힌트를 등록하고 수정하세요.
-      </p>
+      <div className="sub-title3">
+        쉽고 빠르게 <br />
+        힌트를 등록하고 수정하세요.
+      </div>
       <Image {...imgProps} />
     </motion.div>
   );

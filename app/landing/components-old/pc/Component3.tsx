@@ -31,7 +31,7 @@ export default function Component3() {
   };
 
   const imgProps = {
-    src: "/images/landing/macbook.svg",
+    src: "/images/landing/landing.png",
     alt: "NEXT ROOM",
     width: 786,
     height: 500,
@@ -45,9 +45,8 @@ export default function Component3() {
       animate={controls}
     >
       <p className="pc-sub-title3">
-        테마 관리는 웹에서
-        <br />
-        쉽고 빠르게 힌트를 등록하고 수정하세요.
+        쉽고 빠르게 <br />
+        힌트를 등록하고 수정하세요.
       </p>
       <Image {...imgProps} />
     </motion.div>

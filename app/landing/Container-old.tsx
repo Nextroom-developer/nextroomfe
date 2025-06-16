@@ -1,9 +1,8 @@
 "use client";
 
-import "./styles/landing.modules.sass";
-import "./styles/mobile.modules.sass";
-
-import Link from "next/link";
+import "./styles/old/landing.modules.sass";
+import "./styles/old/mobile.modules.sass";
+import "./styles/old/pc.modules.sass";
 
 import useAuth from "../(shared)/auth/hooks/useAuth";
 
@@ -13,6 +12,8 @@ import Component3 from "./components/pc/Component3";
 import Component4 from "./components/pc/Component4";
 import Component5 from "./components/pc/Component5";
 import Component6 from "./components/pc/Component6";
+import Component7 from "./components/pc/Component7";
+import Component9 from "./components/pc/Component9";
 import Component1Mobile from "./components/mobile/Component1Mobile";
 import Component2Mobile from "./components/mobile/Component2Mobile";
 import Component3Mobile from "./components/mobile/Component3Mobile";
@@ -24,7 +25,6 @@ import Component9Mobile from "./components/mobile/Component9Mobile";
 import MobileBtn from "./components/mobile/MobileBtn";
 import PcBtn from "./components/pc/PcBtn";
 import useScreen from "./hooks/useScreen";
-import FooterComponent from "./components/Footer";
 
 function LandingPage() {
   const { LoginLinkProps, SignUpLinkProps } = useAuth();
@@ -43,48 +43,7 @@ function LandingPage() {
         <>
           <div className="container-wrapper">
             <div className="logo-wrapper">
-              <div className="logo-nav-wrapper">
-                <div className="logo" />
-                <div className="logo-nav">
-                  <div className="logo-nav-item">
-                    <Link
-                      href="https://sponge-wood-68d.notion.site/107febdc0ad180f09f68fc47e1f4fde2"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      넥스트룸 소개
-                    </Link>
-                  </div>
-                  <div className="logo-nav-item">
-                    <Link
-                      href="https://held-notebook-420.notion.site/134ed57b9c574733b31feab0ea5c36a5"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      사용 가이드
-                    </Link>
-                  </div>
-                  <div className="logo-nav-item">
-                    <Link
-                      href="https://sponge-wood-68d.notion.site/1d3febdc0ad180b0ab56c23b527563f8"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      공지사항
-                    </Link>
-                  </div>
-                  <div
-                    className="logo-nav-item"
-                    onClick={() =>
-                      component7Ref.current?.scrollIntoView({
-                        behavior: "smooth",
-                      })
-                    }
-                  >
-                    자주 묻는 질문
-                  </div>
-                </div>
-              </div>
+              <div className="logo" />
               {!isMobile && (
                 <div>
                   <button className="login-btn" {...LoginLinkProps}>
@@ -117,18 +76,18 @@ function LandingPage() {
                 <Component1 ref={component1Ref} />
                 <Component2 />
                 <Component3 />
-                <Component4 ref={component9Ref} />
+                <Component4 />
                 <Component5 />
-                <Component6 ref={component7Ref} />
-                {/* <Component7 ref={component7Ref} /> */}
+                <Component6 />
+                <Component7 ref={component7Ref} />
                 {/* <Component8 /> */}
-                {/* <Component9 /> */}
+                <Component9 ref={component9Ref} />
                 {showBtn && <PcBtn />}
-                {/* <Button {...buttonProps}>지금 바로 시작하기</Button> */}
               </>
             )}
+            {/* <Button {...buttonProps}>지금 바로 시작하기</Button> */}
           </div>
-          <FooterComponent />
+          <footer className="footer"> Copyright © 2023 Next room</footer>
         </>
       )}
     </div>

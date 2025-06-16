@@ -1,10 +1,11 @@
 import { useAnimation, motion } from "framer-motion";
-import { useEffect } from "react";
+import { forwardRef, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
-export default function Component4() {
+const Component9 = forwardRef<HTMLDivElement>((_, divref) => {
   const controls = useAnimation();
   const [ref, inView] = useInView();
+  const curIdx = 0;
 
   useEffect(() => {
     if (inView) {
@@ -29,37 +30,67 @@ export default function Component4() {
     },
   };
 
+  const reviewContents = [
+    {
+      idx: 1,
+      title: "“여러 기기에서 바로 연동되니 훨씬 효율적이에요”",
+      content:
+        "기존에는 기기마다 따로 세팅해야 했는데, 넥스트룸은 서버에 한 번만 등록하면 전 기기에서 바로 사용 가능하니까 운영이 정말 간편해졌어요.",
+      writer: "– 서현 에***** 매니저님",
+    },
+    {
+      idx: 2,
+      title: "“힌트 입력 과정이 너무 쉬워서 한 줄기 빛 같았어요”",
+      content:
+        "아무것도 모르는 상태에서도 설명서만 보고 바로 따라 할 수 있을 정도로 쉽고 편했어요. 처음 시스템을 도입하는 입장에서 정말 큰 도움이 됐습니다.",
+      writer: "– 홍대 *두 사장님",
+    },
+    {
+      idx: 3,
+      title: "“무료라서 시작했는데, 계속 쓰게 됐어요”",
+      content:
+        "처음엔 솔직히 비용 부담이 없다는 점에서 눈길이 갔어요. 막상 써보니 기능도 좋아서 계속 사용하게 되더라고요.",
+      writer: "– 신사 시그***** 사장님",
+    },
+  ];
+
   return (
-    <motion.div
-      className="pc-wrapper4"
-      ref={ref}
-      variants={boxVariants}
-      initial="hidden"
-      animate={controls}
-    >
-      <div className="pc-title4">
-        힌트폰을 사용하면
-        <br />
-        이런 일은 발생하지 않습니다.
-      </div>
-      <div className="pc-main4">
-        <div>
-          <p className="pc-sub-title4">
-            힌트를 제공 받을 때 고객이 직원의 말투나
+    <motion.div ref={divref}>
+      <motion.div
+        className="pc-wrapper4"
+        ref={ref}
+        variants={boxVariants}
+        initial="hidden"
+        animate={controls}
+      >
+        <div className="pc-main4">
+          <div className="pc-review-box">
+            <p className="pc-review-title">{reviewContents[curIdx].title}</p>
+            <p className="pc-review-content">
+              {reviewContents[curIdx].content}
+            </p>
+            <p className="pc-review-writer">{reviewContents[curIdx].writer}</p>
+          </div>
+          <div className="pc-title4">
+            사장님들의 리얼 후기,
             <br />
-            태도 때문에 불만족한 경험이 있다.
-          </p>
-          <p className="pc-score">62%</p>
+            직접 확인해보세요.
+          </div>
         </div>
-        <div className="bar" />
-        <div>
-          <p className="pc-sub-title4">
-            직원이 잘못된 힌트를 <br />
-            알려준 적이 있다.
-          </p>
-          <p className="pc-score">34%</p>
+        <div className="pc-review-wrapper">
+          <div className="pc-review-logos">
+            <img alt="1" />
+            <img alt="2" />
+            <img alt="3" />
+            <img alt="4" />
+            <img alt="1" />
+            <img alt="2" />
+            <img alt="3" />
+            <img alt="4" />
+          </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
-}
+});
+export default Component9;
