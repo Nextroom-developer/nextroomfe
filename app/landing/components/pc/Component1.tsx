@@ -55,7 +55,15 @@ const Component1 = forwardRef<HTMLDivElement>((_, ref) => {
         </div>
 
         <div className="pc-video-box1">
-          <video width={709} controls autoPlay muted loop playsInline>
+          <video
+            width={"100%"}
+            height={"auto"}
+            controls
+            autoPlay
+            muted
+            loop
+            playsInline
+          >
             <source src="/videos/0507_홍보영상.MP4" type="video/mp4" />
           </video>
         </div>

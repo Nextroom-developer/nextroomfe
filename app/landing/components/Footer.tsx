@@ -19,9 +19,8 @@ function FooterComponent() {
           </div>
           <div className="footer-links">
             <Link
-              href={
-                "https://held-notebook-420.notion.site/d7bea4318d754b61999e9cb6179a2f70?source=copy_link"
-              }
+              href="https://held-notebook-420.notion.site/d7bea4318d754b61999e9cb6179a2f70?source=copy_link"
+              target="_blank"
             >
               개인정보처리방침
             </Link>{" "}

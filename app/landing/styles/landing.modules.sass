@@ -38,6 +38,8 @@
   gap: 20px
   font-size: 14px
   line-height: 16.71px
+  @media (max-width: 767px)
+    font-size: 12px
 
 .logo
   width: 184px
@@ -59,10 +61,10 @@
   margin-right: 8px
   background-color: black
   color: white
-
   font-size: 14px
   font-weight: 700
   line-height: 16.71px
+
 
 .free-btn
   padding: 0 15px
@@ -82,6 +84,8 @@
   line-height: normal
   opacity: 0.6
   padding: 15px 0
+  @media (max-width: 767px)
+    font-size: 10px
 
 
 .pc
@@ -90,16 +94,27 @@
     font-weight: 700
     line-height: 84px
     margin: 0px 0 40px
+    @media (max-width: 767px)
+      font-size: 32px
+      line-height: 42px
+      margin: 8px 0 32px
 
   &-title2
     font-size: 32px
     font-weight: 700
     line-height: 39px
+    margin-top: 80px
+    @media (max-width: 767px)
+      font-size: 18px
+      line-height: 30px
+      font-weight: 500
 
   &-sub-title1
     font-size: 20px
     font-weight: 500
     line-height: 36px
+    @media (max-width: 767px)
+      font-size: 18px
 
   &-sub-title2
     font-size: 20px
@@ -107,12 +122,17 @@
     line-height: 58px
     color: #A3A3A3
     margin: 8px 0 60px
+    @media (max-width: 767px)
+      font-size: 14px
+      line-height: 20px
 
   &-func-title2
     font-size: 32px
     font-weight: 700
     line-height: 39px
     text-align: left
+    @media (max-width: 767px)
+      font-size: 20px
 
   &-sub-title3
     text-align: center
@@ -120,18 +140,26 @@
     font-weight: 700
     line-height: 58px
     padding-bottom: 54px
+    @media (max-width: 767px)
+      font-size: 24px
+      line-height: 34px
+      font-weight: 700
+
 
   &-sub-title6
     font-size: 23px
     font-weight: 600
     line-height: 38px
+    @media (max-width: 767px)
+      font-size: 16px
 
   &-sub-title7
     color: #6e6e73
-
     font-size: 21px
     font-weight: 500
     line-height: 27px
+    @media (max-width: 767px)
+      font-size: 14px
 
 
   &-title4
@@ -141,30 +169,40 @@
     line-height: 58px
     padding: 118px 0 34px
     text-align: left
+    @media (max-width: 767px)
+      font-size: 24px
 
   &-sub-title4
     text-align: center
     font-size: 23px
     font-weight: 600
     line-height: 38px
+    @media (max-width: 767px)
+      font-size: 16px
 
   &-title6
     font-size: 60px
     font-weight: 700
     line-height: normal
     margin: 24px 0 48px
+    @media (max-width: 767px)
+      font-size: 32px
 
   &-title8
     font-size: 52px
     font-weight: 700
     line-height: 70px
     margin-top: 24px
+    @media (max-width: 767px)
+      font-size: 28px
 
   &-span
     font-size: 32px
     font-style: normal
     font-weight: 600
     line-height: 39px
+    @media (max-width: 767px)
+      font-size: 18px
 
   &-score
     text-align: center
@@ -172,6 +210,8 @@
     font-size: 120px
     font-style: normal
     font-weight: 700
+    @media (max-width: 767px)
+      font-size: 60px
 
   &-wrapper
     max-width: 980px
@@ -187,6 +227,8 @@
     display: flex
     flex-direction: column    
     align-items: center
+    @media (max-width: 767px)
+      height: 64vh
 
   &-title-box1
     display: flex
@@ -200,7 +242,8 @@
     flex-direction: column
     align-items: center
     justify-content: space-between
-  /* padding: 160px 0 */
+    @media ( max-width: 767px )
+      margin-top: 34px
 
   &-wrapper4
     margin: 0 auto
@@ -288,6 +331,11 @@
     text-align: center
     padding: 80px 0
 
+    img
+      @media (max-width: 767px)
+        width: 80%
+        height: auto
+
   &-wrapper9
     background: #151516
     flex-direction: column
@@ -350,6 +398,7 @@
     border-radius: 25px
     border: 1px solid #000
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.3), 0px 8px 12px 6px rgba(0, 0, 0, 0.15)
+
 
   &-box8
     text-align: start
@@ -422,8 +471,8 @@
   &-video-box1
     border-radius: 20px
     overflow: hidden
-    width: fit-content
-    margin-bottom: 40px
+    width: 80%
+    margin: 0 40px auto
 
   &-func-box2
     margin: 100px auto
@@ -485,7 +534,6 @@
   &-review-track
     display: flex
     height: 100%
-    will-change: transform
 
   &-review-slide
     width: 100%
@@ -693,3 +741,34 @@
 
     &.active
       background: white
+
+.main-btn
+  background: #fff
+  position: fixed
+  bottom: 50px
+  left: 50%
+  transform: translate(-50%, 0)
+  width: 302px
+  height: 52px
+  border-radius: 75px
+  font-size: 14px
+  font-weight: 600
+  cursor: pointer
+  color: black
+  z-index: 999
+
+
+.wrapper7
+  height: 100vh
+  overflow: hidden
+
+.phone-stack
+  position: sticky
+  top: 0
+  height: 100vh
+  overflow: hidden
+
+.phone-slider
+  display: flex
+  flex-direction: column
+  height: 400vh

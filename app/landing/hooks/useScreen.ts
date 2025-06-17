@@ -6,18 +6,19 @@ const useScreen = () => {
 
   const [showBtn, setShowBtn] = useState(false); // Btn 컴포넌트의 가시성 상태
   const component1Ref = useRef<HTMLDivElement | null>(null);
+  const component2Ref = useRef<HTMLDivElement | null>(null);
+  const component4Ref = useRef<HTMLDivElement | null>(null);
   const component6Ref = useRef<HTMLDivElement | null>(null);
-  const component4Ref = useRef<HTMLDivElement | null>(null); // Component9의 참조 추가
 
   const handleScroll = () => {
     if (component1Ref.current) {
       const rect1 = component1Ref.current.getBoundingClientRect();
-      setShowBtn(rect1.bottom < window.innerHeight - 230);
+      setShowBtn(rect1.bottom < window.innerHeight - 320);
     }
 
     if (component4Ref.current) {
-      const rect9 = component4Ref.current.getBoundingClientRect();
-      if (rect9.top <= window.innerHeight) {
+      const rect4 = component4Ref.current.getBoundingClientRect();
+      if (rect4.top <= window.innerHeight) {
         // Component4가 화면에 보이면 버튼 숨기기
         setShowBtn(false);
       }
@@ -43,6 +44,7 @@ const useScreen = () => {
     isLoading,
     showBtn,
     component1Ref,
+    component2Ref,
     component6Ref,
     component4Ref,
   };
