@@ -118,7 +118,7 @@
 
   &-sub-title2
     font-size: 20px
-    font-weight: 700
+    font-weight: 500
     line-height: 58px
     color: #A3A3A3
     margin: 8px 0 60px
@@ -564,17 +564,15 @@
 
   &-review-logos
     display: flex
-    width: calc(400px * 8 + 20px * 7) // 8 logos, 7 gaps
+    // width: calc(200px * 8 + 20px * 7) // 8 logos, 7 gaps
+    width: max-content
     height: 200px
     gap: 20px
-    overflow: hidden
-    white-space: nowrap
     animation: slide-left 20s linear infinite
-
-  &-review-logos img
-    flex-shrink: 0
-    width: 400px
-    height: auto
+    img
+      flex-shrink: 0
+      width: 200px
+      height: 100px
 
   &-plan-wrapper
     width: 100%
@@ -613,6 +611,7 @@
     line-height: 30px
     margin-top: 8px
   &-plan-content
+    height: 60px
     font-size: 14px
     font-weight: 500
     line-height: 20px
@@ -665,7 +664,7 @@
     font-size: 18px
 
     .faq-question
-      font-weight: 500
+      font-weight: 600
     .arrow
       width: 0
       height: 0
