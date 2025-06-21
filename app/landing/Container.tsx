@@ -32,17 +32,31 @@ function LandingPage() {
       {isLoading && (
         <div className="container-wrapper">
           <NavbarComponent componentRef={component6Ref} isMobile={isMobile} />
-          <Component1 ref={component1Ref} />
-          {isMobile ? <Component2Mobile ref={component2Ref} /> : <Component2 />}
-          <Component3 />
-          {isMobile ? <Component4Mobile /> : <Component4 ref={component4Ref} />}
-          <Component5 />
-          <Component6 ref={component6Ref} />
-          {/* 조건부 렌더링을 통해 Btn 컴포넌트를 표시 */}
-          {/* buttonProps를 전달하고 ref를 설정하여 DOM 요소를 참조합니다. */}
-          {!isMobile && showBtn && <PcBtn />}
-          {isMobile && <MobileBtn />}
-          <FooterComponent />
+          {isMobile ? (
+            <>
+              <Component1 ref={component1Ref} />
+              <Component2Mobile ref={component2Ref} />
+              <Component3 />
+              <Component4Mobile />
+              <Component5 />
+              <Component6 ref={component6Ref} />
+              {isMobile && <MobileBtn />}
+              <FooterComponent />
+            </>
+          ) : (
+            <>
+              <Component1 ref={component1Ref} />
+              <Component2 />
+              <Component3 />
+              <Component4 ref={component4Ref} />
+              <Component5 />
+              <Component6 ref={component6Ref} />
+              {/* 조건부 렌더링을 통해 Btn 컴포넌트를 표시 */}
+              {/* buttonProps를 전달하고 ref를 설정하여 DOM 요소를 참조합니다. */}
+              {showBtn && <PcBtn />}
+              <FooterComponent />
+            </>
+          )}
         </div>
       )}
     </>

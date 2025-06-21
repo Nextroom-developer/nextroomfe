@@ -1,12 +1,12 @@
 import { useState, useEffect, forwardRef } from "react";
 import { motion } from "framer-motion";
 
-import Phone from "./Phone";
+import Phone from "./Phone1";
 import Phone2 from "./Phone2";
 import Phone3 from "./Phone3";
 import Phone4 from "./Phone4";
 
-const Component7 = forwardRef<HTMLDivElement>((_, ref) => {
+const Component7Mobile = forwardRef<HTMLDivElement>((_, ref) => {
   const [activeSection, setActiveSection] = useState(0);
 
   useEffect(() => {
@@ -38,4 +38,4 @@ const Component7 = forwardRef<HTMLDivElement>((_, ref) => {
     </motion.div>
   );
 });
-export default Component7;
+export default Component7Mobile;

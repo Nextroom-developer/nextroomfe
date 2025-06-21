@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 
-import "../styles/landing.modules.sass";
 import useAuth from "@/(shared)/auth/hooks/useAuth";
 
 function NavbarComponent({

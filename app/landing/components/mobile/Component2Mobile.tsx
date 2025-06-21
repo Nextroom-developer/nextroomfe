@@ -1,43 +1,25 @@
-import { useState, useEffect, forwardRef } from "react";
+import { forwardRef } from "react";
 import { motion } from "framer-motion";
 
-import Phone from "./Phone";
-import Phone2 from "./Phone2";
-import Phone3 from "./Phone3";
-import Phone4 from "./Phone4";
+import PhoneStack from "./PhoneStack";
 
-const Component7 = forwardRef<HTMLDivElement>((_, ref) => {
-  const [activeSection, setActiveSection] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // console.log(ref, "ref?");
-      if (typeof ref !== "function" && ref?.current) {
-        const { scrollY } = window;
-        const sectionHeight = window.innerHeight;
-        const currentSection = Math.floor(
-          (scrollY - ref.current.offsetTop) / sectionHeight + 1
-        );
-
-        // console.log("scroll", ref, scrollY, sectionHeight, currentSection);
-        setActiveSection(currentSection);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [ref]);
-
+const Component2Mobile = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <motion.div className="wrapper7" ref={ref}>
-      <Phone key="phone1" />
-      {activeSection === 1 && <Phone2 key="phone2" />}
-      {activeSection === 2 && <Phone3 key="phone3" />}
-      {activeSection === 3 && <Phone4 key="phone4" />}
+      <h1 className="pc-title2">
+        4년간의 현장 경험으로 탄생한 솔루션 <br />
+        운영 실수를 줄이고 손님의 만족도를 높입니다.
+      </h1>
+      <h4 className="pc-sub-title2">
+        방탈출에만 몰입할 수 있는 특별한 기능을 제공합니다.
+      </h4>
+      <p className="pc-func-title2">
+        테마에 몰입되도록
+        <br />
+        편의성 높은 기능
+      </p>
+      <PhoneStack />
     </motion.div>
   );
 });
-export default Component7;
+export default Component2Mobile;
