@@ -69,23 +69,23 @@ export default function Component2() {
           <div className="pc-func-img-box1">
             <img
               className="pc-func-img"
-              src="/images/landing/hint_phone2.svg"
+              src="/images/landing/hint_phone1.svg"
               alt="hint_phone2"
             />
           </div>
           <div className="pc-func-img-box2">
             <img
               className="pc-func-img"
-              src="/images/landing/hint_phone1.svg"
+              src="/images/landing/hint_phone2.svg"
               alt="hint_phone1"
             />
           </div>
           <h4 className="pc-func-text2">
-            힌트폰 사용 중 밝은 빛으로 인한 방해가 없어요.
+            타이머는 어느 화면에서도 확인할 수 있어요.
             <br />
-            플레이 중 남은 시간은 {` `}
+            문제 진행률부터 힌트 설명, 정답까지 {` `}
             <br />
-            어느 화면에서도 직관적으로 확인할 수 있어요.
+            방탈출 환경에 적절한 다크 테마로 제공돼요.
           </h4>
         </div>
         <div className="pc-func-box3">

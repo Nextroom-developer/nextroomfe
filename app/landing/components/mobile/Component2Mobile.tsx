@@ -5,6 +5,7 @@ import "../../styles/snap.modules.sass";
 import Phone1 from "./Phone1";
 import Phone2 from "./Phone2";
 import Phone3 from "./Phone3";
+import Phone4 from "./Phone4";
 
 const Component2Mobile = () => {
   const [activeSection, setActiveSection] = useState(0);
@@ -58,7 +59,8 @@ const Component2Mobile = () => {
         <div className="mobile-func-img-box">
           {activeSection <= 0 && <Phone1 key="phone1" />}
           {activeSection === 1 && <Phone2 key="phone2" />}
-          {activeSection >= 2 && <Phone3 key="phone3" />}
+          {activeSection === 2 && <Phone3 key="phone3" />}
+          {activeSection >= 3 && <Phone4 key="phone4" />}
         </div>
       </div>
     </motion.div>

@@ -5,15 +5,15 @@ import "@/(shared)/utils/firebase";
 
 import useAnalytics from "../../../(shared)/hooks/useAnalytics";
 
-const Phone3 = forwardRef<HTMLDivElement>((_, ref) => {
+const Phone4 = forwardRef<HTMLDivElement>((_, ref) => {
   const { logEvent } = useAnalytics();
   logEvent("screen_view", {
-    firebase_screen: "homepage_function_3",
-    firebase_screen_class: "homepage_function_3",
+    firebase_screen: "homepage_function_4",
+    firebase_screen_class: "homepage_function_4",
   });
 
   const imgProps = {
-    src: "/images/landing/hint_phone3.svg",
+    src: "/images/landing/hint_phone4.svg",
     alt: "NEXT ROOM",
     width: 180,
     height: 350,
@@ -66,12 +66,12 @@ const Phone3 = forwardRef<HTMLDivElement>((_, ref) => {
     >
       <Image {...imgProps} />
       <div className="mobile-func-description">
-        메모장 등 어느 화면에서도
+        각 테마의 독특한 분위기로
         <br />
-        시간 확인이 가능해요.
+        배경화면을 커스텀해보세요.
       </div>
     </motion.div>
   );
 });
 
-export default Phone3;
+export default Phone4;

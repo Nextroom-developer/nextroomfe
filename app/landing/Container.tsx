@@ -36,10 +36,10 @@ function LandingPage() {
               <Component1 ref={component1Ref} />
               <Component2Mobile />
               <Component3 />
-              <Component4Mobile />
+              <Component4Mobile ref={component4Ref} />
               <Component5 />
               <Component6 ref={component6Ref} />
-              {isMobile && <MobileBtn />}
+              {showBtn && <MobileBtn />}
               <FooterComponent />
             </>
           ) : (

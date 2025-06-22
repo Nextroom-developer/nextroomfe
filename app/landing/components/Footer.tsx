@@ -9,7 +9,7 @@ function FooterComponent() {
       <div className="footer-inner">
         <div className="footer-left">
           <div className="footer-title">넥스트룸(nextroom)</div>
-          <div className="footer-copyright">Copyright © 2023 Next room</div>
+          <div className="footer-copyright">Copyright © 2023 nextroom</div>
           <div className="footer-info">
             대표: 김주환
             <br />
