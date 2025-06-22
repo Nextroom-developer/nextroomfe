@@ -33,7 +33,9 @@
   align-items: center
   gap: 50px
   @media (max-width: 767px)
+    justify-content: space-around
     gap: 20px
+    width: 100%
 
 .logo-nav
   display: flex
@@ -556,13 +558,21 @@
   &-review-title
     font-size: 24px
     font-weight: bold
+    @media (max-width: 767px)
+      font-size: 20px
+      font-weight: 600
 
   &-review-content
     font-size: 20px
+    @media (max-width: 767px)
+      font-size: 14px
 
   &-review-writer
     font-size: 22px
     font-weight: 400
+    @media (max-width: 767px)
+      font-size: 18px
+      font-weight: 600
 
   &-review-wrapper
     width: 100%
