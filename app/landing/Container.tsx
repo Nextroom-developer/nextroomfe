@@ -22,7 +22,6 @@ function LandingPage() {
     isLoading,
     showBtn,
     component1Ref,
-    component2Ref,
     component6Ref,
     component4Ref,
   } = useScreen();
@@ -35,7 +34,7 @@ function LandingPage() {
           {isMobile ? (
             <>
               <Component1 ref={component1Ref} />
-              <Component2Mobile ref={component2Ref} />
+              <Component2Mobile />
               <Component3 />
               <Component4Mobile />
               <Component5 />

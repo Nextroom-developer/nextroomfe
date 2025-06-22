@@ -6,7 +6,6 @@ const useScreen = () => {
 
   const [showBtn, setShowBtn] = useState(false); // Btn 컴포넌트의 가시성 상태
   const component1Ref = useRef<HTMLDivElement | null>(null);
-  const component2Ref = useRef<HTMLDivElement | null>(null);
   const component4Ref = useRef<HTMLDivElement | null>(null);
   const component6Ref = useRef<HTMLDivElement | null>(null);
 
@@ -44,7 +43,6 @@ const useScreen = () => {
     isLoading,
     showBtn,
     component1Ref,
-    component2Ref,
     component6Ref,
     component4Ref,
   };

@@ -1,9 +1,16 @@
 import Image from "next/image";
+
 import "@/(shared)/utils/firebase";
+import useAnalytics from "../../../(shared)/hooks/useAnalytics";
 
 export default function Phone1() {
+  const { logEvent } = useAnalytics();
+  logEvent("screen_view", {
+    firebase_screen: "homepage_function_1",
+    firebase_screen_class: "homepage_function_1",
+  });
   const imgProps = {
-    src: "/images/landing/hint_phone.png",
+    src: "/images/landing/hint_phone1.svg",
     alt: "NEXT ROOM",
     width: 180,
     height: 350,
@@ -12,11 +19,10 @@ export default function Phone1() {
   return (
     <>
       <Image {...imgProps} />
-      <div className="title7">
-        직관적으로 알 수 있는 시간
-        <p className="sub-title7">
-          플레이가 시작되면 남은 시간을 그래프와 함께 제공합니다.
-        </p>
+      <div className="mobile-func-description">
+        플레이 중 남은 시간을
+        <br />
+        직관적으로 확인할 수 있어요.
       </div>
     </>
   );

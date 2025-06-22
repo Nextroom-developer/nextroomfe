@@ -69,14 +69,14 @@ export default function Component2() {
           <div className="pc-func-img-box1">
             <img
               className="pc-func-img"
-              src="/images/landing/hint_phone2.png"
+              src="/images/landing/hint_phone2.svg"
               alt="hint_phone2"
             />
           </div>
           <div className="pc-func-img-box2">
             <img
               className="pc-func-img"
-              src="/images/landing/hint_phone.png"
+              src="/images/landing/hint_phone1.svg"
               alt="hint_phone1"
             />
           </div>
@@ -97,8 +97,8 @@ export default function Component2() {
           <div className="pc-func-img-box1">
             <img
               className="pc-func-img"
-              src="/images/landing/hint_phone2.png"
-              alt="hint_phone2"
+              src="/images/landing/hint_phone3.svg"
+              alt="hint_phone3"
             />
           </div>
           <h4 className="pc-func-text3">
