@@ -70,7 +70,7 @@ export default function Component5() {
             <div className="pc-plan-content">
               <ul>
                 <li>기본 힌트폰 기능 제공</li>
-                <li>커스텀 테마 1개 등록 가능</li>
+                <li>배경화면 커스텀 1개 등록 가능</li>
               </ul>
             </div>
             <div className="pc-plan-price">
@@ -90,13 +90,14 @@ export default function Component5() {
             <div className="pc-plan-content">
               <ul>
                 <li>기본 힌트폰 기능 제공</li>
-                <li>커스텀 테마 무제한 등록 가능</li>
+                <li>힌트 설명에 사진 첨부 가능</li>
+                <li>배경화면 커스텀 무제한 등록 가능</li>
               </ul>
             </div>
             <div className="pc-plan-price">
               <div className="line-price">49,900원</div>
               <div>
-                29,000원<span className="small-price">/월</span>
+                29,900원<span className="small-price">/월</span>
               </div>
             </div>
             <button

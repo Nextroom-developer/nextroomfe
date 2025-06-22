@@ -75,7 +75,6 @@ export const timerPreviewLineProps = {
 };
 
 export const defaultTimerImage = "/images/svg/icon_preview.svg";
-export const defaultTimerImagePreview = "/images/svg/timer_preview.svg";
 export const timerTooltipProps = {
   src: "/images/png/tooltip.png",
   alt: "tooltip",

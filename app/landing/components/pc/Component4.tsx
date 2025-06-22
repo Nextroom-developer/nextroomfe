@@ -57,6 +57,24 @@ const Component9 = forwardRef<HTMLDivElement>((_, divref) => {
       writer: "– 신사 시그***** 사장님",
     },
   ];
+  const logos = [
+    {
+      src: "/images/landing/storeLogos/episode.png",
+      alt: "episode_logo",
+    },
+    {
+      src: "/images/landing/storeLogos/doopdoo.png",
+      alt: "doopdoo_logo",
+    },
+    {
+      src: "/images/landing/storeLogos/signalhunter.png",
+      alt: "signalhunter_logo",
+    },
+    {
+      src: "/images/landing/storeLogos/doom.png",
+      alt: "doom_logo",
+    },
+  ];
 
   return (
     <motion.div ref={divref}>
@@ -108,32 +126,9 @@ const Component9 = forwardRef<HTMLDivElement>((_, divref) => {
         </div>
         <div className="pc-review-wrapper">
           <div className="pc-review-logos">
-            <img
-              src="/images/landing/storeLogos/episode.png"
-              alt="episode_logo"
-            />
-            <img
-              src="/images/landing/storeLogos/doopdoo.png"
-              alt="doopdoo_logo"
-            />
-            <img
-              src="/images/landing/storeLogos/signalhunter.png"
-              alt="signalhunter_logo"
-            />
-            <img src="/images/landing/storeLogos/doom.png" alt="doom_logo" />
-            <img
-              src="/images/landing/storeLogos/episode.png"
-              alt="episode_logo"
-            />
-            <img
-              src="/images/landing/storeLogos/doopdoo.png"
-              alt="doopdoo_logo"
-            />
-            <img
-              src="/images/landing/storeLogos/signalhunter.png"
-              alt="signalhunter_logo"
-            />
-            <img src="/images/landing/storeLogos/doom.png" alt="doom_logo" />
+            {[...logos, ...logos].map((logo, idx) => (
+              <img key={idx} src={logo.src} alt={logo.alt} />
+            ))}
           </div>
         </div>
       </motion.div>
