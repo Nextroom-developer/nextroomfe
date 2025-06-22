@@ -14,7 +14,7 @@ const Component2Mobile = () => {
     target: ref,
     offset: ["start end", "end start"],
   });
-  const opacity = useTransform(scrollYProgress, [0.1, 0.12], [0, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
 
   useEffect(() => {
     const handleScroll = () => {
