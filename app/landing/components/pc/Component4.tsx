@@ -2,7 +2,7 @@ import { useAnimation, motion } from "framer-motion";
 import { forwardRef, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
-const Component9 = forwardRef<HTMLDivElement>((_, divref) => {
+const Component4 = forwardRef<HTMLDivElement>((_, divref) => {
   const controls = useAnimation();
   const [ref, inView] = useInView();
   const [index, setIndex] = useState(0);
@@ -126,7 +126,7 @@ const Component9 = forwardRef<HTMLDivElement>((_, divref) => {
         </div>
         <div className="pc-review-wrapper">
           <div className="pc-review-logos">
-            {[...logos, ...logos].map((logo, idx) => (
+            {[...logos, ...logos, ...logos, ...logos].map((logo, idx) => (
               <img key={idx} src={logo.src} alt={logo.alt} />
             ))}
           </div>
@@ -135,4 +135,4 @@ const Component9 = forwardRef<HTMLDivElement>((_, divref) => {
     </motion.div>
   );
 });
-export default Component9;
+export default Component4;

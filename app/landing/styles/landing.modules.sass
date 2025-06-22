@@ -169,6 +169,9 @@
     text-align: left
     @media (max-width: 767px)
       font-size: 24px
+      padding: 40px 0 60px
+      text-align: center
+      line-height: 40px
 
   &-sub-title4
     text-align: center
@@ -271,6 +274,9 @@
     padding: 160px 0
     position: relative
     background-image: url("/images/landing/background.png")
+    @media (max-width: 767px)
+      flex-direction: column
+      padding: 100px 0 160px
 
     .bar
       width: 1px
@@ -522,6 +528,9 @@
     border: 1px solid #222223
     border-radius: 30px
     background-color: #151515
+    @media (max-width: 767px)
+      width: 80%
+      margin: auto
 
   &-review-slider-window
     overflow: hidden
@@ -531,6 +540,7 @@
   &-review-track
     display: flex
     height: 100%
+    cursor: grab
 
   &-review-slide
     width: 100%
@@ -570,6 +580,7 @@
       flex-shrink: 0
       width: 200px
       height: 100px
+      filter: grayscale(100%)
 
   &-plan-wrapper
     width: 100%
@@ -577,6 +588,8 @@
     justify-content: center
     align-items: center
     gap: 20px
+    @media (max-width: 767px)
+      flex-direction: column
 
   &-plan-box
     width: 316px
@@ -654,14 +667,16 @@
     border-top: none
   padding: 20px
   cursor: pointer
-  .pc-faq-title 
+  .pc-faq-title
     display: flex
     justify-content: space-between
     align-items: center
     font-size: 18px
 
-    .faq-question
-      font-weight: 600
+    .pc-faq-title-text
+      font-weight: 500
+      text-align: left
+      padding-right: 20px
     .arrow
       width: 0
       height: 0
@@ -671,7 +686,7 @@
       transition: transform 0.5s ease
 
   .faq-answer
-    margin-top: 0.75rem
+    margin-top: 20px
     font-size: 14px
     text-align: left
     color: #aaa
@@ -706,6 +721,9 @@
   top: 50%
   left: -30px
   transform: translateX(-50%)
+  @media (max-width: 767px)
+    font-size: 40px
+    left: -20px
 
 .arrow-right
   position: absolute
@@ -718,6 +736,8 @@
   top: 50%
   right: -50px
   transform: translateX(-50%)
+  @media (max-width: 767px)
+    font-size: 40px
 
 .dots
   position: absolute

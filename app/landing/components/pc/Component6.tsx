@@ -44,14 +44,16 @@ const Component6 = forwardRef<HTMLDivElement>((_, divref) => {
         initial="hidden"
         animate={controls}
       >
-        <div className="pc-sub-title3">FAQ</div>
+        <div className="pc-sub-title3">자주 묻는 질문</div>
         <div className="pc-faq-wrapper">
           <div
             className={`pc-faq-item ${openIndex === 0 ? "open" : ""}`}
             onClick={() => toggle(0)}
           >
             <div className="pc-faq-title">
-              <div className="faq-question">넥스트룸은 무료 서비스인가요?</div>
+              <div className="pc-faq-title-text">
+                넥스트룸은 무료 서비스인가요?
+              </div>
               <span className="arrow" />
             </div>
             <div className="faq-answer">
@@ -71,7 +73,9 @@ const Component6 = forwardRef<HTMLDivElement>((_, divref) => {
             onClick={() => toggle(1)}
           >
             <div className="pc-faq-title">
-              <div className="pc-faq-title">구독 시 어떤 혜택이 있나요?</div>
+              <div className="pc-faq-title-text">
+                구독 시 어떤 혜택이 있나요?
+              </div>
               <span className="arrow" />
             </div>
             <div className="faq-answer">
@@ -96,7 +100,7 @@ const Component6 = forwardRef<HTMLDivElement>((_, divref) => {
             onClick={() => toggle(2)}
           >
             <div className="pc-faq-title">
-              <div className="pc-faq-title">
+              <div className="pc-faq-title-text">
                 타이머 화면에서 게임을 종료하고 새로운 게임을 시작하는 방법이
                 궁금해요.
               </div>
@@ -115,7 +119,7 @@ const Component6 = forwardRef<HTMLDivElement>((_, divref) => {
             onClick={() => toggle(3)}
           >
             <div className="pc-faq-title">
-              <div className="pc-faq-title">비밀번호를 잊어버렸어요.</div>
+              <div className="pc-faq-title-text">비밀번호를 잊어버렸어요.</div>
               <span className="arrow" />
             </div>
             <div className="faq-answer">
@@ -135,7 +139,9 @@ const Component6 = forwardRef<HTMLDivElement>((_, divref) => {
             onClick={() => toggle(4)}
           >
             <div className="pc-faq-title">
-              <div className="pc-faq-title">앱 사용중에 문제가 생겼어요.</div>
+              <div className="pc-faq-title-text">
+                앱 사용중에 문제가 생겼어요.
+              </div>
               <span className="arrow" />
             </div>
             <div className="faq-answer">
@@ -167,7 +173,7 @@ const Component6 = forwardRef<HTMLDivElement>((_, divref) => {
             onClick={() => toggle(5)}
           >
             <div className="pc-faq-title">
-              <div className="pc-faq-title">
+              <div className="pc-faq-title-text">
                 힌트 코드에는 숫자밖에 못쓰나요?
               </div>
               <span className="arrow" />

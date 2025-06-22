@@ -2,7 +2,7 @@ import { useAnimation, motion } from "framer-motion";
 import { forwardRef, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
-const Component9 = forwardRef<HTMLDivElement>((_, divref) => {
+const Component4Mobile = forwardRef<HTMLDivElement>((_, divref) => {
   const controls = useAnimation();
   const [ref, inView] = useInView();
   const [index, setIndex] = useState(0);
@@ -79,6 +79,13 @@ const Component9 = forwardRef<HTMLDivElement>((_, divref) => {
                 className="pc-review-track"
                 animate={{ x: `-${index * 100}%` }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                onDragEnd={(event, info) => {
+                  if (info.offset.x < -50)
+                    next(); // 왼쪽으로 넘기면 다음 슬라이드
+                  else if (info.offset.x > 50) prev(); // 오른쪽으로 넘기면 이전 슬라이드
+                }}
               >
                 {reviews.map((review, i) => (
                   <div className="pc-review-slide" key={i}>
@@ -140,4 +147,4 @@ const Component9 = forwardRef<HTMLDivElement>((_, divref) => {
     </motion.div>
   );
 });
-export default Component9;
+export default Component4Mobile;

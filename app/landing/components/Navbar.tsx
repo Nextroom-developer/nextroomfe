@@ -17,7 +17,10 @@ function NavbarComponent({
     <header className="header">
       <div className="logo-wrapper">
         <div className="logo-nav-wrapper">
-          <div className="logo" />
+          <div
+            className="logo"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          />
           <div className="logo-nav">
             <div className="logo-nav-item">
               <Link
