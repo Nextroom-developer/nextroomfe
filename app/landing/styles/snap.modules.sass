@@ -1,4 +1,12 @@
 .mobile
+  &-wrapper7
+    height: fit-content
+    margin: 106px 0
+    text-align: center
+    // position: relative
+    position: sticky
+    top: 100px
+
   &-title2
     font-size: 20px
     font-weight: 600
@@ -15,14 +23,25 @@
     text-align: center
     margin: 10px 0 40px
 
+  &-img-cont
+    position: relative
+    height: 260vh
+
   &-func-box
     position: sticky
-    top: -2px
+    top: 100px
     display: flex
     flex-direction: column
     align-items: center
     justify-content: flex-start
     background-color: black
+
+  &-func-title2
+    position: sticky
+    font-size: 20px
+    line-height: 28px
+    text-align: center
+    margin-bottom: 20px
 
   &-func-description
     font-size: 14px
@@ -30,13 +49,12 @@
     text-align: center
 
 
+
 .snap-container
-  height: 100vh
   overflow-y: scroll
   scroll-snap-type: y mandatory
   scroll-behavior: smooth
   -webkit-overflow-scrolling: touch
-  position: relative
 
 .snap-section
   scroll-snap-align: start
@@ -44,3 +62,11 @@
   display: flex
   justify-content: center
   align-items: center
+
+.sticky-title
+  position: sticky
+  top: 0
+  z-index: 10
+  background: white
+  padding: 20px 0
+  text-align: center
