@@ -44,7 +44,7 @@ const Component6 = forwardRef<HTMLDivElement>((_, divref) => {
         initial="hidden"
         animate={controls}
       >
-        <div className="pc-sub-title3">FAQ</div>
+        <div className="pc-sub-title3">자주 묻는 질문</div>
         <div className="pc-faq-wrapper">
           <div
             className={`pc-faq-item ${openIndex === 0 ? "open" : ""}`}
