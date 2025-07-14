@@ -61,6 +61,7 @@ const Component6 = forwardRef<HTMLDivElement>((_, divref) => {
               <br />
               다만 일부 기능은 유료로 제공하고 있어요.
               <br />
+              <br />
               현재 얼리버드 이벤트 기간으로, 49% 할인된 가격으로 제공하고
               있습니다.
               <br />
@@ -125,13 +126,8 @@ const Component6 = forwardRef<HTMLDivElement>((_, divref) => {
             <div className="faq-answer">
               현재 넥스트룸은 비밀번호 찾기/변경 기능을 제공하지 않습니다.
               <br />
-              대신 간단한 검증을 통해 탈퇴 처리 후 재가입 하실 수 있도록
-              도와드리고 있어요.
-              <br />
-              요청 시 기존의 데이터 그대로 새 계정에 옮겨드립니다.
-              <br />
-              도움이 필요하시면 공식 계정(nextroom.official@gmail.com)으로 연락
-              주세요.
+              만약 비밀번호를 잊으셨다면 공식
+              계정(nextroom.official@gmail.com)으로 연락 주세요.
             </div>
           </div>
           <div
@@ -150,7 +146,13 @@ const Component6 = forwardRef<HTMLDivElement>((_, divref) => {
               <br />
               ■ 공식 계정: nextroom.official@gmail.com
               <br />
-              ■ 인스타그램: https://www.instagram.com/team_nextroom/
+              <Link
+                href="https://www.instagram.com/team_nextroom/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ■ 인스타그램: https://www.instagram.com/team_nextroom/
+              </Link>
               <br />
               ■ 연락처: 010-7416-9874
               <br />
@@ -174,7 +176,7 @@ const Component6 = forwardRef<HTMLDivElement>((_, divref) => {
           >
             <div className="pc-faq-title">
               <div className="pc-faq-title-text">
-                힌트 코드에는 숫자밖에 못쓰나요?
+                힌트 코드에는 숫자만 사용할 수 있나요?
               </div>
               <span className="arrow" />
             </div>
@@ -183,6 +185,38 @@ const Component6 = forwardRef<HTMLDivElement>((_, divref) => {
               <br />
               손님들이 힌트 코드를 입력하는 데 시간을 지체하지 않기를 바라는
               마음에 숫자만 지원하고 있어요.
+            </div>
+          </div>
+          <div
+            className={`pc-faq-item ${openIndex === 6 ? "open" : ""}`}
+            onClick={() => toggle(6)}
+          >
+            <div className="pc-faq-title">
+              <div className="pc-faq-title-text">
+                안드로이드 폰에서만 사용 가능한가요?
+              </div>
+              <span className="arrow" />
+            </div>
+            <div className="faq-answer">
+              안드로이드 기기라면 폰, 태블릿 관계없이 사용 가능합니다. iOS는
+              지원하지 않습니다.
+            </div>
+          </div>
+          <div
+            className={`pc-faq-item ${openIndex === 7 ? "open" : ""}`}
+            onClick={() => toggle(7)}
+          >
+            <div className="pc-faq-title">
+              <div className="pc-faq-title-text">
+                넥스트룸을 사용하기 위한 최소 사양을 알고 싶어요.
+              </div>
+              <span className="arrow" />
+            </div>
+            <div className="faq-answer">
+              최소 안드로이드 OS 버전이 7.0 이상이어야 다운로드 및 사용이
+              가능합니다.
+              <br />
+              원활한 사용을 위해 램은 최소 3GB 이상을 권장드립니다.
             </div>
           </div>
         </div>

@@ -25,6 +25,18 @@ function FooterComponent() {
           </div>
         </div>
         <div className="footer-right">
+          <div className="footer-sns">
+            <img
+              className="footer-sns-icon"
+              src="/images/landing/insta_icon.jpg"
+              alt="instaicon"
+            />
+            <img
+              className="footer-sns-icon"
+              src="/images/landing/kakao_icon.jpg"
+              alt="kakaoicon"
+            />
+          </div>
           <img
             className="footer-qr"
             src="/images/landing/qr-code.png"
