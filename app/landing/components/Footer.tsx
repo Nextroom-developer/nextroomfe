@@ -9,7 +9,6 @@ function FooterComponent() {
       <div className="footer-inner">
         <div className="footer-left">
           <div className="footer-title">넥스트룸(nextroom)</div>
-          <div className="footer-copyright">Copyright © 2023 nextroom</div>
           <div className="footer-info">
             대표: 김주환
             <br />
@@ -23,25 +22,42 @@ function FooterComponent() {
             </Link>{" "}
             | 문의메일: nextroom.official@gmail.com
           </div>
+          <div className="footer-sns">
+            <Link
+              href="https://www.instagram.com/team_nextroom/"
+              target="_blank"
+            >
+              <img
+                className="footer-sns-icon"
+                src="/images/landing/insta_icon.jpg"
+                alt="instaicon"
+              />
+            </Link>
+            <Link href="https://pf.kakao.com/_mkBTn" target="_blank">
+              <img
+                className="footer-sns-icon"
+                src="/images/landing/kakao_icon.jpg"
+                alt="kakaoicon"
+              />
+            </Link>
+          </div>
+          <div className="footer-copyright">Copyright © 2023 nextroom</div>
         </div>
         <div className="footer-right">
-          <div className="footer-sns">
-            <img
-              className="footer-sns-icon"
-              src="/images/landing/insta_icon.jpg"
-              alt="instaicon"
-            />
-            <img
-              className="footer-sns-icon"
-              src="/images/landing/kakao_icon.jpg"
-              alt="kakaoicon"
-            />
-          </div>
           <img
             className="footer-qr"
             src="/images/landing/qr-code.png"
             alt="QR"
           />
+          <div className="footer-qr-description">
+            <img
+              src="/images/landing/google-playstore.png"
+              alt="googleplaystore"
+              width={24}
+              height={23}
+            />
+            <div>Android 앱 다운로드</div>
+          </div>
         </div>
       </div>
     </footer>
