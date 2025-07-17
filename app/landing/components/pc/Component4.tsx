@@ -39,29 +39,25 @@ const Component4 = forwardRef<HTMLDivElement>((_, divref) => {
       idx: 1,
       title: "“여러 기기에서 바로 연동되니 훨씬 효율적이에요”",
       content:
-        "기존에는 기기마다 따로 세팅해야 했는데, 넥스트룸은 서버에 한 번만 등록하면 전 기기에서 바로 사용 가능하니까 운영이 정말 간편해졌어요.",
-      writer: "– 서현 에***** 매니저님",
+        "직관적인 UI로 사용이 매우 편리하고, 지속적으로 업그레이드를 해주셔서 너무 좋습니다!",
+      writer: "– 홍대 토끼굴 사장님",
     },
     {
       idx: 2,
       title: `“힌트 입력 과정이 너무 쉬워서 한 줄기 빛 같았어요”`,
       content:
-        "아무것도 모르는 상태에서도 설명서만 보고 바로 따라 할 수 있을 정도로 쉽고 편했어요. 처음 시스템을 도입하는 입장에서 정말 큰 도움이 됐습니다.",
-      writer: "– 홍대 *두 사장님",
+        "관리자도, 이용자도 모두 쉽게 사용할 수 있었어요. 최고의 방탈출 힌트폰 앱입니다!",
+      writer: "– 홍대 둡두 사장님",
     },
     {
       idx: 3,
       title: "“무료라서 시작했는데, 계속 쓰게 됐어요”",
       content:
-        "처음엔 솔직히 비용 부담이 없다는 점에서 눈길이 갔어요. 막상 써보니 기능도 좋아서 계속 사용하게 되더라고요.",
-      writer: "– 신사 시그***** 사장님",
+        "굉장히 유저프렌들리하고 필요한 기능만 알차게 담겨 있어 운영에 많은 도움이 되었습니다.",
+      writer: "– 신사 시그널헌터 사장님",
     },
   ];
   const logos = [
-    {
-      src: "/images/landing/storeLogos/episode.png",
-      alt: "episode_logo",
-    },
     {
       src: "/images/landing/storeLogos/doopdoo.png",
       alt: "doopdoo_logo",
@@ -71,7 +67,7 @@ const Component4 = forwardRef<HTMLDivElement>((_, divref) => {
       alt: "signalhunter_logo",
     },
     {
-      src: "/images/landing/storeLogos/doom.png",
+      src: "/images/landing/storeLogos/rabbithole.png",
       alt: "doom_logo",
     },
   ];
@@ -85,6 +81,16 @@ const Component4 = forwardRef<HTMLDivElement>((_, divref) => {
         initial="hidden"
         animate={controls}
       >
+        <div className="pc-review-wrapper">
+          <div className="pc-review-logos">
+            {[...logos, ...logos, ...logos, ...logos].map((logo, idx) => (
+              <img key={idx} src={logo.src} alt={logo.alt} />
+            ))}
+          </div>
+          <div className="pc-review-logos-text">
+            20+개의 매장에서 넥스트룸 사용 중
+          </div>
+        </div>
         <div className="pc-main4">
           <div className="pc-review-box">
             <div className="pc-review-slider-window">
@@ -122,13 +128,6 @@ const Component4 = forwardRef<HTMLDivElement>((_, divref) => {
             사장님들의 리얼 후기,
             <br />
             직접 확인해보세요.
-          </div>
-        </div>
-        <div className="pc-review-wrapper">
-          <div className="pc-review-logos">
-            {[...logos, ...logos, ...logos, ...logos].map((logo, idx) => (
-              <img key={idx} src={logo.src} alt={logo.alt} />
-            ))}
           </div>
         </div>
       </motion.div>

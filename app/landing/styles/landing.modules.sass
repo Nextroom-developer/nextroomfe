@@ -2,6 +2,7 @@
   font-family: 'Pretendard'
   width: 100%
   margin: 0 auto
+  cursor: default
 
 .mobile-wrapper
   // padding: 0 26px
@@ -250,7 +251,7 @@
 
   &-wrapper4
     margin: 0 auto
-    border-top: 1px solid #424245
+    // border-top: 1px solid #424245
 
   &-wrapper5
     width: 100%
@@ -552,7 +553,7 @@
     flex-direction: column
     justify-content: center
     align-items: center
-    gap: 30px
+    gap: 34px
     padding: 20px
     
   &-review-title
@@ -564,6 +565,9 @@
 
   &-review-content
     font-size: 20px
+    height: 100px
+    display: flex
+    align-items: center
     @media (max-width: 767px)
       font-size: 14px
 
@@ -583,14 +587,26 @@
     display: flex
     // width: calc(200px * 8 + 20px * 7) // 8 logos, 7 gaps
     width: max-content
-    height: 200px
+    // height: 200px
     gap: 20px
     animation: slide-left 20s linear infinite
+    opacity: 0.3
     img
       flex-shrink: 0
       width: 200px
       height: 100px
       filter: grayscale(100%)
+  &-review-logos-text
+    position: absolute
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    display: flex
+    justify-content: center
+    align-items: center
+    font-size: 32px
+    font-weight: bold
 
   &-plan-wrapper
     width: 100%
