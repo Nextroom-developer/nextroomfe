@@ -104,7 +104,7 @@ export default function Component5() {
               className="pc-plan-btn"
               onClick={() =>
                 window.open(
-                  "https://play.google.com/store/search?q=%EB%84%A5%EC%8A%A4%ED%8A%B8%EB%A3%B8&c=apps&hl=ko-KR",
+                  "https://play.google.com/store/apps/details?id=com.nextroom.nextroom",
                   "_blank"
                 )
               }

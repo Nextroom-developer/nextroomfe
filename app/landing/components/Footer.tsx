@@ -9,11 +9,15 @@ function FooterComponent() {
       <div className="footer-inner">
         <div className="footer-left">
           <div className="footer-title">넥스트룸(nextroom)</div>
-          <div className="footer-copyright">Copyright © 2023 nextroom</div>
           <div className="footer-info">
             대표: 김주환
             <br />
-            사업자등록번호: 487-23-01961 | 통신판매번호: 2024-서울강남-05436
+            사업자등록번호: 487-23-01961
+            <span className="footer-mobile-line"> |</span>
+            <span className="footer-mobile-newline">
+              <br />
+            </span>
+            통신판매번호: 2024-서울강남-05436
             <br />
             <Link
               href="https://held-notebook-420.notion.site/d7bea4318d754b61999e9cb6179a2f70?source=copy_link"
@@ -23,6 +27,26 @@ function FooterComponent() {
             </Link>{" "}
             | 문의메일: nextroom.official@gmail.com
           </div>
+          <div className="footer-sns">
+            <Link
+              href="https://www.instagram.com/team_nextroom/"
+              target="_blank"
+            >
+              <img
+                className="footer-sns-icon"
+                src="/images/landing/insta_icon.jpg"
+                alt="instaicon"
+              />
+            </Link>
+            <Link href="https://pf.kakao.com/_mkBTn" target="_blank">
+              <img
+                className="footer-sns-icon"
+                src="/images/landing/kakao_icon.jpg"
+                alt="kakaoicon"
+              />
+            </Link>
+          </div>
+          <div className="footer-copyright">Copyright © 2023 nextroom</div>
         </div>
         <div className="footer-right">
           <img
@@ -30,6 +54,15 @@ function FooterComponent() {
             src="/images/landing/qr-code.png"
             alt="QR"
           />
+          <div className="footer-qr-description">
+            <img
+              src="/images/landing/google-playstore.png"
+              alt="googleplaystore"
+              width={24}
+              height={23}
+            />
+            <div>Android 앱 다운로드</div>
+          </div>
         </div>
       </div>
     </footer>

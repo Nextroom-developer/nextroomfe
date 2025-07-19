@@ -3,7 +3,10 @@ import { AxiosError, AxiosResponse } from "axios";
 
 import { apiClient } from "@/(shared)/lib/reactQueryProvider";
 import { ApiError, ApiResponse, MutationConfigOptions } from "@/(shared)/types";
-import { getLoginInfo } from "@/(shared)/auth/storageUtil";
+import {
+  getLoginInfo,
+  removeLocalStorageAll,
+} from "@/(shared)/auth/storageUtil";
 
 import { QUERY_KEY } from "../../admin/apis/hint/getHintList";
 
@@ -52,7 +55,8 @@ export const usePutSignUpWithGoogle = (
       queryClient.invalidateQueries(QUERY_KEY);
     },
     onError: () => {
-      window.alert("토큰이 만료되어 로그인 화면으로 이동합니다.");
+      removeLocalStorageAll();
+      window.alert("세션이 만료되어 로그인 화면으로 이동합니다.");
       window.location.href = "/login";
     },
   });

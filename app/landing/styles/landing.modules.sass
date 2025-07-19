@@ -2,6 +2,7 @@
   font-family: 'Pretendard'
   width: 100%
   margin: 0 auto
+  cursor: default
 
 .mobile-wrapper
   // padding: 0 26px
@@ -27,6 +28,8 @@
   z-index: 11
   @media (max-width: 767px)
     padding: 23px 26px
+  @media (max-width: 390px)
+    padding: 18px 8px
 
 .logo-nav-wrapper
   display: flex
@@ -36,6 +39,8 @@
     justify-content: space-around
     gap: 20px
     width: 100%
+  @media (max-width: 390px)
+    gap: 10px
 
 .logo-nav
   display: flex
@@ -120,6 +125,9 @@
     line-height: 36px
     @media (max-width: 767px)
       font-size: 18px
+    @media (max-width: 390px)
+      font-size: 16px
+      line-height: 30px
 
   &-sub-title2
     font-size: 20px
@@ -144,7 +152,8 @@
       font-size: 24px
       line-height: 34px
       font-weight: 700
-
+    @media (max-width: 390px)
+      font-size: 20px
 
   &-sub-title6
     font-size: 23px
@@ -250,7 +259,7 @@
 
   &-wrapper4
     margin: 0 auto
-    border-top: 1px solid #424245
+    // border-top: 1px solid #424245
 
   &-wrapper5
     width: 100%
@@ -268,6 +277,8 @@
     text-align: center
     min-height: 100vh
     padding: 60px 0 100px
+    @media (max-width: 767px)
+      padding: 100px 0
 
   &-main4
     margin: 0 auto
@@ -552,8 +563,10 @@
     flex-direction: column
     justify-content: center
     align-items: center
-    gap: 30px
+    gap: 34px
     padding: 20px
+    @media (max-width: 767px)
+      gap: 20px
     
   &-review-title
     font-size: 24px
@@ -561,9 +574,13 @@
     @media (max-width: 767px)
       font-size: 20px
       font-weight: 600
+      text-align: center
 
   &-review-content
     font-size: 20px
+    height: 100px
+    display: flex
+    align-items: center
     @media (max-width: 767px)
       font-size: 14px
 
@@ -583,14 +600,26 @@
     display: flex
     // width: calc(200px * 8 + 20px * 7) // 8 logos, 7 gaps
     width: max-content
-    height: 200px
+    // height: 200px
     gap: 20px
     animation: slide-left 20s linear infinite
+    opacity: 0.3
     img
       flex-shrink: 0
       width: 200px
       height: 100px
       filter: grayscale(100%)
+  &-review-logos-text
+    position: absolute
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    display: flex
+    justify-content: center
+    align-items: center
+    font-size: 32px
+    font-weight: bold
 
   &-plan-wrapper
     width: 100%
@@ -649,6 +678,7 @@
     display: flex
     justify-content: center
     align-items: center
+    z-index: 11
 
 .line-price
   height: fit-content
@@ -782,7 +812,8 @@
   cursor: pointer
   color: black
   z-index: 999
-
+  @media (max-height: 767px)
+    display: none
 
 .wrapper7
   height: 100vh
