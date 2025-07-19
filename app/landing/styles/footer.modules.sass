@@ -1,6 +1,7 @@
 .footer
   width: 100%
-  height: 300px
+  height: max-content
+  min-height: 300px
   background-color: #151516
   color: #ccc
   font-size: 14px
@@ -50,7 +51,7 @@
     flex-direction: column
     padding-bottom: 8px
     @media (max-width: 767px)
-      align-items: flex-start
+      display: none
     img.footer-qr
       width: 100%
       height: auto
@@ -84,4 +85,11 @@
   // img
   //   filter: grayscale(100%)
 
-
+.footer-mobile-line
+  display: inline
+  @media (max-width: 400px)
+    display: none
+.footer-mobile-newline
+  display: none
+  @media (max-width: 400px)
+    display: inline

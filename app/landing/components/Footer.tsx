@@ -12,7 +12,12 @@ function FooterComponent() {
           <div className="footer-info">
             대표: 김주환
             <br />
-            사업자등록번호: 487-23-01961 | 통신판매번호: 2024-서울강남-05436
+            사업자등록번호: 487-23-01961
+            <span className="footer-mobile-line"> |</span>
+            <span className="footer-mobile-newline">
+              <br />
+            </span>
+            통신판매번호: 2024-서울강남-05436
             <br />
             <Link
               href="https://held-notebook-420.notion.site/d7bea4318d754b61999e9cb6179a2f70?source=copy_link"

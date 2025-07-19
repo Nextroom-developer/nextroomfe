@@ -57,7 +57,7 @@ const Component1 = forwardRef<HTMLDivElement>((_, ref) => {
         <div className="pc-video-box1">
           <video
             width={"100%"}
-            height={"auto"}
+            height={"100%"}
             controls
             autoPlay
             muted
