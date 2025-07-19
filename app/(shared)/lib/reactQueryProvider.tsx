@@ -55,8 +55,20 @@ apiClient.interceptors.response.use(
   async (error) => {
     const { response } = error;
     const originalRequest = error.config;
+    const skipInterceptor = originalRequest?.headers["X-Skip-Auth-Interceptor"];
 
-    if (response?.status === 401 && !originalRequest._retry) {
+    if (skipInterceptor) {
+      removeLocalStorageAll();
+      window.alert("오류가 발생했습니다. 다시 시도해주세요.");
+      window.location.href = "/login";
+      return;
+    }
+
+    if (
+      response?.status === 401 &&
+      !originalRequest._retry &&
+      !skipInterceptor
+    ) {
       originalRequest._retry = true;
 
       if (!isRefreshing) {
@@ -66,7 +78,7 @@ apiClient.interceptors.response.use(
           const loginInfo = getLoginInfo();
           const { refreshToken, accessToken } = loginInfo;
 
-          if (!refreshToken || accessToken === "undefined") {
+          if (!refreshToken || accessToken) {
             throw new Error("리프레시 토큰이 없습니다.");
           }
 
@@ -102,14 +114,13 @@ apiClient.interceptors.response.use(
               removeLocalStorageAll();
               window.location.href = "/login";
             }
+            throw refreshError;
           }
-
-          throw refreshError;
         } finally {
           isRefreshing = false;
         }
+        return Promise.reject(error);
       }
-
       return new Promise((resolve, reject) => {
         failedQueue.push({
           resolve: (token: string) => {
@@ -120,7 +131,6 @@ apiClient.interceptors.response.use(
         });
       });
     }
-
     return Promise.reject(error);
   }
 );
