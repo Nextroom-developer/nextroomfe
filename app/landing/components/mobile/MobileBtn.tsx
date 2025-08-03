@@ -1,4 +1,4 @@
-import { JSX, useEffect, useState } from "react";
+import { JSX } from "react";
 import "@/(shared)/utils/firebase";
 import { useRouter } from "next/navigation";
 
@@ -9,7 +9,6 @@ import useCheckSignIn from "../../../(shared)/auth/hooks/useCheckSignIn";
 import useAnalytics from "../../../(shared)/hooks/useAnalytics";
 
 export default function Inputbar(): JSX.Element | null {
-  const [isVisible, setIsVisible] = useState(false);
   const router = useRouter();
   const isSignIn = useCheckSignIn();
   const { logEvent } = useAnalytics();
@@ -27,29 +26,29 @@ export default function Inputbar(): JSX.Element | null {
     });
   };
 
-  const toggleVisibility = () => {
-    if (
-      window.scrollY > 0 &&
-      window.scrollY < document.body.scrollHeight - window.innerHeight
-    ) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
-  };
+  // const toggleVisibility = () => {
+  //   if (
+  //     window.scrollY > 0 &&
+  //     window.scrollY < document.body.scrollHeight - window.innerHeight
+  //   ) {
+  //     setIsVisible(true);
+  //   } else {
+  //     setIsVisible(false);
+  //   }
+  // };
 
-  useEffect(() => {
-    window.addEventListener("scroll", toggleVisibility);
+  // useEffect(() => {
+  //   window.addEventListener("scroll", toggleVisibility);
 
-    return () => {
-      window.removeEventListener("scroll", toggleVisibility);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", toggleVisibility);
+  //   };
+  // }, []);
 
-  return isVisible ? (
+  return (
     <button className="main-btn" onClick={navigateToTrial}>
       {" "}
       지금 바로 시작하기{" "}
     </button>
-  ) : null;
+  );
 }

@@ -9,6 +9,7 @@ import { useToastInfo } from "@/(shared)/atoms/toast.atom";
 
 import { useGetThemeList } from "./apis/theme/getThemeList";
 import AdminView from "./AdminView";
+import { useGetSubscriptionPlan } from "./apis/getSubscriptionPlan";
 
 type Theme = {
   id: number;
@@ -18,6 +19,7 @@ type Theme = {
 };
 
 function Admin() {
+  useGetSubscriptionPlan();
   const { data: categories = [], isLoading } = useGetThemeList();
 
   const [selectedTheme, setSelectedTheme] = useSelectedTheme();

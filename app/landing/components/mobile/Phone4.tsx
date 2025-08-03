@@ -1,24 +1,25 @@
-import { forwardRef, useEffect } from "react";
 import { useAnimation, motion } from "framer-motion";
+import { forwardRef, useEffect } from "react";
 import Image from "next/image";
 import "@/(shared)/utils/firebase";
 
 import useAnalytics from "../../../(shared)/hooks/useAnalytics";
 
-const Phone4 = forwardRef<HTMLDivElement>((props, ref) => {
+const Phone4 = forwardRef<HTMLDivElement>((_, ref) => {
   const { logEvent } = useAnalytics();
   logEvent("screen_view", {
     firebase_screen: "homepage_function_4",
     firebase_screen_class: "homepage_function_4",
   });
+
   const imgProps = {
-    src: "/images/landing/hint_phone4.png",
+    src: "/images/landing/hint_phone4.svg",
     alt: "NEXT ROOM",
     width: 180,
     height: 350,
   };
-  const controls = useAnimation();
 
+  const controls = useAnimation();
   useEffect(() => {
     const updateOpacity = () => {
       if (typeof ref !== "function" && ref?.current) {
@@ -55,7 +56,7 @@ const Phone4 = forwardRef<HTMLDivElement>((props, ref) => {
   };
   return (
     <motion.div
-      className="ing-cont"
+      className="mobile-img-cont"
       ref={ref}
       variants={phoneVariants}
       initial="hidden"
@@ -64,12 +65,10 @@ const Phone4 = forwardRef<HTMLDivElement>((props, ref) => {
       transition={{ duration: 0.5 }}
     >
       <Image {...imgProps} />
-      <div className="title7">
-        문제 푸는 중에도 시간 확인하기
-        <p className="sub-title7">
-          메모장에서도 남은 시간을 표시하여 화면을 이동하지 않고 확인할 수
-          있습니다.
-        </p>
+      <div className="mobile-func-description">
+        각 테마의 독특한 분위기로
+        <br />
+        배경화면을 커스텀해보세요.
       </div>
     </motion.div>
   );

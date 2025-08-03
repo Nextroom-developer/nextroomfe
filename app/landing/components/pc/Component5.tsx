@@ -1,22 +1,19 @@
-import Image from "next/image";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+import useCheckSignIn from "@/(shared)/auth/hooks/useCheckSignIn";
+import useAnalytics from "@/(shared)/hooks/useAnalytics";
+import { handleClickGoogle } from "@/(shared)/auth/hooks/useAuth";
+import { setCookie } from "@/(shared)/auth/helpers/cookie";
 
 export default function Component5() {
-  const imgProps1 = {
-    src: "/images/landing/alarm.svg",
-    alt: "NEXT ROOM",
-    width: 26.52,
-    height: 26.92,
-  };
+  const isSignIn = useCheckSignIn();
 
-  const imgProps2 = {
-    src: "/images/landing/wifi_off.svg",
-    alt: "NEXT ROOM",
-    width: 29.33,
-    height: 24.51,
-  };
+  const { logEvent } = useAnalytics();
+
+  const router = useRouter();
 
   const controls = useAnimation();
   const [ref, inView] = useInView();
@@ -28,6 +25,19 @@ export default function Component5() {
       controls.start("hidden");
     }
   }, [controls, inView]);
+
+  const navigateToTrial = () => {
+    if (isSignIn) {
+      router.push("/admin");
+    } else {
+      handleClickGoogle();
+    }
+    setCookie("/");
+    logEvent("btn_click", {
+      btn_name: "homepage_start_free_trial_click",
+      btn_position: "top",
+    });
+  };
 
   const boxVariants = {
     hidden: {
@@ -52,28 +62,56 @@ export default function Component5() {
       initial="hidden"
       animate={controls}
     >
-      <div className="item1">
-        돌발 상황에도
-        <br />
-        문제 없습니다
-      </div>
-
-      <div className="item2">
-        <div className="item3">
-          <Image {...imgProps1} />
-          <p className="pc-sub-title4">
-            손님이 실수로 앱을 종료해도
-            <br />
-            진행 시간에 맞게 복구합니다
-          </p>
+      <div className="pc-sub-title3">알맞은 플랜을 합리적으로 선택하세요.</div>
+      <div className="pc-plan-wrapper">
+        <div className="pc-plan-box">
+          <div className="pc-plan-item">
+            <div className="pc-plan-title">무료</div>
+            <div className="pc-plan-content">
+              <ul>
+                <li>기본 힌트폰 기능 제공</li>
+                <li>배경화면 커스텀 1개 등록 가능</li>
+              </ul>
+            </div>
+            <div className="pc-plan-price">
+              <div className="line-price">29,900원</div>
+              <div>
+                0원<span className="small-price">/월</span>
+              </div>
+            </div>
+            <button className="pc-plan-btn" onClick={navigateToTrial}>
+              시작하기
+            </button>
+          </div>
         </div>
-        <div className="item3">
-          <Image {...imgProps2} />
-          <p className="pc-sub-title4">
-            인터넷 신호가 끊겨도
-            <br />
-            오프라인으로 사용 가능합니다.
-          </p>
+        <div className="pc-plan-box">
+          <div className="pc-plan-item">
+            <div className="pc-plan-title">멤버쉽</div>
+            <div className="pc-plan-content">
+              <ul>
+                <li>기본 힌트폰 기능 제공</li>
+                <li>힌트 설명에 사진 첨부 가능</li>
+                <li>배경화면 커스텀 무제한 등록 가능</li>
+              </ul>
+            </div>
+            <div className="pc-plan-price">
+              <div className="line-price">49,900원</div>
+              <div>
+                29,900원<span className="small-price">/월</span>
+              </div>
+            </div>
+            <button
+              className="pc-plan-btn"
+              onClick={() =>
+                window.open(
+                  "https://sponge-wood-68d.notion.site/107febdc0ad180f09f68fc47e1f4fde2",
+                  "_blank"
+                )
+              }
+            >
+              구독 알아보기
+            </button>
+          </div>
         </div>
       </div>
     </motion.div>

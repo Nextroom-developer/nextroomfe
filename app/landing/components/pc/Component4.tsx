@@ -1,10 +1,17 @@
 import { useAnimation, motion } from "framer-motion";
-import { useEffect } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
-export default function Component4() {
+import { logos, reviews, swipeBoxVariants } from "@/landing/const";
+
+const Component4 = forwardRef<HTMLDivElement>((_, divref) => {
   const controls = useAnimation();
   const [ref, inView] = useInView();
+  const [index, setIndex] = useState(0);
+
+  const prev = () =>
+    setIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
+  const next = () => setIndex((prev) => (prev + 1) % reviews.length);
 
   useEffect(() => {
     if (inView) {
@@ -14,52 +21,66 @@ export default function Component4() {
     }
   }, [controls, inView]);
 
-  const boxVariants = {
-    hidden: {
-      y: 100, // 시작 위치를 아래로 조정합니다.
-      opacity: 0,
-    },
-    visible: {
-      y: 0, // 최종 위치를 원래 위치로 설정합니다.
-      opacity: 1,
-      transition: {
-        duration: 1,
-        ease: "easeOut",
-      },
-    },
-  };
-
   return (
-    <motion.div
-      className="pc-wrapper4"
-      ref={ref}
-      variants={boxVariants}
-      initial="hidden"
-      animate={controls}
-    >
-      <div className="pc-title4">
-        힌트폰을 사용하면
-        <br />
-        이런 일은 발생하지 않습니다.
-      </div>
-      <div className="pc-main4">
-        <div>
-          <p className="pc-sub-title4">
-            힌트를 제공 받을 때 고객이 직원의 말투나
+    <motion.div ref={divref}>
+      <motion.div
+        className="pc-wrapper4"
+        ref={ref}
+        variants={swipeBoxVariants}
+        initial="hidden"
+        animate={controls}
+      >
+        <div className="pc-review-wrapper">
+          <div className="pc-review-logos">
+            {[...logos, ...logos, ...logos, ...logos].map((logo, idx) => (
+              <img key={idx} src={logo.src} alt={logo.alt} />
+            ))}
+          </div>
+          <div className="pc-review-logos-text">
+            20+개의 매장에서 넥스트룸 사용 중
+          </div>
+        </div>
+        <div className="pc-main4">
+          <div className="pc-review-box">
+            <div className="pc-review-slider-window">
+              <motion.div
+                className="pc-review-track"
+                animate={{ x: `-${index * 100}%` }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+              >
+                {reviews.map((review, i) => (
+                  <div className="pc-review-slide" key={i}>
+                    <p className="pc-review-title">{review.title}</p>
+                    <p className="pc-review-content">{review.content}</p>
+                    <p className="pc-review-writer">{review.writer}</p>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+            <button className="arrow-left" onClick={prev}>
+              ‹
+            </button>
+            <div className="dots">
+              {reviews.map((_, i) => (
+                <span
+                  key={i}
+                  className={`dot ${i === index ? "active" : ""}`}
+                  onClick={() => setIndex(i)}
+                />
+              ))}
+            </div>
+            <button className="arrow-right" onClick={next}>
+              ›
+            </button>
+          </div>
+          <div className="pc-title4">
+            사장님들의 리얼 후기,
             <br />
-            태도 때문에 불만족한 경험이 있다.
-          </p>
-          <p className="pc-score">62%</p>
+            직접 확인해보세요.
+          </div>
         </div>
-        <div className="bar" />
-        <div>
-          <p className="pc-sub-title4">
-            직원이 잘못된 힌트를 <br />
-            알려준 적이 있다.
-          </p>
-          <p className="pc-score">34%</p>
-        </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
-}
+});
+export default Component4;
