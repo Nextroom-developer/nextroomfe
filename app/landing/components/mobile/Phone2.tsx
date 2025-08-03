@@ -5,27 +5,27 @@ import "@/(shared)/utils/firebase";
 
 import useAnalytics from "../../../(shared)/hooks/useAnalytics";
 
-const Phone2 = forwardRef<HTMLDivElement>((props, ref) => {
+const Phone2 = forwardRef<HTMLDivElement>((_, ref) => {
   const { logEvent } = useAnalytics();
   logEvent("screen_view", {
     firebase_screen: "homepage_function_2",
     firebase_screen_class: "homepage_function_2",
   });
   const imgProps = {
-    src: "/images/landing/hint_phone2.png",
+    src: "/images/landing/hint_phone2.svg",
     alt: "NEXT ROOM",
     width: 180,
     height: 350,
   };
-  const controls = useAnimation();
 
+  const controls = useAnimation();
   useEffect(() => {
     const updateOpacity = () => {
       if (typeof ref !== "function" && ref?.current) {
         const viewportHeight = window.innerHeight;
 
-        const start = ref.current.offsetTop + viewportHeight * 0.4;
-        const end = ref.current.offsetTop + viewportHeight * 1.0;
+        const start = ref.current.offsetTop + viewportHeight * 0.7;
+        const end = ref.current.offsetTop + viewportHeight * 1.4;
 
         const { scrollY } = window;
 
@@ -53,9 +53,10 @@ const Phone2 = forwardRef<HTMLDivElement>((props, ref) => {
     visible: { y: 0, opacity: 1 },
     exit: { y: -50, opacity: 0 },
   };
+
   return (
     <motion.div
-      className="img-cont"
+      className="mobile-img-cont"
       ref={ref}
       variants={phoneVariants}
       initial="hidden"
@@ -64,12 +65,10 @@ const Phone2 = forwardRef<HTMLDivElement>((props, ref) => {
       transition={{ duration: 0.5 }}
     >
       <Image {...imgProps} />
-      <div className="title7">
-        몰입이 깨지지 않는 어두운 화면
-        <p className="sub-title7">
-          어두운 공간에서 방탈출을 진행할 때, 힌트폰의 빛으로 인해 몰입이
-          깨지거나 눈이 아픈 경험을 해소했습니다.
-        </p>
+      <div className="mobile-func-description">
+        어두운 공간에서 진행하더라도
+        <br />
+        밝은 빛으로 인한 방해가 없어요.
       </div>
     </motion.div>
   );

@@ -52,13 +52,11 @@ export const getSubscriptionPlan = async (config?: AxiosRequestConfig) => {
 
 export const useGetSubscriptionPlan = (configOptions?: QueryConfigOptions) => {
   const setToast = useToastWrite();
-  const isLoggedIn = useIsLoggedInValue();
 
   const info = useQuery<ResponseType, AxiosError, Response>({
     queryKey: QUERY_KEY,
     queryFn: () => getSubscriptionPlan(configOptions?.config),
     select: (res) => res.data,
-    enabled: !!isLoggedIn, // 로그인 상태일 때만 요청
     ...configOptions?.options,
     onError: (error: AxiosError) => {
       setToast({

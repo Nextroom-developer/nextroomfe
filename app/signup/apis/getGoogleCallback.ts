@@ -5,7 +5,7 @@ import { apiClient } from "@/(shared)/lib/reactQueryProvider";
 import { ApiResponse } from "@/(shared)/types";
 import {
   getLoginInfo,
-  removeAccessToken,
+  removeLocalStorageAll,
   setLoginInfo,
 } from "@/(shared)/auth/storageUtil";
 import { useIsLoggedInWrite } from "@/(shared)/atoms/account.atom";
@@ -31,6 +31,9 @@ const URL_PATH = "/v1/auth/login/google/callback";
 const getGoogleCallback = async (code: string) => {
   const res = await apiClient.get<Request, AxiosResponse<Response>>(URL_PATH, {
     params: { code },
+    headers: {
+      "X-Skip-Auth-Interceptor": "true",
+    },
   });
 
   return res.data;
@@ -65,7 +68,7 @@ export const useGetGoogleCallbackData = (code: string) => {
       }
     },
     onError: (error: unknown) => {
-      removeAccessToken();
+      removeLocalStorageAll();
       setToast({
         isOpen: true,
         title: "로그인에 실패하였습니다.",

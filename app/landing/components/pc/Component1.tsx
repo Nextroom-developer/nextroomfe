@@ -1,12 +1,7 @@
 import { forwardRef, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-import { setCookie } from "@/(shared)/auth/helpers/cookie";
-import { handleClickGoogle } from "@/(shared)/auth/hooks/useAuth";
-
-import useCheckSignIn from "../../../(shared)/auth/hooks/useCheckSignIn";
 import "@/(shared)/utils/firebase";
 import useAnalytics from "../../../(shared)/hooks/useAnalytics";
 
@@ -17,8 +12,6 @@ const Component1 = forwardRef<HTMLDivElement>((_, ref) => {
     firebase_screen_class: "homepage_top",
   });
 
-  const router = useRouter();
-  const isSignIn = useCheckSignIn();
   const controls = useAnimation();
   const [inViewRef, inView] = useInView();
 
@@ -45,19 +38,6 @@ const Component1 = forwardRef<HTMLDivElement>((_, ref) => {
     },
   };
 
-  const navigateToTrial = () => {
-    if (isSignIn) {
-      router.push("/admin");
-    } else {
-      handleClickGoogle();
-    }
-    setCookie("/");
-    logEvent("btn_click", {
-      btn_name: "homepage_start_free_trial_click",
-      btn_position: "top",
-    });
-  };
-
   return (
     <div ref={ref}>
       <motion.div
@@ -67,30 +47,26 @@ const Component1 = forwardRef<HTMLDivElement>((_, ref) => {
         initial="hidden"
         animate={controls}
       >
-        <div>
+        <div className="pc-title-box1">
           <p className="pc-sub-title1">
-            방탈출 운영이 편리해지고 <br />
-            테마 만족도가 올라가는
+            방탈출 운영이 편리해지고 테마 만족도가 올라가는
           </p>
-          <h1 className="pc-title1">
-            힌트폰 서비스 <br />
-            넥스트룸
-          </h1>
-          <button className="pc-btn" onClick={navigateToTrial}>
-            지금 바로 시작하기
-          </button>
+          <h1 className="pc-title1">힌트폰 서비스 넥스트룸</h1>
         </div>
-        <video
-          width={558}
-          height={412}
-          controls
-          autoPlay
-          muted
-          loop
-          playsInline
-        >
-          <source src="/videos/0507_홍보영상.MP4" type="video/mp4" />
-        </video>
+
+        <div className="pc-video-box1">
+          <video
+            width={"100%"}
+            height={"100%"}
+            controls
+            autoPlay
+            muted
+            loop
+            playsInline
+          >
+            <source src="/videos/0507_홍보영상.MP4" type="video/mp4" />
+          </video>
+        </div>
       </motion.div>
     </div>
   );
