@@ -109,7 +109,7 @@ export default function Component5() {
                 )
               }
             >
-              구독하기
+              구독 알아보기
             </button>
           </div>
         </div>
