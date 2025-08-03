@@ -104,7 +104,7 @@ export default function Component5() {
               className="pc-plan-btn"
               onClick={() =>
                 window.open(
-                  "https://play.google.com/store/apps/details?id=com.nextroom.nextroom",
+                  "https://sponge-wood-68d.notion.site/107febdc0ad180f09f68fc47e1f4fde2",
                   "_blank"
                 )
               }

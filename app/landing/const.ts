@@ -20,6 +20,13 @@ export const reviews = [
       "굉장히 유저프렌들리하고 필요한 기능만 알차게 담겨 있어 운영에 많은 도움이 되었습니다.",
     writer: "– 신사 시그널헌터 사장님",
   },
+  {
+    idx: 3,
+    title: "“무료인데도 어플 퀄리티가 너무 좋습니다”",
+    content:
+      "개선점 업데이트 등 고객 피드백도 빠르고 서비스도 깔끔해서 몇 년째 잘 사용하고 있습니다.",
+    writer: "– 홍대 덤앤더머 사장님",
+  },
 ];
 
 export const logos = [
@@ -34,6 +41,14 @@ export const logos = [
   {
     src: "/images/landing/storeLogos/signalhunter.png",
     alt: "signalhunter_logo",
+  },
+  {
+    src: "/images/landing/storeLogos/labyrinth.png",
+    alt: "labyrinth_logo",
+  },
+  {
+    src: "/images/landing/storeLogos/dumbanddumber.png",
+    alt: "dumbanddumber_logo",
   },
 ];
 
