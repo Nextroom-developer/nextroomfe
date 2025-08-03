@@ -97,7 +97,7 @@ export default function Component2() {
           <div className="pc-func-img-box1">
             <img
               className="pc-func-img"
-              src="/images/landing/hint_phone3.svg"
+              src="/images/landing/hint_phone4.svg"
               alt="hint_phone3"
             />
           </div>
