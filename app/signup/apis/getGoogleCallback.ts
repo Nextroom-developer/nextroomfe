@@ -47,6 +47,7 @@ export const useGetGoogleCallbackData = (code: string) => {
   const { data, isLoading } = useQuery<Response, AxiosError, data>({
     queryKey: [`google-callback-${code}`],
     queryFn: () => getGoogleCallback(code),
+    enabled: !!code,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
     select: (res) => res.data,
