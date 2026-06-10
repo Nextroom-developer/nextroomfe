@@ -16,14 +16,15 @@ import { SignUpDropDownField } from "./SignUpDropDownField";
 const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
   const router = useRouter();
 
-  const decodedCode = decodeURIComponent(query.split("&")[0].slice(6));
-  if (decodedCode === "=access_denied") {
+  const params = new URLSearchParams(query);
+  const code = params.get("code") ?? "";
+  const errorParam = params.get("error");
+  if (errorParam === "access_denied") {
     window.alert("권한이 없습니다. 로그인 페이지로 이동합니다.");
     router.push("/login");
   }
 
-  const { data: callbackData, isLoading } =
-    useGetGoogleCallbackData(decodedCode);
+  const { data: callbackData, isLoading } = useGetGoogleCallbackData(code);
 
   const [isRedirecting, setIsRedirecting] = useState(false);
   useEffect(() => {
