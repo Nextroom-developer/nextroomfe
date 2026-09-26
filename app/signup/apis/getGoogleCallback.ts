@@ -57,7 +57,7 @@ export const useGetGoogleCallbackData = (code: string) => {
           accessToken: data.accessToken.replace(/^"(.*)"$/, "$1"),
           refreshToken: data.refreshToken,
           shopName: data.shopName,
-          adminCode: data.adminCode,
+          // adminCode: data.adminCode,
           accessTokenExpiresIn: data.accessTokenExpiresIn,
         });
         setIsLoggedIn(true);

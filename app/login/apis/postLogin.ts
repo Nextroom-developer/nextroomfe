@@ -51,7 +51,7 @@ export const usePostLogin = (configOptions?: MutationConfigOptions) => {
           accessToken: data.accessToken,
           refreshToken: data.refreshToken,
           shopName: data.shopName,
-          adminCode: data.adminCode,
+          // adminCode: data.adminCode,
           accessTokenExpiresIn: data.accessTokenExpiresIn,
         });
         setIsLoggedIn(true);
