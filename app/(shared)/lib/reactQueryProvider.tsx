@@ -78,7 +78,8 @@ apiClient.interceptors.response.use(
           const loginInfo = getLoginInfo();
           const { refreshToken, accessToken } = loginInfo;
 
-          if (!refreshToken || accessToken) {
+          if (!refreshToken || !accessToken) {
+            // 둘 중 하나라도 없을 때만 재발급을 막음
             throw new Error("리프레시 토큰이 없습니다.");
           }
 

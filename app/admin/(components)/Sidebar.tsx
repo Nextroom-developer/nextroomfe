@@ -50,23 +50,20 @@ export default function Sidebar(props: Props) {
   const params = new URLSearchParams(searchParams.toString()).toString();
   const { categories, handleClickSelected } = props;
   const [loginInfo, setLoginInfo] = useState({
-    adminCode: "",
     shopName: "",
   });
 
   useEffect(() => {
-    const { adminCode, shopName } = getLoginInfo(); // getLoginInfo로 값 가져오기
-    setLoginInfo({ adminCode, shopName }); // 상태 업데이트
+    const { shopName } = getLoginInfo(); // getLoginInfo로 값 가져오기
+    setLoginInfo({ shopName }); // 상태 업데이트
   }, []);
 
   const handleLogout = () => {
     removeLocalStorageAll();
     resetSelectedTheme();
     setLoginInfo({
-      adminCode: "",
       shopName: "",
     });
-    // router.push("/login");
     window.location.href = "/login";
   };
   useEffect(() => {
