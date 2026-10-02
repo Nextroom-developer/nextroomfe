@@ -52,7 +52,14 @@ const SignUpWithGoogleComponent = ({ query }: { query: string }) => {
     isRedirectingPut,
   } = useSignUpWithGoogle();
 
-  if (isLoading || isLoadingPut || isRedirecting || isRedirectingPut) {
+  if (
+    isLoading ||
+    isLoadingPut ||
+    isRedirecting ||
+    isRedirectingPut ||
+    callbackData?.isComplete === true
+  ) {
+    // useEffect가 실행되기 전 폼이 나타나지 않도록 추가
     return <Loader />;
   }
 
