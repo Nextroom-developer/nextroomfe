@@ -3,14 +3,14 @@ import Cookies from "js-cookie";
 const ACCESS_TOKEN = "accessToken";
 const REFRESH_TOKEN = "refreshToken";
 const SHOP_NAME = "shopName";
-const ADMIN_CODE = "adminCode";
+// const ADMIN_CODE = "adminCode";
 const STATUS = "status";
 const THEME_ID = "themeId";
 const ACCESS_TOKEN_EXPIRES_IN = "accessTokenExpiresIn";
 interface LoginInfo {
   accessToken: string;
   shopName: string;
-  adminCode: string;
+  // adminCode: string;
   accessTokenExpiresIn: string;
   refreshToken: string;
 }
@@ -60,7 +60,7 @@ export const setLoginInfo = (loginInfo: LoginInfo) => {
     accessToken,
     refreshToken,
     shopName,
-    adminCode,
+    // adminCode,
     accessTokenExpiresIn,
   } = loginInfo;
 
@@ -71,7 +71,7 @@ export const setLoginInfo = (loginInfo: LoginInfo) => {
     expires: 7,
   });
   setLocalStorage(SHOP_NAME, shopName);
-  setLocalStorage(ADMIN_CODE, adminCode);
+  // setLocalStorage(ADMIN_CODE, adminCode);
   setLocalStorage(ACCESS_TOKEN_EXPIRES_IN, accessTokenExpiresIn);
 };
 
@@ -88,7 +88,7 @@ export const getLoginInfo = (): LoginInfo => {
     accessToken: getLocalStorage(ACCESS_TOKEN) || "",
     refreshToken: Cookies.get(REFRESH_TOKEN) || "",
     shopName: getLocalStorage(SHOP_NAME) || "",
-    adminCode: getLocalStorage(ADMIN_CODE) || "",
+    // adminCode: getLocalStorage(ADMIN_CODE) || "",
     accessTokenExpiresIn: getLocalStorage(ACCESS_TOKEN_EXPIRES_IN) || "",
   };
 };
@@ -110,7 +110,7 @@ export const removeLocalStorageAll = () => {
       accessToken: "",
       refreshToken: "",
       shopName: "",
-      adminCode: "",
+      // adminCode: "",
       accessTokenExpiresIn: "",
     });
     Cookies.remove(REFRESH_TOKEN);
