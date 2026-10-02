@@ -16,11 +16,18 @@ function FooterComponent() {
             <span className="footer-mobile-line"> |</span>
             <span className="footer-mobile-newline">
               <br />
-            </span>
+            </span>{" "}
             통신판매번호: 2024-서울강남-05436
             <br />
             <Link
-              href="https://held-notebook-420.notion.site/d7bea4318d754b61999e9cb6179a2f70?source=copy_link"
+              href="https://nextroom-official.notion.site/3be311947d1d8070b4c0dccd390912bf?pvs=74"
+              target="_blank"
+            >
+              서비스이용약관
+            </Link>{" "}
+            |{" "}
+            <Link
+              href="https://nextroom-official.notion.site/38c311947d1d80618e61dfae7ad5d42b"
               target="_blank"
             >
               개인정보처리방침

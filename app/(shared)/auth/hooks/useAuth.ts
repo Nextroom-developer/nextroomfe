@@ -8,7 +8,13 @@ import useChannelTalk from "../../hooks/useChannelTalk";
 import useCheckSignIn from "./useCheckSignIn";
 
 export const handleClickGoogle = () => {
-  const URL = `https://accounts.google.com/o/oauth2/auth?client_id=${process.env.NEXT_PUBLIC_GOOGLE_AUTH_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_GOOGLE_AUTH_REDIRECT_URI}&response_type=code&scope=email profile`;
+  const URL =
+    `https://accounts.google.com/o/oauth2/auth?` +
+    `client_id=${process.env.NEXT_PUBLIC_GOOGLE_AUTH_CLIENT_ID}` +
+    `&redirect_uri=${process.env.NEXT_PUBLIC_GOOGLE_AUTH_REDIRECT_URI}` +
+    `&response_type=code` +
+    `&scope=email profile` +
+    `&prompt=select_account`;
   window.location.href = URL;
 };
 
@@ -45,7 +51,7 @@ const useAuth = () => {
   };
 
   const SignUpLinkProps = {
-    title: isSignIn ? "관리자 페이지로 가기" : "무료로 시작하기",
+    title: isSignIn ? "관리자 페이지로 가기" : "시작하기",
     onClick: handleSignUpBtn,
   };
 

@@ -50,23 +50,20 @@ export default function Sidebar(props: Props) {
   const params = new URLSearchParams(searchParams.toString()).toString();
   const { categories, handleClickSelected } = props;
   const [loginInfo, setLoginInfo] = useState({
-    adminCode: "",
     shopName: "",
   });
 
   useEffect(() => {
-    const { adminCode, shopName } = getLoginInfo(); // getLoginInfo로 값 가져오기
-    setLoginInfo({ adminCode, shopName }); // 상태 업데이트
+    const { shopName } = getLoginInfo(); // getLoginInfo로 값 가져오기
+    setLoginInfo({ shopName }); // 상태 업데이트
   }, []);
 
   const handleLogout = () => {
     removeLocalStorageAll();
     resetSelectedTheme();
     setLoginInfo({
-      adminCode: "",
       shopName: "",
     });
-    // router.push("/login");
     window.location.href = "/login";
   };
   useEffect(() => {
@@ -122,9 +119,25 @@ export default function Sidebar(props: Props) {
               로그아웃
             </button>
           </div>
-          <span className="sidebar__shop-name">
-            {loginInfo.shopName?.replaceAll(`"`, "")}
-          </span>
+          <div className="sidebar__shop-name-box">
+            <span className="sidebar__shop-name">
+              {loginInfo.shopName?.replaceAll(`"`, "")}
+            </span>
+          </div>
+          <div className="sidebar__subscribe-status-box">
+            <div
+              className={`sidebar__subscribe-status-circle ${
+                status?.replaceAll(`"`, "") === "SUBSCRIPTION"
+                  ? "is-subscribed"
+                  : "is-unsubscribed"
+              }`}
+            ></div>
+            <span className="sidebar__subscribe-status-text">
+              {status?.replaceAll(`"`, "") === "SUBSCRIPTION"
+                ? "구독 중"
+                : "미구독"}
+            </span>
+          </div>
         </div>
         <div className="sidebar__theme-title">우리 지점 테마</div>
       </div>
@@ -182,13 +195,6 @@ export default function Sidebar(props: Props) {
             </button>
           </div>
         )}
-      </div>
-
-      <div className="sidebar__bottom">
-        <p className="sidebar__admin-code-title">관리자 코드</p>
-        <p className="sidebar__admin-code-value">
-          {loginInfo.adminCode?.replaceAll(`"`, "")}
-        </p>
       </div>
     </div>
   );
