@@ -15,7 +15,6 @@ type Request = void;
 
 export type data = {
   shopName: string;
-  adminCode: string;
   grantType: string;
   accessToken: string;
   accessTokenExpiresIn: string;
@@ -57,7 +56,6 @@ export const useGetGoogleCallbackData = (code: string) => {
           accessToken: data.accessToken.replace(/^"(.*)"$/, "$1"),
           refreshToken: data.refreshToken,
           shopName: data.shopName,
-          // adminCode: data.adminCode,
           accessTokenExpiresIn: data.accessTokenExpiresIn,
         });
         setIsLoggedIn(true);

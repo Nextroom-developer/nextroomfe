@@ -50,7 +50,6 @@ export default function Sidebar(props: Props) {
   const params = new URLSearchParams(searchParams.toString()).toString();
   const { categories, handleClickSelected } = props;
   const [loginInfo, setLoginInfo] = useState({
-    // adminCode: "",
     shopName: "",
   });
 
@@ -63,10 +62,8 @@ export default function Sidebar(props: Props) {
     removeLocalStorageAll();
     resetSelectedTheme();
     setLoginInfo({
-      // adminCode: "",
       shopName: "",
     });
-    // router.push("/login");
     window.location.href = "/login";
   };
   useEffect(() => {
